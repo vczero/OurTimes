@@ -1,0 +1,20 @@
+{
+    "_id"             : "sdafasdfbisa",//用户ID，插入时自动产生
+    "username"       :"害人害己",
+    "time"            : "注册时间",
+    "password"        : "123456",//密码（必须包含字母、数字，区分大小写）
+    "email"           : "happy@yahoo.com",//邮箱（找回密码）
+    "description"     : "一生的祝福，希望每个人都很开心",
+    "avatar"          : "头像",
+    "sex"             : "男", //性别
+    "birthday"             : "90后",//年代
+    "city"            : "北京市，海淀区",//所在行政区划
+    "pic_url"         : "http://www.baidu.com?pic=9887668",//背景图片
+    "count_priase"    : 22,//收到赞的数目
+
+
+    "count_activity"  : 32,//组织活动数目
+    "count_join"      : 12,//参加活动数目
+    "percent_country" : "8%",//活跃度超过全国用户
+    "percent_city"    : "38%"//活跃度超过城市用户
+}
