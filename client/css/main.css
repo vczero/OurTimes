@@ -21,7 +21,7 @@ header{
 	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 730px;
+	min-height: 760px;
 }
 
 .mrt70{
@@ -55,13 +55,6 @@ header{
 	display: inline-block;
 }
 
-footer{
-	margin-top:40px;
-	bottom: 0;
-	height: 120px;
-	width: 100%;
-	background-color: #282828;
-}
 .item_shuoshuo{
 	background-color: #FFF;
 	height: 120px;
@@ -77,7 +70,7 @@ footer{
 }
 
 .item_pic_text_mt3{
-	margin-top: 3px;
+	margin-top: 6px;
 }
 .item_pic{
 	margin-left: 5px;
@@ -126,4 +119,17 @@ footer{
 	height:5px;
 }
 
+.item_count{
+	color: #A3A3A3;
+}
+
+.item_btn_page{
+	width: 60px;
+	height: 23px;
+	color: #FFF;
+	line-height:23px;
+	text-align:center;
+	border-radius:3px;
+	background-color:#49483E;
+}
 
