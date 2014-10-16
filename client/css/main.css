@@ -133,3 +133,15 @@ header{
 	background-color:#49483E;
 }
 
+.side_pic{
+	border-radius: 3px;
+	width: 340px;
+}
+.side_pic_float{
+	position: absolute;
+	height: 20px;
+	width: 100%;
+	bottom: 0;
+	background-color: #333333;
+}
+
