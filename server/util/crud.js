@@ -1,12 +1,11 @@
 var db = require('./mongo.js'),
     status = require('./status'),
     mongoskin = require('mongoskin');
-
-
-var CRUD = function(collection){
-    this.collection = collection;
-    db.bind(this.collection);
-};
+	
+var	CRUD = function(collection){
+    	this.collection = collection;
+    	db.bind(this.collection);
+	};
 
 CRUD.prototype = {
     /*

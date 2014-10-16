@@ -1,7 +1,7 @@
 var nodemailer = require('nodemailer'),
-    transporter = nodemailer.createTransport(),
     status = require('./../util/status'),
-    config = require('./../config.json');
+    config = require('./../config.json'),
+    transporter = nodemailer.createTransport();
 
 
 var Email = function(email, title, content){

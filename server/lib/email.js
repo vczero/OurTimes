@@ -18,7 +18,7 @@ module.exports = {
                 username = user.username,
                 title = '找回密码',
                 newPassword = mcrypto.createPassword(),
-                content = '您好！感谢使用招募网。招募网系统给您重置的密码是' + newPassword + ',系统邮件，请勿回复。谢谢！';
+                content = '您好！' + newPassword + ',系统邮件，请勿回复。谢谢！';
 
             var emailer = new email(email, title, content);
             emailer.send(function(data){

@@ -1,4 +1,5 @@
 var user = require('./user'),
+    verify = require('./verify'),
     email = require('./email');
 /*
 *
@@ -12,6 +13,9 @@ module.exports = function(app){
     app.get('/user/get', user.getUserInfo);
     app.get('./user/logout', user.logout);
     app.post('/user/update', user.update);
+
+    //验证码模块
+    app.get('/verify/get', verify.create);
 
     //发送邮件模块
     app.post('./email/findpasswod', email.findPassword);

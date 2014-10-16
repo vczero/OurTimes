@@ -5,6 +5,7 @@ var mongoskin = require('mongoskin'),
  * @des：导出数据库连接模块
  * */
 module.exports = (function(){
+	
     var host = config.host,
         port = config.port,
         dbName = config.dbname,

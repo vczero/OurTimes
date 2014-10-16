@@ -1,0 +1,28 @@
+{
+	username: "",
+	email: "",
+	nickname: "ni",
+	tel: [
+		{
+			time: "",
+			tel: ""
+		}
+	],
+	address:[
+		{
+			company: "",
+			zhiye: "",
+			address: ""
+		},
+		{
+			company: "",
+			zhiye: "",
+			address: ""
+		},
+		{
+			company: "",
+			zhiye: "",
+			address: ""
+		},
+	]
+}
