@@ -4,9 +4,50 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link href="css/main.css" type="text/css" rel="stylesheet"/>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.item_comment').hide();
+				var isShowCommentInput = false;
+				$('.item_pl').click(function(){
+					var id = $(this).attr('id');
+					var index = id.split('_')[2];
+					var commment = '#item_comment_' + index;
+					
+					if(!isShowCommentInput){
+						$(commment).slideDown(500, 'linear');
+						isShowCommentInput = true;
+					}else{
+						$(commment).slideUp(500, 'linear');
+						isShowCommentInput = false;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<div class="header_center">
+				<div class="fl">
+					<img class="logo" src="img/logo4.png" />
+					图班网
+				</div>
+				<div class="fr header_text">
+					<div class="fl">
+						<a class="header_menu">通讯录</a>
+						<a class="header_menu">个人中心</a>
+						<a class="header_menu">我的状态</a>
+						<a class="header_menu">MapShow</a>
+						<a class="header_menu">About</a>
+					</div>
+					<div class="fr" style="font-size:12px">
+						<span class="login_reg">登录</span>
+						<span class="login_reg">注册</span>
+						<!--<span>欢迎你，vczero</span>-->
+					</div>
+				</div>
+			</div>
+		</header>
 		<section id="centent" class="minh">
 			<div class="mrt70 fl wd630 minh">
 				<!--
@@ -23,15 +64,18 @@
 					</div>
 					<div class="item_ml3 item_link_div">
 						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
+						<span class="item_date">2014-10-16 08:54</span>
+						<span class="item_tag">
+							<img class="item_tag_icon" src="img/lable.png"/>
+							玩笑 开森
+						</span>
 					</div>
 					<div class="fr item_icon">
 						<span>
 							<img class="item_zan" src="img/zan.png"/>
 						</span>
 						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
+							<img id="item_pl_1" class="item_zan item_pl" src="img/pinglun2.png"/>
 						</span>
 					</div>
 					<div class="clear"></div>
@@ -39,6 +83,61 @@
 						<span>☆赞：45</span>
 						<span>☆评论：15</span>
 					</div>
+					<div id="item_comment_1" class="item_comment">
+						<div>
+							<textarea class="item_comment_input item_ml3"></textarea> 
+						</div>
+						<div>
+							<div class="item_comment_btn fr">评论</div>
+						</div>
+					</div>
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic2.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic3.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div class="item_shuoshuo">
@@ -50,15 +149,18 @@
 					</div>
 					<div class="item_ml3 item_link_div">
 						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
+						<span class="item_date">  2014-10-16 08:54  </span>
+						<span class="item_tag">
+							<img class="item_tag_icon" src="img/lable.png"/>
+							玩笑 开森
+						</span>
 					</div>
 					<div class="fr item_icon">
 						<span>
 							<img class="item_zan" src="img/zan.png"/>
 						</span>
 						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
+							<img id="item_pl_1" class="item_zan item_pl" src="img/pinglun2.png"/>
 						</span>
 					</div>
 					<div class="clear"></div>
@@ -66,6 +168,61 @@
 						<span>☆赞：45</span>
 						<span>☆评论：15</span>
 					</div>
+					<div id="item_comment_1" class="item_comment">
+						<div>
+							<textarea class="item_comment_input item_ml3"></textarea> 
+						</div>
+						<div>
+							<div class="item_comment_btn fr">评论</div>
+						</div>
+					</div>
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic2.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic3.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div class="item_shuoshuo">
@@ -77,15 +234,18 @@
 					</div>
 					<div class="item_ml3 item_link_div">
 						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
+						<span class="item_date">2014-10-16 08:54</span>
+						<span class="item_tag">
+							<img class="item_tag_icon" src="img/lable.png"/>
+							玩笑 开森
+						</span>
 					</div>
 					<div class="fr item_icon">
 						<span>
 							<img class="item_zan" src="img/zan.png"/>
 						</span>
 						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
+							<img id="item_pl_1" class="item_zan item_pl" src="img/pinglun2.png"/>
 						</span>
 					</div>
 					<div class="clear"></div>
@@ -93,6 +253,61 @@
 						<span>☆赞：45</span>
 						<span>☆评论：15</span>
 					</div>
+					<div id="item_comment_1" class="item_comment">
+						<div>
+							<textarea class="item_comment_input item_ml3"></textarea> 
+						</div>
+						<div>
+							<div class="item_comment_btn fr">评论</div>
+						</div>
+					</div>
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic2.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic3.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div class="item_shuoshuo">
@@ -104,15 +319,18 @@
 					</div>
 					<div class="item_ml3 item_link_div">
 						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
+						<span class="item_date">2014-10-16 08:54</span>
+						<span class="item_tag">
+							<img class="item_tag_icon" src="img/lable.png"/>
+							玩笑 开森
+						</span>
 					</div>
 					<div class="fr item_icon">
 						<span>
 							<img class="item_zan" src="img/zan.png"/>
 						</span>
 						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
+							<img id="item_pl_1" class="item_zan item_pl" src="img/pinglun2.png"/>
 						</span>
 					</div>
 					<div class="clear"></div>
@@ -120,88 +338,64 @@
 						<span>☆赞：45</span>
 						<span>☆评论：15</span>
 					</div>
+					<div id="item_comment_1" class="item_comment">
+						<div>
+							<textarea class="item_comment_input item_ml3"></textarea> 
+						</div>
+						<div>
+							<div class="item_comment_btn fr">评论</div>
+						</div>
+					</div>
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--其他评论-->
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic2.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="item_ml3 item_all_com minH30">
+						<div class="item_all_com_cont">
+							<div class="fl minH30">
+								<img class="item_min_photo" src="img/pic3.png"/>
+							</div>
+							<div class="fr item_all_text">
+								<div>
+									<span class="item_com_username">vczero:</span> 
+									<span class="item_com_text">以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着以开始烧耳nam随谋划着以开始烧耳name机随身快ame机随身机随身快玩腻了正在谋划着</span>
+									<span class="item_com_date">10/17 8:45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				
-				<div class="item_shuoshuo">
-					<div class="fl item_pic indisplay item_pic_text_mt3">
-						<img class="item_avat" src="img/avat.jpg"/>
-					</div>
-					<div class="indisplay item_text item_pic_text_mt3">
-						<span>一个因为为死活1找不到对为死活1找不到对死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对象所以开始烧耳name机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上</span>
-					</div>
-					<div class="item_ml3 item_link_div">
-						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
-					</div>
-					<div class="fr item_icon">
-						<span>
-							<img class="item_zan" src="img/zan.png"/>
-						</span>
-						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
-						</span>
-					</div>
-					<div class="clear"></div>
-					<div class="item_ml3 item_count">
-						<span>☆赞：45</span>
-						<span>☆评论：15</span>
-					</div>
-				</div>
 				
-				<div class="item_shuoshuo">
-					<div class="fl item_pic indisplay item_pic_text_mt3">
-						<img class="item_avat" src="img/avat.jpg"/>
-					</div>
-					<div class="indisplay item_text item_pic_text_mt3">
-						<span>一个因为为死活1找不到对为死活1找不到对死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对象所以开始烧耳name机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上</span>
-					</div>
-					<div class="item_ml3 item_link_div">
-						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
-					</div>
-					<div class="fr item_icon">
-						<span>
-							<img class="item_zan" src="img/zan.png"/>
-						</span>
-						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
-						</span>
-					</div>
-					<div class="clear"></div>
-					<div class="item_ml3 item_count">
-						<span>☆赞：45</span>
-						<span>☆评论：15</span>
-					</div>
-				</div>
-				
-				<div class="item_shuoshuo">
-					<div class="fl item_pic indisplay item_pic_text_mt3">
-						<img class="item_avat" src="img/avat.jpg"/>
-					</div>
-					<div class="indisplay item_text item_pic_text_mt3">
-						<span>一个因为为死活1找不到对为死活1找不到对死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对为死活1找不到对象所以开始烧耳name机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上一个因为死活找不到对象所以开始烧耳机随身快玩腻了正在谋划着上</span>
-					</div>
-					<div class="item_ml3 item_link_div">
-						<span class="name">by王利华</span>
-						<span class="item_date">☆2014-10-16 08:54</span>
-						<span class="item_tag">☆玩笑 开森</span>
-					</div>
-					<div class="fr item_icon">
-						<span>
-							<img class="item_zan" src="img/zan.png"/>
-						</span>
-						<span>
-							<img class="item_zan" src="img/pinglun.png"/>
-						</span>
-					</div>
-					<div class="clear"></div>
-					<div class="item_ml3 item_count">
-						<span>☆赞：45</span>
-						<span>☆评论：15</span>
-					</div>
-				</div>
 				
 				<div class="fr">
 					<div class="indisplay item_btn_page">上一页</div>
@@ -222,6 +416,11 @@
 				</div>
 			</div>
 		</section>
-		<footer></footer>
+		
+		<footer>
+        	<div class="copyright">
+        		版权所有：wlhmyit@126.com create by <a class="link_webo" href="http://weibo.com/2762275212/profile?rightmod=1&wvr=5&mod=personinfo" target="_blank">vczero</a> 
+        	</div>
+		</footer>
 	</body>
 </html>
