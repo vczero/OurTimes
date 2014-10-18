@@ -5,14 +5,6 @@
 		<title>通讯录—图班网</title>
 		<link href="css/main.css" type="text/css" rel="stylesheet"/>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xqhkNufHGDtuhoPBnzjS6O55"></script>
-		<script type="text/javascript">
-			$(function(){
-				var map = new BMap.Map("map");  
-				var point = new BMap.Point(106.104, 39.915);  // 创建点坐标  
-				map.centerAndZoom(point, 5);  
-			});
-		</script>
 	</head>
 	<body>
 		
@@ -134,31 +126,29 @@
 				<div id="map" class="fr box_sha border_rad3 h500"></div>
 			</div>
 			<!--联系人搜索-->
-			<div class=" connect_sousuo">
-				<div style="border-radius:36px;background-image: url(img/iphone5.jpg); width:230px;min-height: 460px;background-size:230px 460px;">
-					<!--<img class="connect_pic" src="img/avat.jpg" />-->
-					<div class="bred" style="width:185px; height:30px;top:70px;left:20px;position:relative;">
+			<div class="bkgFFF connect_sousuo border_rad3 box_sha">
+				<div class="fl">
+					<img style="width: 700px;" src="img/chart.png" />
+				</div>
+				<div class="ip5 fr">
+					<div class="connect_ip5_sou bred">
 						
 					</div>
-					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
-						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
-						<span style="color:#3387D0;">132-0090-0090</span>
+					<div class="tel_item">
+						<span class="tel_item_name" style="">陈程</span>
+						<span class="tel_item_num" style="">132-0090-0090</span>
 					</div>
-					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
-						<span style="font-weight:bold;width:37px;display: inline-block;">陈晓东</span>
-						<span style="color:#3387D0;">132-0090-0090</span>
+					<div class="tel_item">
+						<span class="tel_item_name" style="">陈程</span>
+						<span class="tel_item_num" style="">132-0090-0090</span>
 					</div>
-					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
-						<span style="font-weight:bold;width:37px;display: inline-block;">陈美玉</span>
-						<span style="color:#3387D0;">132-0090-0090</span>
+					<div class="tel_item">
+						<span class="tel_item_name" style="">陈程</span>
+						<span class="tel_item_num" style="">132-0090-0090</span>
 					</div>
-					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
-						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
-						<span style="color:#3387D0;">132-0090-0090</span>
-					</div>
-					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
-						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
-						<span style="color:#3387D0;">132-0090-0090</span>
+					<div class="tel_item">
+						<span class="tel_item_name" style="">陈程</span>
+						<span class="tel_item_num" style="">132-0090-0090</span>
 					</div>
 				</div>
 			</div>
@@ -169,4 +159,12 @@
         	</div>
 		</footer>
 	</body>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xqhkNufHGDtuhoPBnzjS6O55"></script>
+		<script type="text/javascript">
+			$(function(){
+				var map = new BMap.Map("map");  
+				var point = new BMap.Point(106.104, 39.915);  // 创建点坐标  
+				map.centerAndZoom(point, 5);  
+			});
+		</script>
 </html>

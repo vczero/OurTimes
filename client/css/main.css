@@ -305,7 +305,7 @@ footer{
 }
 
 .top_hidden_hr{
-	height:76px;width: 100%;
+	height:50px;width: 100%;
 }
 .box_sha{
 	box-shadow:2px 3px 2px #A3A3A3;
@@ -357,7 +357,8 @@ input{
 .connect_sousuo{
 	margin-top:20px;
 	width: 977px;
-	min-height: 400px;
+	min-height: 460px;
+	overflow: hidden;
 }
 
 .connect_pic{
@@ -366,6 +367,31 @@ input{
 	width:60px;
 	border-radius:3px;
 }
+
+.ip5{
+	border-radius:36px;background-image: url(../img/iphone5.jpg); width:230px;min-height: 460px;background-size:230px 460px;
+}
+
+.connect_ip5_sou{
+	width:185px; height:30px;top:70px;left:20px;position:relative;
+}
+
+.tel_item{
+	position: relative;top:75px;left:30px;width: 185px;height: 25px;
+}
+
+.tel_item_name{
+	font-weight:bold;width:37px;display: inline-block;
+}
+
+.tel_item_num{
+	color:#3387D0;
+}
+
+
+
+
+
 
 
 
