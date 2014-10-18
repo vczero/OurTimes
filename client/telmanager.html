@@ -4,19 +4,30 @@
 		<meta charset="utf-8">
 		<title>通讯录—图班网</title>
 		<link href="css/main.css" type="text/css" rel="stylesheet"/>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xqhkNufHGDtuhoPBnzjS6O55"></script>
+		<script type="text/javascript">
+			$(function(){
+				var map = new BMap.Map("map");  
+				var point = new BMap.Point(106.104, 39.915);  // 创建点坐标  
+				map.centerAndZoom(point, 5);  
+			});
+		</script>
 	</head>
 	<body>
 		
 		<header>
 			<div class="header_center">
 				<div class="fl">
-					<img class="logo" src="img/logo4.png" />
-					图班网
+					<!--<img class="logo" src="img/logo4.png" />-->
+					<div style="line-height:40px;font-size:18px;">
+						图班网
+					</div>
 				</div>
 				<div class="fr header_text">
 					<div class="fl">
 						<a href="index.html"class="header_menu">首页</a>
-						<a href="telmanager.html"class="header_menu">通讯录</a>
+						<a href="telmanager.html"class="header_menu menu_current">通讯录</a>
 						<a class="header_menu">个人中心</a>
 						<a class="header_menu">我的状态</a>
 						<a class="header_menu">MapShow</a>
@@ -31,8 +42,126 @@
 			</div>
 		</header>
 		<section id="centent" class="minh">
-			<div style="height:45px;width: 100%;"></div>
-			<div class="bred" style="width: 600px; height: 150px;">11</div>
+			<div class="top_hidden_hr"></div>
+			<div class="h500">
+				<div class="fl box_sha border_rad3 connect h500">
+					<div class="connect_table">
+						<span class="connect_title connect_tr">序号</span>
+						<span class="connect_title connect_tr">地名</span>
+						<span class="connect_title connect_tr">人数</span>
+					</div>
+					<div>
+						<span class="connect_tr">001</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">002</span>
+						<span class="connect_tr">北京朝阳区</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">003</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">004</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">005</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">006</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">007</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+					<div>
+						<span class="connect_tr">008</span>
+						<span class="connect_tr">北京</span>
+						<span class="connect_tr">3人</span>
+					</div>
+				</div>
+				<div id="map" class="fr box_sha border_rad3 h500"></div>
+			</div>
+			<!--联系人搜索-->
+			<div class=" connect_sousuo">
+				<div style="border-radius:36px;background-image: url(img/iphone5.jpg); width:230px;min-height: 460px;background-size:230px 460px;">
+					<!--<img class="connect_pic" src="img/avat.jpg" />-->
+					<div class="bred" style="width:185px; height:30px;top:70px;left:20px;position:relative;">
+						
+					</div>
+					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
+						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
+						<span style="color:#3387D0;">132-0090-0090</span>
+					</div>
+					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
+						<span style="font-weight:bold;width:37px;display: inline-block;">陈晓东</span>
+						<span style="color:#3387D0;">132-0090-0090</span>
+					</div>
+					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
+						<span style="font-weight:bold;width:37px;display: inline-block;">陈美玉</span>
+						<span style="color:#3387D0;">132-0090-0090</span>
+					</div>
+					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
+						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
+						<span style="color:#3387D0;">132-0090-0090</span>
+					</div>
+					<div class="" style="position: relative;top:75px;left:30px;width: 185px;height: 25px;">
+						<span style="font-weight:bold;width:37px;display: inline-block;">陈程</span>
+						<span style="color:#3387D0;">132-0090-0090</span>
+					</div>
+				</div>
+			</div>
 		</section>
 		<footer>
         	<div class="copyright">
