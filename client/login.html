@@ -2,8 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>登录页</title>
+		<link type="text/css" rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
+		
+		<section class="mlrA bkgFFF" style="height: 463px;width:364px;margin-top: 80px; border: 1px solid #DDDDDD;">
+			<div class="mlrA" style="height:60px; width:145px; margin-top: 40px; border:1px solid #F4F4F4;">
+				<img src="img/pic.png" style="height:60px; width:145px;"/>
+			</div>
+			<div class="login_input"><input type="text" class="login_text login_user" onblur="if(!this.value)this.value='帐号/手机号/邮箱'" onclick="if(this.value&&this.value=='帐号/手机号/邮箱') this.value=''" value="帐号/手机号/邮箱" /></div>
+	        <div class="login_input"><input type="text" class="login_text login_password" onblur="if(!this.value)this.value='密码'" onclick="if(this.value&&this.value=='密码') this.value=''" value="密码" /></div>
+	        <div class="login_input"><input type="button" class="login_bnt" value="登录"/></div>
+	        <div class="login_pfr"><a class="pass_fgtpwd" href="#">忘记密码？</a><span class="register">还没有灵路帐号，点击<a href="#">注册</a></span></div>
+	        
+		</section>
+		
 	</body>
 </html>
