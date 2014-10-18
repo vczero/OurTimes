@@ -16,6 +16,9 @@ header{
 	border-bottom: 1px solid #A3A3A3;
 }
 
+a{
+	text-decoration: none;
+}
 
 
 .header_center{
@@ -195,6 +198,7 @@ header{
 	width:617px;
 	border:1px solid #E6E6E6;
 	color: #7F7F7F;
+	resize: none;
 }
 
 .item_comment textarea{
