@@ -383,7 +383,10 @@ input{
 .tel_item_name{
 	font-weight:bold;width:37px;display: inline-block;
 }
-
+.connect_se_icon{
+	margin-top:5px;
+	cursor: pointer;
+}
 .tel_item_num{
 	color:#3387D0;
 }
