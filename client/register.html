@@ -2,21 +2,29 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>账号申请页面</title>
+		<title>注册账号</title>
 		<link type="text/css" rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<div class="bred mlrA" style="width: 900px;min-height:400px; margin-top:50px">
-			<div>如需要账号，请提交申请信息，具体的信息如下（管理员会及时回复信息到您邮箱）：</div>
-			<div>
-				邮箱
+		<section class="mlrA bkgFFF login_div">
+			<div class="mlrA login_icon">
+				<img src="img/pic.png" class="login_icon"/>
 			</div>
-			<div>
-				昵称
+			
+			<div class="mlrA login_name_div">
+				<input class="login_name border_rad3" type="text"  id="" placeholder="用户名" />
+				<input class="login_name login_psw border_rad3" type="password"  id="" placeholder="密码" />
+				
+				<input class="login_name login_psw border_rad3" type="password"  id="" placeholder="请重复密码" />
+				<div class="login_btn border_rad3">注册</div>
+				
+				<div style="margin-top:10px;height:20px; width:286px;">
+					<div class="fl"><a href="#">忘记密码？</a></div>
+					<div class="fr"><a href="login.html">已有账号，点击登录</a></div>
+				</div>
 			</div>
-			<div>
-				备注说明：
-			</div>
-		</div>
+	        
+		</section>
+		
 	</body>
 </html>
