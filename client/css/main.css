@@ -445,6 +445,11 @@ a{
 	width:600px;height:320px;
 }
 
+.user_info input{
+	color: #777777;
+	font-family: "微软雅黑";
+}
+
 .user_photo{
 	width: 330px;height:320px;
 }
@@ -505,5 +510,9 @@ a{
 
 .upload_btn{
 	margin-left: 50px;margin-top:10px;
+}
+
+.un_valble:{
+	background-color: #858585;
 }
 
