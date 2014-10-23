@@ -130,7 +130,7 @@ a{
 	overflow: hidden;
 	line-height: 23px;
 	font-size:13px;
-	color: #0080E1;
+	color: #313131;
 }
 
 .item_ml3{
@@ -391,11 +391,52 @@ input{
 	color:#3387D0;
 }
 
+/*--------------------login-----------------------*/
+.login_div{
+	height: 463px;width:364px;margin-top: 80px; border: 1px solid #DDDDDD;
+}
 
+.login_icon{
+	height:60px; width:145px;
+	margin-top: 20px;
+}
 
+.login_name_div{
+	margin-top:40px;
+	min-height: 230px;
+	width: 300px;
+}
+.login_name{
+	width: 270px;
+	background: url(../img/user.png) no-repeat;
+	height: 33px;
+	margin-top: 20px;
+	border: 1px solid #DDDDDD;
+	padding-left: 25px;
+	color: #666666;
+	font-size:15px;
+}
 
+.login_psw{
+	background: url(../img/psw.png) no-repeat;
+}
 
+.login_btn{
+	height:50px;width:300px; text-align:center;line-height:50px;
+	color: #FFFFFF;
+	background-color: #04C3F0;
+	margin-top:20px;
+	font-size:16px;
+	cursor: pointer;
+}
 
+.login_3fang{
+	margin-right: 15px;
+	border:1px solid #DDDDDD;height:35px;text-align:center;padding-left:15px;
+	padding-right:14px;line-height: 35px;color:#62C6F1; cursor:pointer;
+}
 
-
+a{
+	color: #5C7EF6;
+}
 

@@ -7,14 +7,34 @@
 	</head>
 	<body>
 		
-		<section class="mlrA bkgFFF" style="height: 463px;width:364px;margin-top: 80px; border: 1px solid #DDDDDD;">
-			<div class="mlrA" style="height:60px; width:145px; margin-top: 40px; border:1px solid #F4F4F4;">
-				<img src="img/pic.png" style="height:60px; width:145px;"/>
+		<section class="mlrA bkgFFF login_div">
+			<div class="mlrA login_icon">
+				<img src="img/pic.png" class="login_icon"/>
 			</div>
-			<div class="login_input"><input type="text" class="login_text login_user" onblur="if(!this.value)this.value='帐号/手机号/邮箱'" onclick="if(this.value&&this.value=='帐号/手机号/邮箱') this.value=''" value="帐号/手机号/邮箱" /></div>
-	        <div class="login_input"><input type="text" class="login_text login_password" onblur="if(!this.value)this.value='密码'" onclick="if(this.value&&this.value=='密码') this.value=''" value="密码" /></div>
-	        <div class="login_input"><input type="button" class="login_bnt" value="登录"/></div>
-	        <div class="login_pfr"><a class="pass_fgtpwd" href="#">忘记密码？</a><span class="register">还没有灵路帐号，点击<a href="#">注册</a></span></div>
+			
+			<div class="mlrA login_name_div">
+				<input class="login_name border_rad3" type="text"  id="" placeholder="请输入用户名" />
+				<input class="login_name login_psw border_rad3" type="password"  id="" placeholder="请输入密码" />
+				<div class="login_btn border_rad3">登录</div>
+				
+				<div style="margin-top:10px;height:20px; width:286px;">
+					<div class="fl"><a href="#">忘记密码？</a></div>
+					<div class="fr"><a href="register.html">还没有账号，点击申请</a></div>
+				</div>
+				
+				<div style="margin-top:30px;">
+					<div class="mlrA" style="font-size: 14px; color: #666666;width: 98px;">
+						使用第三方登录
+					</div>
+					<div style="margin-top:10px; margin-bottom:10px; width: 300px; border: 1px solid #F4F4F4;"></div>
+					<div>
+						<div class="fl login_3fang">新浪微博</div>
+						<div class="fl login_3fang">QQ</div>
+						<div class="fl login_3fang">人人</div>					
+						<div class="fl login_3fang">豆瓣</div>
+					</div>
+				</div>
+			</div>
 	        
 		</section>
 		
