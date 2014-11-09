@@ -1,11 +1,10 @@
 {
-    "dbname":"wlhblog",
+    "dbname":"tuban",
     "port": "9976",
     "host": "127.0.0.1",
-    "sessionKey": "t&&5%)!sw==(001)n...));-- &&&-GYG",
-    "sessionCollection": "upup",
+    "sessionKey": "session_key",
+    "sessionCollection": "session",
     "username": "test",
     "password": "test",
-    "email": "wlhmyit@126.com",
-    "findPsdUrl": "http://www.test.com"
+    "email": "wlhmyit@126.com"
 }

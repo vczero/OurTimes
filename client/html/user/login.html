@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<title>登录页</title>
-		<link type="text/css" rel="stylesheet" href="css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/main.css" />
 	</head>
 	<body>
 		
-		<section class="mlrA bkgFFF login_div">
+		<section class="mlrA bkgFFF login_div" ng-controller="LoginController">
 			<div class="mlrA login_icon">
-				<img src="img/pic.png" class="login_icon"/>
+				<img src="../../img/pic.png" class="login_icon"/>
 			</div>
 			
 			<div class="mlrA login_name_div">
-				<input class="login_name border_rad3" type="text"  id="" placeholder="请输入用户名" />
-				<input class="login_name login_psw border_rad3" type="password"  id="" placeholder="请输入密码" />
-				<div class="login_btn border_rad3">登录</div>
+				<input class="login_name border_rad3" type="text" ng-model="email" placeholder="请输入邮箱" />
+				<input class="login_name login_psw border_rad3" type="password" ng-model="password" placeholder="请输入密码" />
+				<div class="login_btn border_rad3" ng-click="login()">登录</div>
 				
 				<div style="margin-top:10px;height:20px; width:286px;">
 					<div class="fl"><a href="#">忘记密码？</a></div>
@@ -35,8 +35,8 @@
 					</div>
 				</div>
 			</div>
-	        
 		</section>
-		
+		<script type="text/javascript" src="../../js/angular.js"></script>
+		<script type="text/javascript" src="login.js"></script>
 	</body>
 </html>

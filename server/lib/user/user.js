@@ -1,10 +1,9 @@
 var mongoskin = require('mongoskin'),
     xss = require('xss'),
-    CRUD = require('./../util/crud'),
-    verify = require('./verify'),
-    status = require('./../util/status'),
-    mcrypto = require('./../util/mcrypto'),
-    jsonp = require('./../util/jsonp');
+    CRUD = require('./../../util/crud'),
+    status = require('./../../util/status'),
+    mcrypto = require('./../../util/mcrypto'),
+    USER_TYPE = require('./USER_TYPE');
     crud = new CRUD('user');
 
 module.exports = {
@@ -14,35 +13,55 @@ module.exports = {
      * */
     register: function(req, res){
         res.setHeader('Access-Control-Allow-Origin', '*');
-        var user = req.body;
-        if(user.password && user.password !== user.repeatPassword)
+        res.header("Access-Control-Allow-Headers", 'X-Requested-With,application/json');
+		res.header('Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS');
+
+        var userInfo = req.body;
+        //密码不一致或缺失
+        if(userInfo.password && userInfo.password !== userInfo.repeatPassword)
             return res.send(status.repeatPassword);
-        if (!verify.check(req, res, user.code))
-            return res.send(status.verifyCode);
-        if(!user.email)
+		//email缺失
+        if(!userInfo.email)
            return res.send(status.emailLack);
-        if(!user.username)
-            return res.send(status.usernameLack);
-        user = {
-            username: xss(user.username),
-            password: mcrypto.md5Password(user.password),
-            time: new Date(),
-            email: xss(user.email),
-            description: '',
-            avatar: '',
-            sex: '',
-            birthday: '',
-            city: '',
-            pic_url: '',
-            count_priase: 0
+        var user = {
+        	email: xss(userInfo.email),
+        	password: mcrypto.md5Password(userInfo.password),
+        	time: new Date(),
+        	tag: USER_TYPE.GUEST, //默认为游客
+        	nickname: ''
         };
-
+		
         return crud.create(user, function(data){
-
             //注册成功,登录新用户
             if (data.status) {
-                req.session.user = data._id;
                 return res.send(status.success);
+            }
+            return res.send(status.fail);
+        });
+    },
+    /*
+    * 用户登录
+    *
+    * */
+    login: function(req, res){
+    	res.setHeader('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Headers", 'X-Requested-With,application/json');
+		res.header('Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS');
+
+        var user = req.body,
+            email = user.email,
+            password = mcrypto.md5Password(user.password),
+            query = {
+                email: email,
+                password: password
+            };
+        crud.read(query, function(data){
+            if(data.status){
+            	var accessToken = {
+            		token: data.items[0]._id,
+            		status: status.success.status
+            	};
+                return res.send(accessToken);
             }
             return res.send(status.fail);
         });
@@ -76,26 +95,6 @@ module.exports = {
         return res.send(status.success);
     },
 
-    /*
-    * 用户登录
-    *
-    * */
-    login: function(req, res){
-        var user = req.body.user,
-            username = user.username,
-            password = mcrypto.md5Password(user.password),
-            query = {
-                username: username,
-                password: password
-            };
-        crud.read(query, function(data){
-            if(data.status){
-                req.session.user = data.items[0]._id;
-                return res.send(status.success);
-            }
-            return res.send(status.fail);
-        });
-    },
 
     /*
     * 更新用户信息

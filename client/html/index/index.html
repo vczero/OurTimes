@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title>首页—图班网</title>
+		<link href="../../css/main.css" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header>
+			<div class="header_center">
+				<div class="fl">
+					<div style="line-height:40px;font-size:18px;cursor:pointer;" onclick="window.location.href='index.html'">
+						图班网
+					</div>
+				</div>
+				<div class="fr header_text">
+					<div class="fl">
+						<a href="index.html"class="header_menu menu_current">首页</a>
+						<a href="../connect/connect.html"class="header_menu">通讯录</a>
+						<a href="user.html" class="header_menu">个人中心</a>
+						<a href="space.html" class="header_menu">文章欣赏</a>
+						<a href="about.html" class="header_menu">About</a>
+					</div>
+					<div class="fr" style="font-size:12px">
+						<span class="login_reg">
+							<a href="login.html">登录</a>
+						</span>
+						<span class="login_reg">
+							<a href="register.html">注册</a>
+						</span>
+						<!--<span>欢迎你，vczero</span>-->
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="centent" class="minh">
+			<div class="mrt70 fl wd630 minh" ng-controller="ContentController">
+				<!--
+                	作者：wlhmyit@126.com
+                	时间：2014-10-16
+                	描述：item_shuoshuo
+                -->
+				<div class="item_shuoshuo" ng-repeat="data in items">
+					<div class="fl item_pic indisplay item_pic_text_mt3">
+						<img class="item_avat" src="../../img/avat.jpg"/>
+					</div>
+					<div class="indisplay item_text item_pic_text_mt3">
+						<span>{{data.content}}</span>
+					</div>
+					<div class="item_ml3 item_link_div">
+						<span class="name">{{data.author}}</span>
+						<span class="item_date">{{data.time}}</span>
+						<span class="item_tag">
+							<img class="item_tag_icon" src="../../img/lable.png"/>
+							{{data.tags}}
+						</span>
+					</div>
+					<div class="fr item_icon">
+						<span>
+							<img class="item_zan" src="../../img/zan.png"/>
+						</span>
+						<span>
+							<img class="item_zan item_pl" src="../../img/pinglun2.png"/>
+						</span>
+					</div>
+					<div class="clear"></div>
+					<div class="item_ml3 item_count">
+						<span>☆ 赞:{{data.zan_count}}</span>
+						<span>☆ 评论:{{data.comment_cout}}</span>
+					</div>
+					<div id="item_comment_1" class="item_comment">
+						<div>
+							<textarea class="item_comment_input item_ml3"></textarea> 
+						</div>
+						<div>
+							<div class="item_comment_btn fr">评论</div>
+						</div>
+					</div>
+					<!--其他评论-->
+					<div ng-repeat="comment in data.comments">
+						<div class="com_hr mlrA"></div>
+						<div class="item_ml3 item_all_com minH45">
+							<div class="item_all_com_cont">
+								<div class="fl minH45">
+									<img class="item_min_photo" src="../../img/pic.png"/>
+								</div>
+								<div class="fr item_all_text">
+									<div class="item_com_username">{{comment.name}}</div>
+									<div>
+										<span class="item_com_text">{{comment.comment}}</span>
+									</div>
+									<div class="item_com_date">
+										{{comment.time}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fr">
+					<div class="indisplay item_btn_page">上一页</div>
+					<div class="indisplay item_btn_page">下一页</div>
+				</div>
+			</div>
+			
+			<div class="mrt70 fr wd340 minh" ng-controller="ArticleController">
+				<div class="side_pic" ng-repeat="article in articles">
+					<div>
+						<img class="side_pic" src="../../img/pic.png"/>
+					</div>
+					<div class="" style="line-height:35px;color:#fff;text-align:center;position:relative;bottom:35px;width:100%; height:35px;background-color:#000;opacity: 0.7;">
+						{{article.title}}
+					</div>
+				</div>
+
+				<div class="fr" style="margin-top:-25px; cursor: pointer;font-size:15px;color:blue;">
+					<a href="list.html">... more</a>
+				</div>
+			</div>
+		</section>
+		
+		<footer>
+        	<div class="copyright">
+        		版权所有：wlhmyit@126.com create by <a class="link_webo" href="http://weibo.com/2762275212/profile?rightmod=1&wvr=5&mod=personinfo" target="_blank">vczero</a> 
+        	</div>
+		</footer>
+		<script type="text/javascript" src="../../js/angular.js"></script>
+		<script type="text/javascript" src="content.js"></script>
+	</body>
+</html>

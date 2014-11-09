@@ -9,7 +9,7 @@ var express = require('express'),
     app = express();
 
 //设立服务端口
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
