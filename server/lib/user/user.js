@@ -77,7 +77,7 @@ module.exports = {
      * */
     get: function(req, res){		
         var id = req.query.id;
-        
+     
         crud.read({userid: id}, function(data){
             if(req.query['callback']){
                 data = jsonp.getJSONP(req.query['callback'], data);
@@ -104,23 +104,24 @@ module.exports = {
     *
     * */
     update: function(req, res){
-        var userId = req.session.user || null,
-            userInfo = req.body.user;
-        if(userId){
-            var set = {
-                username: xss(userInfo['username'] || ''),
-                email: xss(userInfo['email'] || ''),
-                sex: xss(userInfo['sex'] || '男'),
-                birthday: xss(userInfo['birthday'] || ''),
-                city: xss(userInfo['city'] || ''),
-                pic_url: xss(userInfo['pic_url'] || ''),
-                avatar: xss(userInfo['avatar'] || '')
-            };
-            crud.update({_id: userId}, set, function(data){
-                return res.send(data);
-            });
-        }
-        return res.send(status.fail);
+    	res.setHeader('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Headers", 'X-Requested-With,application/json');
+		res.header('Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS');
+		
+    	var user = req.body,
+        	token = user.token,
+        	nickname = user.nickname;
+       	
+        crud.read({_id: token}, function(data){
+        	//允许修改该用户
+        	if(data.items.length){
+        		crud.update({_id: token}, {nickname: nicknname}, function(data){
+	                return res.send(status.success);
+	            });
+        	}else{
+        		return res.send(status.fail);
+        	}
+        });
     }
 };
 
