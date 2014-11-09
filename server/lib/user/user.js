@@ -3,7 +3,8 @@ var mongoskin = require('mongoskin'),
     CRUD = require('./../../util/crud'),
     status = require('./../../util/status'),
     mcrypto = require('./../../util/mcrypto'),
-    USER_TYPE = require('./USER_TYPE');
+    USER_TYPE = require('./USER_TYPE'),
+    GUID = require('../../util/guid');
     crud = new CRUD('user');
 
 module.exports = {
@@ -23,7 +24,10 @@ module.exports = {
 		//email缺失
         if(!userInfo.email)
            return res.send(status.emailLack);
+        
         var user = {
+        	//生成唯一的user id
+        	userid: GUID.create() + '-' + mcrypto.md5Password(userInfo.email).toUpperCase(),
         	email: xss(userInfo.email),
         	password: mcrypto.md5Password(userInfo.password),
         	time: new Date(),
@@ -68,33 +72,32 @@ module.exports = {
     },
 
     /*
-     * 获取用户信息
+     * 根据用户的ID,返回用户的信息
      *
      * */
-    getUserInfo: function(req, res){
-        var id = req.query.id,
-            obId = mongoskin.helper.toObjectID(id);
-
-        crud.read({_id: obId}, function(data){
-            delete data['password'];
+    get: function(req, res){		
+        var id = req.query.id;
+        
+        crud.read({userid: id}, function(data){
             if(req.query['callback']){
                 data = jsonp.getJSONP(req.query['callback'], data);
             }else{
                 res.setHeader('Access-Control-Allow-Origin', '*');
             }
-            return res.send(data);
+            var obj = {};
+            if(data.items.length){
+            	obj = data.items[0];
+            	obj.status = 1;
+            	delete obj['_id'];
+            	delete obj['password'];
+            	delete obj['email'];
+            }else{
+            	obj.status = 0;
+            }
+           	
+            return res.send(obj);
         });
     },
-
-    /*
-    * 用户登出
-    *
-    * */
-    logout: function(req, res){
-        req.session.user = null;
-        return res.send(status.success);
-    },
-
 
     /*
     * 更新用户信息
