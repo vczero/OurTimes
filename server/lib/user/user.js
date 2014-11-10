@@ -124,6 +124,25 @@ module.exports = {
         	}
         });
     },
+    //更新用户的权限标志
+    //管理员
+    updateTag: function(req, res){
+    	var query = req.body,
+    	    userId = query.userid,
+    	    tag = query.tag,
+    	    token = query.token;
+    	header.set(req, res);
+    	crud.read({_id: mongoskin.helper.toObjectID(token)},function(data){
+    		if(data.items.length && data.items[0].tag === USER_TYPE.ADMIN){
+    			crud.update({userid: userId}, {tag: tag}, function(data){
+    				data.message = '更新成功';
+    				res.send(data);
+    			});
+    		}else{
+    			res.send(data);
+    		}
+    	});
+    },
     //删除某个用户
     //管理员
     delete: function(req, res){

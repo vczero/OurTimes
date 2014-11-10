@@ -19,10 +19,10 @@ app.controller('RegisterController', function($scope, $http){
 			repeatpassword = $scope.repeatpassword;
 		/*--这个验证可以放到指令里去--*/
 		if(!email || !password || !repeatpassword){
-			alert('不能为空');
+			return alert('不能为空');
 		}
 		if(password !== repeatpassword){
-			alert('输入的密码不一致');
+			return alert('输入的密码不一致');
 		}
 		
 		var data = {
