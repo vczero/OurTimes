@@ -11,4 +11,5 @@ module.exports = function(app){
     app.post('/user/login', user.login);
     app.get('/user/get', user.get);
 	app.post('/user/update', user.update);
+	app.get('/user/getAll', user.getAllUser);
 };

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title>后台管理-首页</title>
+	</head>
+	<body ng-controller="UserController">
+		<div ng-repeat="data in datas">
+			<span>{{data.email}}</span>
+			<span>{{data.time}}</span>
+			<span>{{data.tag}}</span>
+		</div>
+		<script type="text/javascript" src="../js/angular.js"></script>
+		<script type="text/javascript" src="lib/index.js"></script>
+	</body>
+</html>

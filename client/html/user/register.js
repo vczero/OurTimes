@@ -32,6 +32,7 @@ app.controller('RegisterController', function($scope, $http){
 		};
 		
 		$http.post('http://127.0.0.1:3000/user/register', data).success(function(data){
+			console.log(data);
 			if(data.status){
 				alert('注册成功');
 			}else{
