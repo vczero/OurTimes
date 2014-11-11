@@ -49,15 +49,20 @@ module.exports = {
                 password: password
             };
     	header.set(req, res);
-        crud.read(query, function(data){
+        crud.read(query, function(data){ 
             if(data.status && data.items.length){
             	var obj = data.items[0];
+            	obj.status = 1;
             	obj.token = obj['_id'];
             	delete obj['password'];
             	delete obj['_id'];
+            	
                 return res.send(obj);
+            }else{
+            	return res.send({
+	            	status: 0
+				});
             }
-            return res.send(data);
         });
     },
 

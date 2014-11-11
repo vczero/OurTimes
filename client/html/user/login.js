@@ -22,16 +22,13 @@ app.controller('LoginController', function($scope, $http){
 				'password': password
 			};
 		$http.post('http://127.0.0.1:3000/user/login', data).success(function(data){
-			console.log(data);
 			if(data.status){
-				alert('登录成功');
+				document.cookie = 'token=' + escape(data.token) + ' ;path=/';
+				document.cookie = 'userid=' + escape(data.userid) + ' ;path=/';
+				location.href = './../index/index.html';
 			}else{
-				alert('登录成功');
+				alert('登录失败');
 			}
 		});
 	};
-	
-	$http.get('http://127.0.0.1:3000/user/get?id=99BCA4A0-E800-45C1-8E18-5B41E5766861-C8F8E90848AB2F2C414D2606BF506861').success(function(data){
-		console.log(data);
-	});
 });
