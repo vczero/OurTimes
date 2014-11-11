@@ -20,5 +20,5 @@ module.exports = function(app){
 	//wei
 	app.post('/wei/create', wei.create);
 	app.get('/wei/get', wei.get);
-	
+	app.get('/wei/zan', wei.zan);
 };

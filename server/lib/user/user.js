@@ -135,8 +135,10 @@ module.exports = {
     	crud.read({_id: mongoskin.helper.toObjectID(token)},function(data){
     		if(data.items.length && data.items[0].tag === USER_TYPE.ADMIN){
     			crud.update({userid: userId}, {tag: tag}, function(data){
-    				data.message = '更新成功';
-    				res.send(data);
+    				var obj = JSON.stringify(data);
+    				obj = JSON.parse(obj);
+    				obj.message = '更新成功';
+    				res.send(obj);
     			});
     		}else{
     			res.send(data);
@@ -153,8 +155,10 @@ module.exports = {
     	crud.read({_id: mongoskin.helper.toObjectID(token)},function(data){
     		if(data.items.length && data.items[0].tag === USER_TYPE.ADMIN){
     			crud.deleteData({userid: userId}, function(data){
-    				data.message = '删除成功';
-    				res.send(data);
+    				var obj = JSON.stringify(data);
+    				obj = JSON.parse(obj);
+    				obj.message = '删除成功';
+    				res.send(obj);
     			});
     		}else{
     			res.send(data);

@@ -53,7 +53,7 @@ CRUD.prototype = {
     *
     * */
     update: function(query, updateModel, callback){
-        var set = {set: updateModel};
+        var set = {$set: updateModel};
         db[this.collection].update(query, set, function(err){
             if(err){
                 return callback(status.fail);

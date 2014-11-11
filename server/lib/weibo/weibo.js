@@ -13,6 +13,7 @@ module.exports = {
 		header.set(req, res);
 		user.read({_id: mongoskin.helper.toObjectID(token)}, function(data){
 			if(data.items.length){
+				//构建wei内容model
 				var weibo = {
 					userid: data.items[0]['userid'],
 					content: content.content,
@@ -39,16 +40,19 @@ module.exports = {
 			res.send(data);
 		});
 	},
-	//赞
+	//点赞
 	zan: function(req, res){
 		var query = req.query,
 			id  = query.id,
 			token = query.token;
 		header.set(req, res);
-		user.read({_id, mongoskin.helper.toObjectID(token)}, function(data){
+		//查询当前用户是否授权
+		user.read({_id: mongoskin.helper.toObjectID(token)}, function(data){
 			if(data.items.length){
 				var userid = data.items[0].userid;
+				//查询wei内容
 				wei.read({_id: mongoskin.helper.toObjectID(id)}, function(data){
+					
 					if(data.items.length){
 						var zans = data.items[0].zans;
 						for(var i = 0; i < zans.length; i++){
@@ -68,6 +72,5 @@ module.exports = {
 				return res.send(data);
 			}
 		});
-		
 	}
 };
