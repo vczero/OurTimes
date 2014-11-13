@@ -32,7 +32,7 @@ CRUD.prototype = {
     *
     * */
     read: function(query, callback){
-        db[this.collection].find(query).toArray(function(err, items){
+        db[this.collection].find(query).sort({'time': -1}).limit(20).toArray(function(err, items){
             if(err){
                 return callback(status.fail);
             }
