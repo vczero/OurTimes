@@ -50,7 +50,6 @@ module.exports = {
 		header.set(req, res);
 		//查询当前用户是否授权
 		user.read({_id: mongoskin.helper.toObjectID(token)}, function(data){
-			console.log(query);
 			if(data.items.length){
 				var userid = data.items[0].userid;
 				//查询wei内容
@@ -64,6 +63,7 @@ module.exports = {
 						}
 						zans.push(userid);
 						wei.update({_id: mongoskin.helper.toObjectID(id)}, {zans: zans}, function(data){
+							data.zans = zans;
 							return res.send(data);
 						});
 					}else{

@@ -16,7 +16,11 @@ app.config(['$httpProvider', function($httpProvider){
 app.controller('ContentController', function($scope, $http){
 	//获取token
 	var token = document.cookie.split(';')[0].split('=')[1];
-	
+	var commentDiv = document.getElementsByClassName('item_comment');
+	for(var i = 0; i < commentDiv.length; i++){
+		commentDiv[i].style.display = 'none';
+	}
+
 	//初始化显示微内容列表
 	$http.get('http://127.0.0.1:3000/wei/get').success(function(data){
 		if(data.status){
@@ -39,6 +43,7 @@ app.controller('ContentController', function($scope, $http){
 			var url = 'http://127.0.0.1:3000/wei/zan?' + zanToken + id; 
 			$http.get(url).success(function(data){
 				if(data.status){
+					$scope.items[index].zans = data.zans;
 					alert('谢谢您的打赏~~');
 				}else{
 					alert('打赏失败~~');
@@ -78,6 +83,14 @@ app.controller('ContentController', function($scope, $http){
 		}else{
 			alert('请先登录');
 		}
+	};
+	
+	$scope.showComment = function(index){
+		var commentDiv = document.getElementsByClassName('item_comment');
+		for(var i = 0; i < commentDiv.length; i++){
+			commentDiv[i].style.display = 'none';
+		}
+		commentDiv[index].className = 'item_comment';
 	};
 	
 });

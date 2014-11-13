@@ -60,7 +60,7 @@
 							<img ng-click="zan($index)" class="item_zan" src="../../img/zan.png"/>
 						</span>
 						<span>
-							<img class="item_zan item_pl" src="../../img/pinglun2.png"/>
+							<img ng-click="showComment($index)" class="item_zan item_pl" src="../../img/pinglun2.png"/>
 						</span>
 					</div>
 					<div class="clear"></div>
@@ -70,7 +70,7 @@
 					</div>
 					<div id="item_comment_1" class="item_comment">
 						<div>
-							<textarea id="commentData" class="item_comment_input item_ml3"></textarea> 
+							<textarea class="item_comment_input item_ml3"></textarea> 
 						</div>
 						<div>
 							<div ng-click="comment($index)" class="item_comment_btn fr">评论</div>
