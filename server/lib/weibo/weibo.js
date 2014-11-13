@@ -21,7 +21,7 @@ module.exports = {
 					author: data.items[0]['nickname'],
 					email: data.items[0]['email'],
 					time: new Date(),
-					tag: content.tag,
+					tag: content.tags,
 					zans: [],
 					comments:[]					
 				};

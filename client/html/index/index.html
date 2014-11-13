@@ -40,6 +40,16 @@
                 	时间：2014-10-16
                 	描述：item_shuoshuo
                 -->
+                <!--POST-->
+                <div id="postWei" ng-click="postWei()">
+					<img src="../../img/post.png" />
+				</div>
+				<div id="postDiv" style="visibility:hidden;position:fixed;z-index:2;width: 400px;height:117px;background-color:#FFF;border: 1px solid red;top:300px;right:100px;">
+					<textarea id="postContent" style="width:393px;height:70px;"></textarea>
+					<input ng-click="createWei()" type="button" value="提交"/>
+				</div>
+		
+           		<!--LIST-->
 				<div class="item_shuoshuo" ng-repeat="data in items">
 					<div class="fl item_pic indisplay item_pic_text_mt3">
 						<img class="item_avat" src="../../img/avat.jpg"/>
@@ -68,7 +78,7 @@
 						<span>☆ 赞:{{data.zans.length}}</span>
 						<span>☆ 评论:{{data.comments.length}}</span>
 					</div>
-					<div id="item_comment_1" class="item_comment">
+					<div class="item_comment">
 						<div>
 							<textarea class="item_comment_input item_ml3"></textarea> 
 						</div>
@@ -119,7 +129,7 @@
 				</div>
 			</div>
 		</section>
-		
+	
 		<footer>
         	<div class="copyright">
         		版权所有：wlhmyit@126.com create by <a class="link_webo" href="http://weibo.com/2762275212/profile?rightmod=1&wvr=5&mod=personinfo" target="_blank">vczero</a> 

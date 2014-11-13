@@ -516,3 +516,7 @@ a{
 	background-color: #858585;
 }
 
+#postWei{
+	position:fixed;z-index:2;right:1%;top:300px;height:60px;width:80px;cursor:pointer;
+}
+
