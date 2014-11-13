@@ -98,16 +98,16 @@ module.exports = {
 					if(data.items.length){
 						var comments = data.items[0].comments;
 						var item = {
-							userid: data.items[0].userid,
-							email: data.items[0].email,
-							nickname: data.items[0].nickname,
+							userid: userid,
+							email: commentEmail,
+							nickname: commentNickname,
 							comment: comment,
 							time: new Date()
 						};
 						comments.push(item);
 						wei.update({_id: mongoskin.helper.toObjectID(id)}, {comments: comments}, function(data){
-							data.email = commentEmail;
-							data.nickname = commentNickname;
+							data.email = item.email;
+							data.nickname = item.nickname;
 							data.comment = item.comment;
 							data.time = item.time;
 							return res.send(data);
