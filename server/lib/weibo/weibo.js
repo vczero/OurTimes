@@ -85,6 +85,7 @@ module.exports = {
 			id  = query.id,
 			comment = query.comment,
 			token = query.token;
+		console.log(comment);
 		header.set(req, res);
 		//查询当前用户是否授权
 		user.read({_id: mongoskin.helper.toObjectID(token)}, function(data){
@@ -103,6 +104,10 @@ module.exports = {
 						};
 						comments.push(item);
 						wei.update({_id: mongoskin.helper.toObjectID(id)}, {comments: comments}, function(data){
+							data.email = item.email;
+							data.nickname = item.nickname;
+							data.comment = item.comment;
+							data.time = item.time;
 							return res.send(data);
 						});
 					}else{

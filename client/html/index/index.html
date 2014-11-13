@@ -23,10 +23,10 @@
 					</div>
 					<div class="fr" style="font-size:12px">
 						<span class="login_reg">
-							<a href="login.html">登录</a>
+							<a href="../user/login.html">登录</a>
 						</span>
 						<span class="login_reg">
-							<a href="register.html">注册</a>
+							<a href="../user/register.html">注册</a>
 						</span>
 						<!--<span>欢迎你，vczero</span>-->
 					</div>
@@ -70,10 +70,10 @@
 					</div>
 					<div id="item_comment_1" class="item_comment">
 						<div>
-							<textarea class="item_comment_input item_ml3"></textarea> 
+							<textarea id="commentData" class="item_comment_input item_ml3"></textarea> 
 						</div>
 						<div>
-							<div class="item_comment_btn fr">评论</div>
+							<div ng-click="comment($index)" class="item_comment_btn fr">评论</div>
 						</div>
 					</div>
 					<!--其他评论-->
