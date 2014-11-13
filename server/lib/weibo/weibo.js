@@ -91,6 +91,8 @@ module.exports = {
 		user.read({_id: mongoskin.helper.toObjectID(token)}, function(data){
 			if(data.items.length){
 				var userid = data.items[0].userid;
+				var commentNickname = data.items[0].nickname;
+				var commentEmail = data.items[0].email;
 				//查询wei内容
 				wei.read({_id: mongoskin.helper.toObjectID(id)}, function(data){
 					if(data.items.length){
@@ -104,8 +106,8 @@ module.exports = {
 						};
 						comments.push(item);
 						wei.update({_id: mongoskin.helper.toObjectID(id)}, {comments: comments}, function(data){
-							data.email = item.email;
-							data.nickname = item.nickname;
+							data.email = commentEmail;
+							data.nickname = commentNickname;
 							data.comment = item.comment;
 							data.time = item.time;
 							return res.send(data);
