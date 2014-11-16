@@ -17,11 +17,11 @@ module.exports = {
 				//构建wei内容model
 				var weibo = {
 					userid: data.items[0]['userid'],
-					content: content.content,
+					content: xss(content.content),
 					author: data.items[0]['nickname'],
 					email: data.items[0]['email'],
 					time: new Date(),
-					tag: content.tags,
+					tag: xss(content.tags),
 					zans: [],
 					comments:[]					
 				};
@@ -83,7 +83,7 @@ module.exports = {
 	comment: function(req, res){
 		var query = req.query,
 			id  = query.id,
-			comment = query.comment,
+			comment = xss(query.comment),
 			token = query.token;
 		console.log(comment);
 		header.set(req, res);

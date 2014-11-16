@@ -2,7 +2,7 @@
 <html ng-app="app">
 	<head>
 		<meta charset="utf-8">
-		<title>首页—图班网</title>
+		<title>首页—10地信</title>
 		<link href="../../css/main.css" type="text/css" rel="stylesheet"/>
 	</head>
 	<body>
@@ -10,25 +10,25 @@
 			<div class="header_center">
 				<div class="fl">
 					<div style="line-height:40px;font-size:18px;cursor:pointer;" onclick="window.location.href='index.html'">
-						微言
+						10地信
 					</div>
 				</div>
 				<div class="fr header_text">
 					<div class="fl">
-						<a href="index.html"class="header_menu menu_current">首页</a>
+						<a href="../index/index.html"class="header_menu menu_current">首页</a>
 						<a href="../connect/connect.html"class="header_menu">通讯录</a>
 						<a href="user.html" class="header_menu">个人中心</a>
-						<a href="space.html" class="header_menu">文章欣赏</a>
-						<a href="about.html" class="header_menu">About</a>
+						<a href="../article/article.html" class="header_menu">文章欣赏</a>
+						<a href="../about/about.html" class="header_menu">About</a>
 					</div>
-					<div class="fr" style="font-size:12px">
-						<span class="login_reg">
+					<div class="fr" style="font-size:12px" ng-controller="LoginController">
+						<span ng-show="!user.name" class="login_reg">
 							<a href="../user/login.html">登录</a>
 						</span>
-						<span class="login_reg">
+						<span ng-show="!user.name" class="login_reg">
 							<a href="../user/register.html">注册</a>
 						</span>
-						<!--<span>欢迎你，vczero</span>-->
+						<span ng-show="user.name">欢迎你，{{user.name}}</span>
 					</div>
 				</div>
 			</div>
@@ -44,9 +44,16 @@
                 <div id="postWei" ng-click="postWei()">
 					<img src="../../img/post.png" />
 				</div>
-				<div id="postDiv" style="visibility:hidden;position:fixed;z-index:2;width: 400px;height:117px;background-color:#FFF;border: 1px solid red;top:300px;right:100px;">
-					<textarea id="postContent" style="width:393px;height:70px;"></textarea>
-					<input ng-click="createWei()" type="button" value="提交"/>
+				<div id="postDiv">
+					<div id="postTitle">来了一遭，留点微言吧~</div>
+					<textarea id="postContent"></textarea>
+					<div id="tags">
+						标签：
+						<input type="text" class="posttag"/>
+						<input type="text" class="posttag"/>
+						<input type="text" class="posttag"/>
+					</div>
+					<div id="postButton" ng-click="createWei()">发表</div>
 				</div>
 		
            		<!--LIST-->
@@ -129,6 +136,10 @@
 				</div>
 			</div>
 		</section>
+		
+		<div id="loading">
+			<img src="../../img/loading.gif"/>
+		</div>
 	
 		<footer>
         	<div class="copyright">

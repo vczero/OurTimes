@@ -32,9 +32,10 @@ app.controller('RegisterController', function($scope, $http){
 		};
 		
 		$http.post('http://127.0.0.1:3000/user/register', data).success(function(data){
-			console.log(data);
 			if(data.status){
-				alert('注册成功');
+				document.cookie = 'token=' + escape(data.token) + ' ;path=/';
+				document.cookie = 'userid=' + escape(data.userid) + ' ;path=/';
+				location.href = './../index/index.html';
 			}else{
 				alert('注册失败，请重试');
 			}

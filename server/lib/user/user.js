@@ -68,21 +68,30 @@ module.exports = {
 
     //根据userid,返回用户信息
     get: function(req, res){
-    	var id = req.query.id;
+    	var id = req.query.userid;
     	header.set(req, res);
-        crud.read({userid: id}, function(data){
-            var obj = {};
-            if(data.items.length){
-            	obj = data.items[0];
-            	obj.status = 1;
-            	delete obj['_id'];
-            	delete obj['password'];
-            	delete obj['email'];
-            }else{
-            	obj.status = 0;
-            }
-            return res.send(obj);
-        });
+    	if(id){
+    		crud.read({userid: id}, function(data){
+	            var obj = {};
+	            if(data.items.length){
+	            	obj = data.items[0];
+	            	obj.status = 1;
+	            	delete obj['_id'];
+	            	delete obj['password'];
+	            	return res.send(obj);
+	            	
+	            }else{
+	            	return res.send({
+		            	status: 0
+		            });
+	            }
+	        });
+    	}else{
+    		return res.send({
+    			status: 0
+    		});
+    	}
+        
     },
     //返回所有用户信息
     //管理员用户登陆后才能删除
