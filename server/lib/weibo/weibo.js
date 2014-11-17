@@ -35,12 +35,14 @@ module.exports = {
 			}
 		});
 	},
-	//查看所有的微内容
+	//查看前10条
 	get: function(req, res){
+		var page = req.query.page || 0;
+		
 		header.set(req, res);
 		wei.read({}, function(data){
 			res.send(data);
-		});
+		}, page);
 	},
 	//点赞
 	zan: function(req, res){

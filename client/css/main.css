@@ -175,12 +175,17 @@ a{
 
 .item_btn_page{
 	width: 60px;
-	height: 23px;
+	height: 25px;
 	color: #FFF;
-	line-height:23px;
+	line-height:25px;
 	text-align:center;
 	border-radius:3px;
-	background-color:#49483E;
+	background-color:#313131;
+	cursor: pointer;
+}
+
+.item_page{
+	width:50px;
 }
 
 .side_pic{
@@ -528,5 +533,27 @@ a{
 #tags{margin-left:20px;}
 #loading{position:fixed;top:300px;left:500px;z-index:4px;visibility: hidden;}
 
+#alertInfo{
+	background-color: #313131;
+	border: 1px solid #313131;
+	opacity:0.6;
+	border-radius:3px;
+	width: 370px;
+	height: 120px;
+	position: fixed;
+	z-index: 4;
+	top: 200px;
+	margin-left:40%;
+	margin-right:auto;
+	visibility: hidden;
+}
 
+#alertMSG{
+	color:#FFF;
+	font-size:16px;
+	width:200px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:50px;
+}
 

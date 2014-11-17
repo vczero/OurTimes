@@ -31,6 +31,27 @@ app.controller('ContentController', function($scope, $http){
 						comments[j].time = Time(comments[j].time);
 					}
 				}
+				$scope.page = 1;
+				$scope.items = data.items;
+				loading.style.visibility = 'hidden';
+				setTimeout(callback, 50);
+			}
+		});
+	}
+	//分页
+	function paging(callback, page){
+		var loading = document.getElementById('loading');
+		loading.style.visibility = 'visible';
+		$http.get('http://127.0.0.1:3000/wei/get?page=' + page).success(function(data){
+		if(data.status){
+				for(var i = 0, len = data.items.length; i < len; i++){
+					var item = data.items[i],
+						comments = item.comments;
+					item.time = Time(item.time);
+					for(var j = 0, jl = comments.length; j < jl; j++){
+						comments[j].time = Time(comments[j].time);
+					}
+				}
 				$scope.items = data.items;
 				loading.style.visibility = 'hidden';
 				setTimeout(callback, 50);
@@ -70,14 +91,19 @@ app.controller('ContentController', function($scope, $http){
 			    url = 'http://127.0.0.1:3000/wei/zan?' + zanToken + id; 
 			$http.get(url).success(function(data){
 				if(data.status){
-					$scope.items[index].zans = data.zans;
-					alert('谢谢您的打赏~~');
+					if(data.zans){
+						$scope.items[index].zans = data.zans;
+						Alert('谢谢您的打赏~~');
+					}else{
+						Alert('伦家怎么好意思再收呢！');
+					}
+					
 				}else{
-					alert('打赏失败~~');
+					Alert('不好意思，打赏失败了...');
 				}
 			});
 		}else{
-			alert('请先登录');
+			Alert('对不起，请先登录......');
 		}
 	};
 	
@@ -87,7 +113,7 @@ app.controller('ContentController', function($scope, $http){
 			var input = document.getElementsByClassName('item_comment_input')[index],
 			    text = input.value;
 			if(!text || !text.trim()){
-				return alert('评论不允许为空');
+				return Alert('不好意思，评论不能为空...');
 			};
 			var commentToken = 'token=' + token,
 			    comment = '&comment=' + text,
@@ -102,13 +128,12 @@ app.controller('ContentController', function($scope, $http){
 						time: Time(data.time)
 					});
 					input.value = '';
-//					alert('评论成功');
 				}else{
-					alert('评论失败');
+					Alert('不好意思，评论失败...');
 				}
 			});
 		}else{
-			alert('请先登录');
+			Alert('对不起，请先登录...');
 		}
 	};
 	//创建新的微言
@@ -117,10 +142,10 @@ app.controller('ContentController', function($scope, $http){
 			tags = [];
 			
 		if(!token){
-			return alert('请先登录');
+			return Alert('对不起，请先登录......');
 		}
 		if(!content){
-			return alert('发表的内容不能为空！');
+			return Alert('空内容是不能发表哦~~');
 		}
 		var tagArr = document.getElementsByClassName('posttag');
 		for(var i = 0; i < tagArr.length; i++){
@@ -148,9 +173,33 @@ app.controller('ContentController', function($scope, $http){
 					}
 				});
 			}else{
-				alert('发表失败');
+				Alert('不好意思，发表失败了...');
 			}
 		});
+	};
+	
+	$scope.prePage = function(){
+		if($scope.page >= 2){
+			$scope.page --;
+		}
+		if($scope.page >= 0 && $scope.page !== 1){
+			paging(function(){
+				var commentDiv = document.getElementsByClassName('item_comment');
+				for(var i = 0; i < commentDiv.length; i++){
+					commentDiv[i].style.display = 'none';
+				}
+			}, ($scope.page - 1) * 10);	
+		}
+	};
+	
+	$scope.nextPage = function(){
+		$scope.page ++;
+		paging(function(){
+			var commentDiv = document.getElementsByClassName('item_comment');
+			for(var i = 0; i < commentDiv.length; i++){
+				commentDiv[i].style.display = 'none';
+			}
+		}, $scope.page * 10);
 	};
 	
 });
@@ -193,5 +242,15 @@ var Time = function(date){
 	       time.getHours() + ':' +
 	       time.getMinutes() + ':' +
 	       time.getSeconds();
+};
+
+var Alert = function(value){
+	var al = document.getElementById('alertInfo');
+	var text = document.getElementById('alertMSG');
+	al.style.visibility = 'visible';
+	text.innerHTML = value;
+	setTimeout(function(){
+		al.style.visibility = 'hidden';
+	}, 2300);
 };
 

@@ -31,8 +31,9 @@ CRUD.prototype = {
     * @callback：回调，返回符合要求的记录或者失败信息
     *
     * */
-    read: function(query, callback){
-        db[this.collection].find(query).sort({'time': -1}).limit(20).toArray(function(err, items){
+    read: function(query, callback, page){
+    	var page = parseInt(page) || 0;
+        db[this.collection].find(query).sort({'time': -1}).skip(page).limit(10).toArray(function(err, items){
             if(err){
                 return callback(status.fail);
             }

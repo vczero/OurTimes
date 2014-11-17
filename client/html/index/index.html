@@ -116,8 +116,9 @@
 				</div>
 
 				<div class="fr">
-					<div class="indisplay item_btn_page">上一页</div>
-					<div class="indisplay item_btn_page">下一页</div>
+					<div ng-click="prePage()" class="indisplay item_btn_page">上一页</div>
+					<div class="indisplay item_btn_page item_page">{{page}}</div>
+					<div ng-click="nextPage()" class="indisplay item_btn_page">下一页</div>
 				</div>
 			</div>
 			
@@ -139,6 +140,11 @@
 		
 		<div id="loading">
 			<img src="../../img/loading.gif"/>
+		</div>
+		
+						
+		<div id="alertInfo">
+			<div id="alertMSG">对不起，请先登录 ......</div>
 		</div>
 	
 		<footer>
