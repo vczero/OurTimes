@@ -1,7 +1,7 @@
 var mongoskin = require('mongoskin'),
-	xss = require('xss'),
-	db = require('./../util/mongo'),
-	header = require('./../util/header');
+    xss = require('xss'),
+    db = require('./../util/mongo'),
+    header = require('./../util/header');
 
 var weiyan = 'weibo',
 	user = 'user',
