@@ -135,7 +135,10 @@ module.exports = {
 							delete data[i]['password'];
 							delete data[i]['_id'];
 						}
-						return res.send(data);
+						return res.send({
+							status: 1,
+							items: data
+						});
  					}else{
  						return res.send({
 							status: 0
@@ -148,7 +151,109 @@ module.exports = {
 				});
  			}
  		});
-	}
+	},
+	/*
+	 + 更新用户信息
+	 +
+	 */
+	update: function(req, res){
+		header.set(req, res);
+		var user = req.body,
+        	token = user.token,
+        	nickname = user.nickname,
+        	objectID = mongoskin.helper.toObjectID;
+    	
+    	db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items){
+    		if(!err && items.length){
+    			var query = {_id: str2ObjId(token)},
+    				$set = {$set: {nickname: nicknname}};
+    			db[collectionName].update(query, $set, function(err){
+    				if(!err){
+    					return res.send({
+    						status: 1
+    					});
+    				}else{
+    					return res.send({
+    						status: 0
+    					});
+    				}
+    			});
+    			
+    		}else{
+    			return res.send({
+					status: 0
+				});
+    		}
+    	});
+	},
+	/*
+	 + 删除某个用户
+	 + 管理员权限
+	 */
+    delete: function(req, res){
+    	header.set(req, res);
+    	var query = req.query,
+    	    userId = query.userid,
+    	    token = query.token;
+    	db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items){
+    		if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
+    			db[collectionName].remove({userid: userid}, function(err){
+    				if(!err){
+    					return res.send({
+							status: 1
+						});
+    				}else{
+    					return res.send({
+							status: 0
+						});
+    				}
+    			});
+    		}else{
+    			return res.send({
+					status: 0
+				});
+    		}
+    	});
+    },
+    /*
+     +
+     + 更新用户的类型标签
+     +
+     */
+    updateTag: function(req, res){
+    	header.set(req, res);
+    	var query = req.body,
+    	    userId = query.userid,
+    	    tag = query.tag,
+    	    token = query.token;
+    
+    	db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items){
+    		if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
+    			var query = {userid: userId},
+    			    $set = {$set: 
+    			    	{
+    			    		tag: tag
+    			    	}
+    			    };
+    			db[collectionName].update(query, $set, function(err){
+    				if(!err){
+    					return res.send({
+							status: 1
+						});
+    				}else{
+    					return res.send({
+							status: 0
+						});
+    				}
+    			})
+    			
+    		}else{
+    			return res.send({
+					status: 0
+				});
+    		}
+    	});
+    }
 };
 
 
