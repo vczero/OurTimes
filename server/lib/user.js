@@ -4,13 +4,7 @@ var mongoskin = require('mongoskin'),
     guid = require('./../util/guid'),
     db = require('./../util/mongo'),
     header = require('./../util/header');
-/*
- + 用途：用户鉴权，包括注册、登录以及接口调用等
- + 作者：vczero
- + 版本：v2.0 
- + 更新：摒弃封装MongoSkin Util的作法；合并USER_TYPE.js & user.js
- +
- */
+
 var collectionName = 'user',
     user = db.bind(collectionName),
     str2ObjId = mongoskin.helper.toObjectID,
@@ -25,6 +19,13 @@ var collectionName = 'user',
         'MIDDLE': '中间权限者',
         'ADMIN': 'admin'
     };
+/*
+ + 用途：用户鉴权，包括注册、登录以及接口调用等
+ + 作者：vczero
+ + 版本：v2.0 
+ + 更新：摒弃封装MongoSkin Util的作法；合并USER_TYPE.js & user.js
+ +
+ */
 module.exports = {
     /*
      + 用户注册

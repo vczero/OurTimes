@@ -4,14 +4,14 @@ var mongoskin = require('mongoskin'),
 /*
  * @des：导出数据库连接模块
  * */
-module.exports = (function(){
-	
+module.exports = (function() {
+
     var host = config.host,
         port = config.port,
         dbName = config.dbname,
         userName = config.username,
         password = config.password,
-        str = 'mongodb://' + userName + ':' + password + '@' + host +':' + port+ '/' + dbName;
+        str = 'mongodb://' + userName + ':' + password + '@' + host + ':' + port + '/' + dbName;
 
     var option = {
         native_parser: true
@@ -19,4 +19,3 @@ module.exports = (function(){
 
     return mongoskin.db(str, option);
 })();
-
