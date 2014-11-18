@@ -14,7 +14,7 @@ app.config(['$httpProvider', function($httpProvider){
 
 app.controller('UserController', function($scope, $http){
 	$http.get('http://127.0.0.1:3000/user/getAll?token=5460bd81250a3020243af1ab').success(function(data){
-		$scope.datas = data.items;
+		$scope.datas = data;
 	});
 	
 });

@@ -1,4 +1,5 @@
 var user = require('./user/user'),
+    newU = require('./user'),
 	wei = require('./weibo/weibo');
 
 /*
@@ -9,12 +10,12 @@ var user = require('./user/user'),
 * */
 module.exports = function(app){
 	//user
-    app.post('/user/register', user.register);
-    app.post('/user/login', user.login);
-    app.get('/user/get', user.get);
+    app.post('/user/register', newU.register);
+    app.post('/user/login', newU.login);
+    app.get('/user/get', newU.get);
     app.get('/user/delete', user.delete);
 	app.post('/user/update', user.update);
-	app.get('/user/getAll', user.getAllUser);
+	app.get('/user/getAll', newU.getAll);
 	app.post('/user/update', user.updateTag);
 	
 	//wei
