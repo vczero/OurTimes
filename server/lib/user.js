@@ -100,9 +100,7 @@ module.exports = {
         header.set(req, res);
         var id = req.query.userid;
         if (id) {
-            db[collectionName].find({
-                userid: id
-            }).limit(1).toArray(function(err, items) {
+            db[collectionName].find({userid: id}).limit(1).toArray(function(err, items) {
                 if (!err && items.length) {
                     var item = items[0];
                     item.status = 1;
@@ -128,9 +126,7 @@ module.exports = {
     getAll: function(req, res) {
         header.set(req, res);
         var token = req.query.token;
-        db[collectionName].find({
-            _id: str2ObjId(token)
-        }).toArray(function(err, items) {
+        db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
             //管理员身份校验
             if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 //返回所有用户信息
@@ -168,9 +164,7 @@ module.exports = {
             nickname = user.nickname,
             objectID = mongoskin.helper.toObjectID;
 
-        db[collectionName].find({
-            _id: str2ObjId(token)
-        }).toArray(function(err, items) {
+        db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
             if (!err && items.length) {
                 var query = {
                         _id: str2ObjId(token)
@@ -208,9 +202,7 @@ module.exports = {
         var query = req.query,
             userId = query.userid,
             token = query.token;
-        db[collectionName].find({
-            _id: str2ObjId(token)
-        }).toArray(function(err, items) {
+        db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
             if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 db[collectionName].remove({
                     userid: userid
@@ -244,9 +236,7 @@ module.exports = {
             tag = query.tag,
             token = query.token;
 
-        db[collectionName].find({
-            _id: str2ObjId(token)
-        }).toArray(function(err, items) {
+        db[collectionName].find({ _id: str2ObjId(token)}).toArray(function(err, items) {
             if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 var query = {
                         userid: userId

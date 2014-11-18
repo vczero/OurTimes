@@ -25,9 +25,7 @@ module.exports = {
 		header.set(req, res);
 		var content = req.body,
 			token = content.token;
-		db[user].find({
-			_id: str2ObjId(token)
-		}).toArray(function(err, items) {
+		db[user].find({_id: str2ObjId(token)}).toArray(function(err, items) {
 			if (!err && 　items.length) {
 				var wei = {
 					userid: items[0]['userid'],
@@ -66,9 +64,7 @@ module.exports = {
 	get: function(req, res) {
 		header.set(req, res);
 		var page = req.query.page || 0;
-		db[weiyan].find({}).sort({
-			time: -1
-		}).skip(parseInt(page)).limit(10).toArray(function(err, items) {
+		db[weiyan].find({}).sort({time: -1}).skip(parseInt(page)).limit(10).toArray(function(err, items) {
 			if (!err) {
 				var data = {};
 				data.status = 1;
@@ -91,9 +87,7 @@ module.exports = {
 			id = query.id,
 			token = query.token;
 
-		db[user].find({
-			_id: str2ObjId(token)
-		}).toArray(function(err, items) {
+		db[user].find({_id: str2ObjId(token)}).toArray(function(err, items) {
 			if (!err && items.length) {
 				var userid = items[0].userid;
 				db[weiyan].find({
@@ -153,9 +147,7 @@ module.exports = {
 			comment = xss(query.comment),
 			token = query.token;
 
-		db[user].find({
-			_id: str2ObjId(token)
-		}).toArray(function(err, items) {
+		db[user].find({_id: str2ObjId(token)}).toArray(function(err, items) {
 			if (!err && items.length) {
 				var userid = items[0].userid;
 				commentNickname = items[0].nickname,
@@ -219,9 +211,7 @@ module.exports = {
 		var query = req.query,
 			token = query.token,
 			id = query.id;
-		db[user].find({
-			_id: str2ObjId(token)
-		}).toArray(function(err, items) {
+		db[user].find({_id: str2ObjId(token)}).toArray(function(err, items) {
 			if (!err && items.length) {
 				//管理员，直接删除该条记录
 				if (items[0].tag === USER_TYPE.ADMIN || '用户自己') {
