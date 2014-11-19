@@ -1,0 +1,49 @@
+.hr{
+	height:57px;width:100%;
+}
+
+.content{
+	width:980px;
+	background-color: #FFF;
+}
+
+.nhr{
+	height:30px;width:100%;
+}
+
+.text_align{
+	text-align:center;
+}
+
+.mlr50{
+	margin-left:50px;margin-right:50px;
+}
+
+#admin_title{
+	background-color:#3879D9;color:#FFF;height:28px;line-height:28px;
+}
+
+.admin_item_title{
+	width:100px;font-size:15px;display:inline-block;
+}
+
+.admin_200{
+	width:200px;font-size:15px;display:inline-block;
+}
+.admin_item_field{
+	margin-left:50px;margin-right:50px;text-align:center;border:1px dashed #BCBCBC;border-top:none;height:28px;line-height:28px;
+}
+.admin_item_text{
+	width:100px;font-size:13px;display:inline-block;
+}
+.admin_item_br{
+	border-right:1px dashed #BCBCBC;
+}
+
+.admin_item_btn{
+	display:inline-block;width:45px;cursor: pointer;
+}
+
+
+
+
