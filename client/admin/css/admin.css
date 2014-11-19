@@ -45,5 +45,7 @@
 }
 
 
-
+.admin_overflow{
+	overflow: hidden;
+}
 
