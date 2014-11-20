@@ -31,10 +31,10 @@
 		</div>
 	</header>
 	
-	<section id="centent" class="minh">
-		<div class="top_hidden_hr"></div>
-		<div class="h500">
-			<div class="fl box_sha border_rad3 connect h500">
+	<section style="position:absolute;left:0;right:0;top:46px;bottom:0;">
+		<div id="map" style="position:absolute;left:0;right:0;top:0;bottom:0;"></div>
+		<div style="position:absolute;left:10px;top:10px;z-index:100;width:300px;">
+			<div class="fl box_sha border_rad3 connect" style="width:300px;">
 				<div class="connect_table">
 					<span class="connect_title connect_tr">序号</span>
 					<span class="connect_title connect_tr">地名</span>
@@ -121,46 +121,20 @@
 					<span class="connect_tr">3人</span>
 				</div>
 			</div>
-
 		</div>
-		<!--联系人搜索-->
-		<div class="bkgFFF connect_sousuo border_rad3 box_sha">
-			<div class="fl">
-				<img style="width: 700px;" src="../../img/chart.png" />
-			</div>
-			<div class="ip5 fr">
-				<div class="connect_ip5_sou ">
-					<div class="fl" style="width:150px;height:25px;margin-top:3px;margin-left:3px;">
-						<input class="fl border_rad3" style="border:1px solid #949494;width:150px;height:25px;padding-left:3px;" />
-					</div>
-					<div class="fr">
-						<img class="connect_se_icon" src="../../img/search.png" />
-					</div>
-				</div>
-				<div class="tel_item">
-					<span class="tel_item_name" style="">陈程</span>
-					<span class="tel_item_num" style="">132-0090-0090</span>
-				</div>
-				<div class="tel_item">
-					<span class="tel_item_name" style="">陈程</span>
-					<span class="tel_item_num" style="">132-0090-0090</span>
-				</div>
-				<div class="tel_item">
-					<span class="tel_item_name" style="">陈程</span>
-					<span class="tel_item_num" style="">132-0090-0090</span>
-				</div>
-				<div class="tel_item">
-					<span class="tel_item_name" style="">陈程</span>
-					<span class="tel_item_num" style="">132-0090-0090</span>
-				</div>
-			</div>
+
+		<!--搜索框-->
+		<div style="position:absolute;left:10px;top:400px;height:100px;width:300px;">
+			<input style="height:35px; width:230px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;" />
+			<input type="button"  value="搜索" style="height:39px;border:0;color:#FFF;background-color:#3385FF;cursor:pointer;margin-left:-3px;" />
 		</div>
 	</section>
-	
-	<footer>
-    	<div class="copyright">
-    		版权所有：wlhmyit@126.com create by <a class="link_webo" href="http://weibo.com/2762275212/profile?rightmod=1&wvr=5&mod=personinfo" target="_blank">vczero</a> 
-    	</div>
-	</footer>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b79caad469676224a0e32143ce5add02"></script>
+	<script type="text/javascript">
+		var map = new AMap.Map('map', {
+			resizeEnable: true,
+			zooms: [5, 18]
+		});
+	</script>
 </body>
 </html>
