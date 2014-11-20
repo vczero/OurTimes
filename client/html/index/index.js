@@ -16,6 +16,7 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('ContentController', function($scope, $http) {
     //获取认证信息
     var token = document.cookie.split(';')[0].split('=')[1];
+    var pageSize = 0;
     //创建UI
     //获取最近10条用户发表的微言
     function initItems(callback) {
@@ -31,6 +32,7 @@ app.controller('ContentController', function($scope, $http) {
                             comments[j].time = Time(comments[j].time);
                         }
                     }
+                    pageSize = data.pageSize;
                     $scope.page = 1;
                     $scope.items = data.items;
                     loading.style.visibility = 'hidden';
@@ -179,27 +181,32 @@ app.controller('ContentController', function($scope, $http) {
     };
 
     $scope.prePage = function() {
-        if ($scope.page >= 2) {
-            $scope.page--;
-        }
-        if ($scope.page >= 0 && $scope.page !== 1) {
+        $scope.page--;
+        if ($scope.page >0) {
             paging(function() {
                 var commentDiv = document.getElementsByClassName('item_comment');
                 for (var i = 0; i < commentDiv.length; i++) {
                     commentDiv[i].style.display = 'none';
                 }
             }, ($scope.page - 1) * 10);
+        }else{
+        	$scope.page = 1;
         }
     };
 
     $scope.nextPage = function() {
-        $scope.page++;
-        paging(function() {
-            var commentDiv = document.getElementsByClassName('item_comment');
-            for (var i = 0; i < commentDiv.length; i++) {
-                commentDiv[i].style.display = 'none';
-            }
-        }, $scope.page * 10);
+    	$scope.page++;
+    	if($scope.page <= pageSize){
+    		paging(function() {
+	            var commentDiv = document.getElementsByClassName('item_comment');
+	            for (var i = 0; i < commentDiv.length; i++) {
+	                commentDiv[i].style.display = 'none';
+	            }
+	        }, ($scope.page - 1) * 10);
+    	}else{
+    		$scope.page = pageSize;
+    	}
+        
     };
 
 });

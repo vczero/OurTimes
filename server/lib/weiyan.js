@@ -64,10 +64,17 @@ module.exports = {
     get: function(req, res) {
         header.set(req, res);
         var page = req.query.page || 0;
+        var pageSize = 0;
+        //这一块需要优化
+        db[weiyan].find({}).toArray(function(err, items){
+            pageSize = Math.ceil(items.length / 10);
+        });
+        
         db[weiyan].find({}).sort({time: -1}).skip(parseInt(page)).limit(10).toArray(function(err, items) {
             if (!err) {
                 var data = {};
                 data.status = 1;
+                data.pageSize = pageSize;
                 data.items = items;
                 return res.send(data);
             } else {
