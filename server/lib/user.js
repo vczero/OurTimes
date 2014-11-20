@@ -214,17 +214,31 @@ module.exports = {
         var user = req.body,
             token = user.token,
             nickname = user.nickname,
-            contact = user.contact || {}, //联系人信息，只有是本班用户才能使用
+            contact = user.contact, //联系人信息，只有是本班用户才能使用
             objectID = mongoskin.helper.toObjectID;
 
         db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
             if (!err && items.length) {
                 var query = {_id: str2ObjId(token)},
+                    $set = {};
+                if(items[0].tag === USER_TYPE.BEN){ //本班用户权限
                     $set = {
                         $set: {
-                            nickname: nicknname
+                                nickname: xss(nicknname) || items[0].nicknname,
+                                tel: xss(contact.tel) || items[0].tel,
+                                address: xss(contact.address) || items[0].address,
+                                QQ: xss(contact.QQ) || items[0].QQ,
+                                job: xss(contact.job) || items[0].job,
+                                hometown: xss(contact.hometown) || items[0].hometown
                         }
                     };
+                }else{
+                    $set = {
+                        $set: {
+                                nickname: xss(nicknname) || items[0].nicknname
+                        }
+                    };
+                }
                 db[collectionName].update(query, $set, function(err) {
                     if (!err) {
                         return res.send({
@@ -294,7 +308,7 @@ module.exports = {
                     },
                     $set = {
                         $set: {
-                            tag: tag
+                            tag: tag //更新用户的标签，必须判断是否存在此标签
                         }
                     };
                 db[collectionName].update(query, $set, function(err) {
