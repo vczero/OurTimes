@@ -1,4 +1,0 @@
-
-var weibo  = function(){
-	
-}

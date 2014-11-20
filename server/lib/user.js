@@ -18,6 +18,14 @@ var collectionName = 'user',
         'TEST': '测试',
         'MIDDLE': '中间权限者',
         'ADMIN': 'admin'
+    },
+    /*
+    + 基础的URL，例会头像的服务器URL,默认头像的URL等
+    + 可能包括静态文件服务器，所以，数据资源必须独立URL
+    */
+    BASE_URL = {
+        'AVATAR': '/',
+        'AVATAR_DEFAULT': ''
     };
 /*
  + 用途：用户鉴权，包括注册、登录以及接口调用等
@@ -47,7 +55,13 @@ module.exports = {
             password: mcrypto.md5Password(params.password),
             time: new Date(),
             tag: USER_TYPE.GUEST,
-            nickname: ''
+            nickname: '',
+            avatar: '',
+            address: '',
+            job: '',
+            tel: '',
+            hometown: '',
+            QQ:''
         };
 
         db[collectionName].save(user, function(err, item) {
@@ -98,19 +112,57 @@ module.exports = {
      */
     get: function(req, res) {
         header.set(req, res);
-        var id = req.query.userid;
+        var id = req.query.userid; //需要查询人的ID
+        var token = req.query.token; //登录用户的token
         if (id) {
             db[collectionName].find({userid: id}).limit(1).toArray(function(err, items) {
-                if (!err && items.length) {
-                    var item = items[0];
-                    item.status = 1;
-                    delete item['_id'];
-                    delete item['password'];
-                    return res.send(item);
-                } else {
-                    return res.send({
-                        status: 0
+                //获取私密信息
+                if(token){
+                    var error = err, //缓存错误信息
+                        data = items; //缓存查询到的用户信息
+                    db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items){
+                        if(!err && items.length && items[0].tag === USER_TYPE.BEN){//本班用户
+                            var item = items[0];
+                            item.status = 1;
+                            delete item['_id'];
+                            delete item['password'];
+                            return res.send(item);
+                        }else{
+                            if (!error && data.length) {//验证本班用户失败
+                                var item = data[0];
+                                item.status = 1;
+                                delete item['_id'];
+                                delete item['password'];
+                                delete item['address'];
+                                delete item['tel'];
+                                delete item['job'];
+                                delete item['hometown'];
+                                delete item['QQ'];
+                                return res.send(item);
+                            } else {
+                                return res.send({
+                                    status: 0
+                                });
+                            }
+                        }
                     });
+                }else{ //普通用户
+                    if (!err && items.length) {
+                        var item = items[0];
+                        item.status = 1;
+                        delete item['_id'];
+                        delete item['password'];
+                        delete item['address'];
+                        delete item['tel'];
+                        delete item['job'];
+                        delete item['hometown'];
+                        delete item['QQ'];
+                        return res.send(item);
+                    } else {
+                        return res.send({
+                            status: 0
+                        });
+                    }
                 }
             });
         } else {
@@ -162,13 +214,12 @@ module.exports = {
         var user = req.body,
             token = user.token,
             nickname = user.nickname,
+            contact = user.contact || {}, //联系人信息，只有是本班用户才能使用
             objectID = mongoskin.helper.toObjectID;
 
         db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
             if (!err && items.length) {
-                var query = {
-                        _id: str2ObjId(token)
-                    },
+                var query = {_id: str2ObjId(token)},
                     $set = {
                         $set: {
                             nickname: nicknname
