@@ -2,38 +2,37 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>通讯录—图班网</title>
+		<title></title>
 		<link href="../../css/main.css" type="text/css" rel="stylesheet"/>
 	</head>
 <body>
 	
-	<header>
+<!-- 	<header>
 		<div class="header_center">
 			<div class="fl">
 				<div style="line-height:40px;font-size:18px;">
-					图班网
+					10地信
 				</div>
 			</div>
 			<div class="fr header_text">
 				<div class="fl">
 					<a href="../index/index.html"class="header_menu menu_current">首页</a>
-					<a href="telmanager.html"class="header_menu">通讯录</a>
-					<a href="user.html" class="header_menu">个人中心</a>
-					<a href="space.html" class="header_menu">文章欣赏</a>
-					<a href="about.html" class="header_menu">About</a>
+					<a href="../connect/connect.html"class="header_menu">通讯录</a>
+					<a href="../user/user.html" class="header_menu">个人中心</a>
+					<a href="../article/article.html" class="header_menu">文章欣赏</a>
+					<a href="../about/about.html" class="header_menu">About</a>
 				</div>
 				<div class="fr" style="font-size:12px">
 					<span class="login_reg">登录</span>
 					<span class="login_reg">注册</span>
-					<!--<span>欢迎你，vczero</span>-->
 				</div>
 			</div>
 		</div>
-	</header>
+	</header> -->
 	
-	<section style="position:absolute;left:0;right:0;top:46px;bottom:0;">
-		<div id="map" style="position:absolute;left:0;right:0;top:0;bottom:0;"></div>
-		<div style="position:absolute;left:10px;top:10px;z-index:100;width:300px;">
+	<section id="contact_div">
+		<div id="map"></div>
+		<div id="contact_fenbu">
 			<div class="fl box_sha border_rad3 connect" style="width:300px;">
 				<div class="connect_table">
 					<span class="connect_title connect_tr">序号</span>
@@ -45,88 +44,34 @@
 					<span class="connect_tr">北京</span>
 					<span class="connect_tr">3人</span>
 				</div>
-				<div>
-					<span class="connect_tr">002</span>
-					<span class="connect_tr">北京朝阳区</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">003</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">004</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">005</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">006</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">007</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
-				<div>
-					<span class="connect_tr">008</span>
-					<span class="connect_tr">北京</span>
-					<span class="connect_tr">3人</span>
-				</div>
 			</div>
 		</div>
 
 		<!--搜索框-->
-		<div style="position:absolute;left:10px;top:400px;height:100px;width:300px;">
-			<input style="height:35px; width:230px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;" />
-			<input type="button"  value="搜索" style="height:39px;border:0;color:#FFF;background-color:#3385FF;cursor:pointer;margin-left:-3px;" />
+		<div id="contact_search">
+			<input id="contact_search_input" placeholder="请输入姓名"  />
+			<input type="button"  value="搜索"/>
+		</div>
+		
+		<div id="contact_user">
+			<div id="contact_header">个人名片</div>
+			<div id="contact_text">
+				<div>昵称：<span id="name" style="color:#98958F;">放羊的娃</span></div>
+				<div>真名：<span id="realName" style="color:#98958F;">娃放羊</span></div>
+				<div>电话：<span id="tel" style="color:#98958F;">189-4979-6787</span></div>
+				<div>地址：<span id="address" style="color:#98958F;">浙江省 杭州市XXXX</span></div>
+				<div>工作：<span id="job" style="color:#98958F;">互联网</span></div>
+				<div>家乡：<span id="home" style="color:#98958F;">安徽省 阜阳</span></div>
+			</div>
+			<div id="contact_img_div">
+				<img src="../../img/pp.png" id="contact_img" />
+			</div>
+			
+			<div id="contact_sign">
+				<div>
+					签名：<span style="color:#98958F;">梦想还是要有的，万一实现了呢！</span>
+				</div>
+			</div>
 		</div>
 	</section>
 	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b79caad469676224a0e32143ce5add02"></script>
@@ -135,6 +80,23 @@
 			resizeEnable: true,
 			zooms: [5, 18]
 		});
+		map.setZoom(5);
+
+		var pos = map.getCenter();
+		for(var i = 0; i < 60; i++){
+			var p = new AMap.LngLat(pos.lng - Math.random() * 10, pos.lat -Math.random() * 10);
+			var marker = new AMap.Marker({
+				position: p
+			});
+
+			marker.name = '我梦到过' + i;
+			marker.setIcon('../../img/pos.png');
+			marker.setMap(map);
+			AMap.event.addListener(marker, 'click', function(e){
+				document.getElementById('name').innerHTML = this.name;
+			});
+		}
+		
 	</script>
 </body>
 </html>

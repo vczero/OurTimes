@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../../css/main.css" type="text/css" rel="stylesheet"/>
+	</head>
+<body>
+	
+<!-- 	<header>
+		<div class="header_center">
+			<div class="fl">
+				<div style="line-height:40px;font-size:18px;">
+					10地信
+				</div>
+			</div>
+			<div class="fr header_text">
+				<div class="fl">
+					<a href="../index/index.html"class="header_menu menu_current">首页</a>
+					<a href="../connect/connect.html"class="header_menu">通讯录</a>
+					<a href="../user/user.html" class="header_menu">个人中心</a>
+					<a href="../article/article.html" class="header_menu">文章欣赏</a>
+					<a href="../about/about.html" class="header_menu">About</a>
+				</div>
+				<div class="fr" style="font-size:12px">
+					<span class="login_reg">登录</span>
+					<span class="login_reg">注册</span>
+				</div>
+			</div>
+		</div>
+	</header> -->
+	
+	<section id="contact_div" style="border-top:2px solid #0075C2;">
+		<div id="user_map" ></div>
+		<div id="user_div">
+			<div id="user_info">个人信息</div>
+			<div id="user_avatar" class="user_avatar_img mlrA">
+				<img  class="user_avatar_img" src="../../img/avat.jpg" />
+			</div>
+			<div>
+				<div></div>
+				<div>修改</div>
+			</div>
+		</div>
+		
+	</section>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b79caad469676224a0e32143ce5add02"></script>
+	<script type="text/javascript">
+		var map = new AMap.Map('user_map', {
+			resizeEnable: true,
+			zooms: [5, 18]
+		});
+		map.setZoom(5);
+		map.plugin(['AMap.ToolBar'], function(){
+			map.addControl(new AMap.ToolBar());
+		});
+		
+	</script>
+</body>
+</html>

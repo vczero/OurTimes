@@ -442,7 +442,7 @@ a{
 	color: #5C7EF6;
 }
 
-/*--------------------user--------------------*/
+/*--------------------user可以删除的--------------------*/
 .user_info{
 	width:600px;height:320px;
 }
@@ -514,6 +514,8 @@ a{
 	margin-left: 50px;margin-top:10px;
 }
 
+/*--------------------------------------以上可以删除----------------------------------------*/
+
 .un_valble:{
 	background-color: #858585;
 }
@@ -553,4 +555,23 @@ a{
 	margin-right:auto;
 	margin-top:50px;
 }
+/*-------------------------------联系人-------------------------------------*/
+#contact_div{position:absolute;left:0;right:0;top:46px;bottom:0;}
+#map{position:absolute;left:0;right:0;top:0;bottom:0;}
+#contact_fenbu{position:absolute;left:10px;top:10px;z-index:100;width:300px;}
+#contact_search{position:absolute;left:10px;top:400px;height:100px;width:300px;}
+#contact_search_input{height:35px; width:230px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;color:#757575;}
+#contact_search input[type='button']{height:39px;border:0;color:#FFF;background-color:#3385FF;cursor:pointer;margin-left:-3px;}
+#contact_user{width:350px;height:200px;background-color:#FFF;opacity:0.9;border-radius:5px;position:absolute;z-index:160px; right:10px;top:90px;}
+#contact_header{height:30px;width:100%;line-height:30px;font-size:16px;color:#383837;margin-left:10px;}
+#contact_text{width:230px;height:110px;float:left;margin-left:10px;font-size:14px;line-height:18px;}
+#contact_img{width:100%;height:100px;}
+#contact_img_div{width:100px;height:100px;float:right;}
+#contact_sign{height:50px;width:330px;font-size:14px;clear:both;margin-left:10px;}
+/*----------------------------------------user-------------------------------------*/
+#user_div{width:350px;background-color:#FFF;position:absolute;z-index:160;left:0;top:0;bottom:0;border:1px solid #C8C8C8;}
+#user_map{position:absolute;left:350px;right:0;top:0;bottom:0;}
+#user_info{height:35px;width:100%;background-image:url(../img/hr_bk.png);text-align:center;line-height:38px;color:#0075C2;font-size:15px;}
+.user_avatar_img{width: 100px; height:100px;border-radius:50px;border:1px solid red;}
+#user_avatar{margin-top:10px;}
 
