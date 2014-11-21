@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../../css/main.css" type="text/css" rel="stylesheet"/>
+	</head>
+<body>
+	
+	<header>
+		<div class="header_center">
+			<div class="fl">
+				<div style="line-height:40px;font-size:18px;">
+					OURTimes
+				</div>
+			</div>
+			<div class="fr header_text">
+				<div class="fl">
+					<a href="../index/index.html"class="header_menu menu_current">首页</a>
+					<a href="../user/user.html"class="header_menu">通讯录</a>
+					<a href="../user/user.html" class="header_menu">个人中心</a>
+					<a href="../article/article.html" class="header_menu">文章欣赏</a>
+					<a href="../about/about.html" class="header_menu">About</a>
+				</div>
+				<div class="fr" style="font-size:12px">
+					<span class="login_reg">登录</span>
+					<span class="login_reg">注册</span>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<section id="contact_div">
+		<div id="user_map" ></div>
+		<div id="user_div">
+			<!-- <div id="user_info">个人信息</div> -->
+			<div id="user_avatar" class="user_avatar_img mlrA">
+				<img  class="user_avatar_img" src="../../img/avat.jpg" />
+			</div>
+			<div>
+				<div></div>
+				<div style="width:65px;height:25px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;margin-top:10px;" class="mlrA">上传头像</div>
+
+				<div class="mlrA" style="width:300px;height:1px; border-top:1px dashed #E1E1E1;margin-top:20px;"></div>
+				<div style="width:300px;margin-top:20px; height:280px;font-size:14px;" class="mlrA">
+					<div style="margin-top:5px;">
+						账号：
+						<input type="text" value="wlhmyit@126.com" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;color:#9A9B98;" readonly="true"/>
+					</div>
+					<div style="margin-top:5px;">
+						昵称：
+						<input type="text" value="山鬼谣" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+					</div>
+					<div style="margin-top:5px;">
+						真名：
+						<input type="text" value="王利华" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+					</div>
+					<div style="margin-top:5px;">
+						电话：
+						<input type="text" value="132-9080-0909" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+					</div>
+					<div style="margin-top:5px;">
+						故乡：
+						<input type="text" value="安徽安庆" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input type="button" value="地图选点" style="height:25px;background-color:#00A1D9;color:#FFF;border:0;border-radius:3px;cursor:pointer;" />
+					</div>
+					<div style="margin-top:5px;">
+						职业：
+						<input type="text" value="web工程师" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+					</div>
+					<div style="margin-top:5px;">
+						地址：
+						<input type="text" value="北京" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input type="button" value="地图选点" style="height:25px;background-color:#00A1D9;color:#FFF;border:0;border-radius:3px;cursor:pointer;" />
+					</div>
+					<div style="margin-top:5px;">
+						签名：
+						<input type="text" value="热烘烘的直愣愣" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+					</div>
+				</div>
+
+				<div style="width:65px;height:25px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;margin-top:10px;" class="mlrA">保存修改</div>
+			</div>
+		</div>
+		<div style="z-index:900;top:40px;right:10px;position:absolute;">
+			<input id="contact_search_input" placeholder="请输入姓名" style="border-radius:3px;" />
+			<input type="button"  value="搜索" style="width:55px;height:38px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;border:0;margin-left:-1px;" />
+		</div>
+
+
+		<div id="contact_user" style="top:90px; border:1px solid #E1E1E1;">
+			<div id="contact_header">个人名片</div>
+			<div id="contact_text">
+				<div>昵称：<span id="name" style="color:#98958F;">放羊的娃</span></div>
+				<div>真名：<span id="realName" style="color:#98958F;">娃放羊</span></div>
+				<div>电话：<span id="tel" style="color:#98958F;">189-4979-6787</span></div>
+				<div>地址：<span id="address" style="color:#98958F;">浙江省 杭州市XXXX</span></div>
+				<div>工作：<span id="job" style="color:#98958F;">互联网</span></div>
+				<div>家乡：<span id="home" style="color:#98958F;">安徽省 阜阳</span></div>
+			</div>
+			<div id="contact_img_div">
+				<img src="../../img/pp.png" id="contact_img" />
+			</div>
+			
+			<div id="contact_sign">
+				<div>
+					签名：<span style="color:#98958F;">梦想还是要有的，万一实现了呢！</span>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b79caad469676224a0e32143ce5add02"></script>
+	<script type="text/javascript">
+		var map = new AMap.Map('user_map', {
+			resizeEnable: true,
+			zooms: [5, 18]
+		});
+		map.setZoom(5);
+		map.plugin(['AMap.ToolBar'], function(){
+			map.addControl(new AMap.ToolBar());
+		});
+
+		var pos = map.getCenter();
+		for(var i = 0; i < 60; i++){
+			var p = new AMap.LngLat(pos.lng - Math.random() * 10, pos.lat -Math.random() * 10);
+			var marker = new AMap.Marker({
+				position: p
+			});
+
+			marker.name = '我梦到过' + i;
+			marker.setIcon('../../img/pos.png');
+			marker.setMap(map);
+			AMap.event.addListener(marker, 'click', function(e){
+				document.getElementById('name').innerHTML = this.name;
+			});
+		}
+		
+	</script>
+</body>
+</html>

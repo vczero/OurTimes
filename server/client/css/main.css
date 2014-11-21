@@ -442,79 +442,6 @@ a{
 	color: #5C7EF6;
 }
 
-/*--------------------user可以删除的--------------------*/
-.user_info{
-	width:600px;height:320px;
-}
-
-.user_info input{
-	color: #777777;
-	font-family: "微软雅黑";
-}
-
-.user_photo{
-	width: 330px;height:320px;
-}
-
-.user_input{
-	width: 245px;
-	height: 32px;
-	border: 1px solid #A8A8A8;
-	padding-left:5px;
-	background-color: #F8F8F8;
-	margin-top: 10px;
-}
-
-.user_text{
-	display: inline-block;
-	width:60px;
-	font-size: 14px;
-	color: #5FACFA;
-	font-weight: bold;
-}
-
-.user_btn{
-	width: 65px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	font-size: 14px;
-	color: #fff;
-	background-color:#3385FF;
-	cursor: pointer;
-}
-
-.user_btn_div{
-	width: 140px;margin-left: 170px; margin-top: 10px;
-}
-
-.upload_img{
-	width: 150px;
-	height: 150px;
-	border-radius: 100px;
-}
-
-.user_photo_div{
-	width:245px; height: 300px;margin-top: 17px;
-}
-
-.upload_div{
-	width:100px;text-align: center;margin-left: 30px;
-}
-
-.upload_text_progress{
-	color:#66D038; font-size:18px;
-}
-
-.upload_show_text{
-	width: 170px;height:25px;
-}
-
-.upload_btn{
-	margin-left: 50px;margin-top:10px;
-}
-
-/*--------------------------------------以上可以删除----------------------------------------*/
 
 .un_valble:{
 	background-color: #858585;
@@ -557,21 +484,17 @@ a{
 }
 /*-------------------------------联系人-------------------------------------*/
 #contact_div{position:absolute;left:0;right:0;top:46px;bottom:0;}
-#map{position:absolute;left:0;right:0;top:0;bottom:0;}
-#contact_fenbu{position:absolute;left:10px;top:10px;z-index:100;width:300px;}
-#contact_search{position:absolute;left:10px;top:400px;height:100px;width:300px;}
-#contact_search_input{height:35px; width:230px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;color:#757575;}
-#contact_search input[type='button']{height:39px;border:0;color:#FFF;background-color:#3385FF;cursor:pointer;margin-left:-3px;}
-#contact_user{width:350px;height:200px;background-color:#FFF;opacity:0.9;border-radius:5px;position:absolute;z-index:160px; right:10px;top:90px;}
+#contact_search_input{height:35px; width:254px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;color:#757575;}
+#contact_user{width:320px;height:200px;background-color:#FFF;opacity:0.9;border-radius:5px;position:absolute;z-index:160px; right:10px;top:90px;}
 #contact_header{height:30px;width:100%;line-height:30px;font-size:16px;color:#383837;margin-left:10px;}
-#contact_text{width:230px;height:110px;float:left;margin-left:10px;font-size:14px;line-height:18px;}
+#contact_text{width:200px;height:110px;float:left;margin-left:10px;font-size:14px;line-height:18px;}
 #contact_img{width:100%;height:100px;}
 #contact_img_div{width:100px;height:100px;float:right;}
-#contact_sign{height:50px;width:330px;font-size:14px;clear:both;margin-left:10px;}
+#contact_sign{height:50px;width:320px;font-size:14px;clear:both;margin-left:10px;}
 /*----------------------------------------user-------------------------------------*/
-#user_div{width:350px;background-color:#FFF;position:absolute;z-index:160;left:0;top:0;bottom:0;border:1px solid #C8C8C8;}
+#user_div{width:350px;background-color:#FFF;position:absolute;z-index:160;left:0;top:0;bottom:0;border-right:1px solid #C8C8C8;}
 #user_map{position:absolute;left:350px;right:0;top:0;bottom:0;}
 #user_info{height:35px;width:100%;background-image:url(../img/hr_bk.png);text-align:center;line-height:38px;color:#0075C2;font-size:15px;}
-.user_avatar_img{width: 100px; height:100px;border-radius:50px;border:1px solid red;}
+.user_avatar_img{width: 100px; height:100px;border-radius:50px;}
 #user_avatar{margin-top:10px;}
 

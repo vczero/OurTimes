@@ -38,7 +38,8 @@ app.use(log4js.connectLogger(logger, {
 
 
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'upload')));
+app.use(express.static(path.join(__dirname, 'client')));
+
 
 if ('development' === app.get('env')) {
     app.use(express.errorHandler());
