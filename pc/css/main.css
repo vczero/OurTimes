@@ -399,7 +399,7 @@ input{
 }
 
 .login_icon{
-	height:60px; width:145px;
+	height:80px; width:80px;
 	margin-top: 20px;
 }
 
@@ -432,11 +432,6 @@ input{
 	cursor: pointer;
 }
 
-.login_3fang{
-	margin-right: 15px;
-	border:1px solid #DDDDDD;height:35px;text-align:center;padding-left:15px;
-	padding-right:14px;line-height: 35px;color:#62C6F1; cursor:pointer;
-}
 
 a{
 	color: #5C7EF6;
