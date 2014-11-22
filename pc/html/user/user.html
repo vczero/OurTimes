@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -22,73 +22,79 @@
 					<a href="../article/article.html" class="header_menu">文章欣赏</a>
 					<a href="../about/about.html" class="header_menu">About</a>
 				</div>
-				<div class="fr" style="font-size:12px">
-					<span class="login_reg">登录</span>
-					<span class="login_reg">注册</span>
+				<div class="fr" style="font-size:12px" ng-controller="LoginController">
+					<span ng-show="!user.name" class="login_reg">
+						<a href="../user/login.html">登录</a>
+					</span>
+					<span ng-show="!user.name" class="login_reg">
+						<a href="../user/register.html">注册</a>
+					</span>
+					<span ng-show="user.name">欢迎你，{{user.name}}</span>
 				</div>
 			</div>
 		</div>
 	</header>
 	
-	<section id="contact_div">
+	<section id="contact_div" ng-controller="UserController">
 		<div id="user_map" ></div>
 		<div id="user_div">
-			<!-- <div id="user_info">个人信息</div> -->
 			<div id="user_avatar" class="user_avatar_img mlrA">
-				<img  class="user_avatar_img" src="../../img/avat.jpg" />
+				<img  class="user_avatar_img" ng-src="{{user.avatar}}" />
 			</div>
 			<div>
-				<div></div>
-				<div style="width:65px;height:25px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;margin-top:10px;" class="mlrA">上传头像</div>
-
-				<div class="mlrA" style="width:300px;height:1px; border-top:1px dashed #E1E1E1;margin-top:20px;"></div>
-				<div style="width:300px;margin-top:20px; height:280px;font-size:14px;" class="mlrA">
-					<div style="margin-top:5px;">
+				<form name="imgForm" action="/upload/img/" enctype="multipart/form-data" method="post">
+					<input id="uploadImg" name="upload" type="file" style="width:0;height:0;"multiple="multiple" onchange="document.forms['imgForm'].submit();" />
+					<input id="selfToken" name="token" style="width:0;height:0;border:0;"/>
+					<div class="user_btn mlrA" ng-click="upload()" value="上传头像">上传头像</div>
+				</form>
+				<div class="mlrA user_hr"></div>
+				<div id="userinfo_div" class="mlrA">
+					<div class="user_m5">
 						账号：
-						<input type="text" value="wlhmyit@126.com" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;color:#9A9B98;" readonly="true"/>
+						<input type="text" value="{{user.email}}" class="user_input user_readonly" readonly="true"/>
 					</div>
-					<div style="margin-top:5px;">
+					<div class="user_m5">
 						昵称：
-						<input type="text" value="山鬼谣" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input id="nickname" type="text" value="{{user.nickname}}" class="user_input" />
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						真名：
-						<input type="text" value="王利华" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input id="realname" type="text" value="{{user.realname}}" class="user_input" />
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						电话：
-						<input type="text" value="132-9080-0909" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input id="tel" type="text" value="{{user.tel}}" class="user_input" />
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						故乡：
-						<input type="text" value="安徽安庆" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
-						<input type="button" value="地图选点" style="height:25px;background-color:#00A1D9;color:#FFF;border:0;border-radius:3px;cursor:pointer;" />
+						<input id="hometown" type="text" value="{{user.hometown}}" class="user_input"/>
+						<input type="button" value="地图选点" class="user_map_point"/>
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						职业：
-						<input type="text" value="web工程师" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input id="job" type="text" value="{{user.job}}" class="user_input"/>
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						地址：
-						<input type="text" value="北京" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
-						<input type="button" value="地图选点" style="height:25px;background-color:#00A1D9;color:#FFF;border:0;border-radius:3px;cursor:pointer;" />
+						<input id="address" type="text" value="{{user.address}}" class="user_input" />
+						<input type="button" value="地图选点" class="user_map_point"/>
 					</div>
-					<div style="margin-top:5px;">
+					<div  class="user_m5">
 						签名：
-						<input type="text" value="热烘烘的直愣愣" style="border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;" />
+						<input id="sign" type="text" value="{{user.sign}}" class="user_input" />
 					</div>
 				</div>
 
-				<div style="width:65px;height:25px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;margin-top:10px;" class="mlrA">保存修改</div>
+				<div class="user_btn mlrA" ng-click="save()">保存修改</div>
 			</div>
 		</div>
-		<div style="z-index:900;top:40px;right:10px;position:absolute;">
-			<input id="contact_search_input" placeholder="请输入姓名" style="border-radius:3px;" />
-			<input type="button"  value="搜索" style="width:55px;height:38px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;border:0;margin-left:-1px;" />
+		<div id="user_search">
+			<input type="text" id="contact_search_input" placeholder="请输入姓名"/>
+			<input type="button"  value="搜索" />
 		</div>
 
 
-		<div id="contact_user" style="top:90px; border:1px solid #E1E1E1;">
+		<div id="contact_user">
 			<div id="contact_header">个人名片</div>
 			<div id="contact_text">
 				<div>昵称：<span id="name" style="color:#98958F;">放羊的娃</span></div>
@@ -111,31 +117,7 @@
 
 	</section>
 	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b79caad469676224a0e32143ce5add02"></script>
-	<script type="text/javascript">
-		var map = new AMap.Map('user_map', {
-			resizeEnable: true,
-			zooms: [5, 18]
-		});
-		map.setZoom(5);
-		map.plugin(['AMap.ToolBar'], function(){
-			map.addControl(new AMap.ToolBar());
-		});
-
-		var pos = map.getCenter();
-		for(var i = 0; i < 60; i++){
-			var p = new AMap.LngLat(pos.lng - Math.random() * 10, pos.lat -Math.random() * 10);
-			var marker = new AMap.Marker({
-				position: p
-			});
-
-			marker.name = '我梦到过' + i;
-			marker.setIcon('../../img/pos.png');
-			marker.setMap(map);
-			AMap.event.addListener(marker, 'click', function(e){
-				document.getElementById('name').innerHTML = this.name;
-			});
-		}
-		
-	</script>
+	<script type="text/javascript" src="../../js/angular.js"></script>
+	<script type="text/javascript" src="./user.js"></script>
 </body>
 </html>

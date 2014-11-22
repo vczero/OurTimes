@@ -16,7 +16,9 @@ app.controller('UserController', function($scope, $http){
 	$http.get('http://127.0.0.1:3000/user/getAll?token=5460bd81250a3020243af1ab').success(function(data){
 		var obj = data.items;
 		for(var i = 0; i < obj.length; i++){
-			obj[i].time = Util.timeFormat(obj[i].time);		}
+			obj[i].time = Util.timeFormat(obj[i].time);
+      console.log(obj[i]);
+    }
 		$scope.datas = obj;
 	});
 });

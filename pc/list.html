@@ -1,35 +1,48 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>文章列表</title>
-		<link href="css/main.css" type="text/css" rel="stylesheet"/>
-	</head>
-	<body>
-		<header>
-			<div class="header_center">
-				<div class="fl">
-					<!--<img class="logo" src="img/logo.png" />-->
-					<div style="line-height:40px;font-size:18px;">
-						图班网
-					</div>
-				</div>
-				<div class="fr header_text">
-					<div class="fl">
-						<a href="index.html"class="header_menu menu_current">首页</a>
-						<a href="telmanager.html"class="header_menu">通讯录</a>
-						<a href="user.html" class="header_menu">个人中心</a>
-						<a href="space.html" class="header_menu">文章欣赏</a>
-						<a href="about.html" class="header_menu">About</a>
-					</div>
-					<div class="fr" style="font-size:12px">
-						<span class="login_reg">登录</span>
-						<span class="login_reg">注册</span>
-						<!--<span>欢迎你，vczero</span>-->
-					</div>
-				</div>
-			</div>
-		</header>
-		
-	</body>
-</html>
+<title>图片上传预览</title>
+<input type="file" id="fileElem" multiple accept="image/*"  onchange="handleFiles(this)">
+<div id="fileList" style="width:200px;height:200px;"></div>
+<script>
+	window.URL = window.URL || window.webkitURL;
+	var fileElem = document.getElementById("fileElem"),
+	    fileList = document.getElementById("fileList");
+	function handleFiles(obj) {
+		var files = obj.files,
+			img = new Image();
+
+		console.log(obj.files);
+		if(window.URL){
+			//File API
+			  alert(files[0].name + "," + files[0].size + " bytes");
+		      img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
+		      img.width = 200;
+		      img.onload = function(e) {
+		         window.URL.revokeObjectURL(this.src); //图片加载后，释放object URL
+		      }
+		      console.log(files[0]);
+		      fileList.appendChild(img);
+		}else if(window.FileReader){
+			//opera不支持createObjectURL/revokeObjectURL方法。我们用FileReader对象来处理
+			var reader = new FileReader();
+			reader.readAsDataURL(files[0]);
+			reader.onload = function(e){
+				alert(files[0].name + "," +e.total + " bytes");
+				img.src = this.result;
+				img.width = 200;
+				fileList.appendChild(img);
+			}
+		}else{
+			//ie
+			obj.select();
+			obj.blur();
+			var nfile = document.selection.createRange().text;
+			document.selection.empty();
+			img.src = nfile;
+			img.width = 200;
+			img.onload=function(){
+		      alert(nfile+","+img.fileSize + " bytes");
+		    }
+			fileList.appendChild(img);
+			//fileList.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src='"+nfile+"')";
+		}
+	}
+</script>

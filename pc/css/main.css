@@ -479,8 +479,8 @@ a{
 }
 /*-------------------------------联系人-------------------------------------*/
 #contact_div{position:absolute;left:0;right:0;top:46px;bottom:0;}
-#contact_search_input{height:35px; width:254px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;color:#757575;}
-#contact_user{width:320px;height:200px;background-color:#FFF;opacity:0.9;border-radius:5px;position:absolute;z-index:160px; right:10px;top:90px;}
+#contact_search_input{height:35px; width:254px;padding-left:5px;font-size:16px;border:1px solid #E1E1E1;color:#757575;border-radius:3px;}
+#contact_user{width:320px;height:200px;background-color:#FFF;opacity:0.9;border-radius:5px;position:absolute;z-index:160px; right:10px;top:90px; border:1px solid #E1E1E1;}
 #contact_header{height:30px;width:100%;line-height:30px;font-size:16px;color:#383837;margin-left:10px;}
 #contact_text{width:200px;height:110px;float:left;margin-left:10px;font-size:14px;line-height:18px;}
 #contact_img{width:100%;height:100px;}
@@ -489,7 +489,20 @@ a{
 /*----------------------------------------user-------------------------------------*/
 #user_div{width:350px;background-color:#FFF;position:absolute;z-index:160;left:0;top:0;bottom:0;border-right:1px solid #C8C8C8;}
 #user_map{position:absolute;left:350px;right:0;top:0;bottom:0;}
-#user_info{height:35px;width:100%;background-image:url(../img/hr_bk.png);text-align:center;line-height:38px;color:#0075C2;font-size:15px;}
 .user_avatar_img{width: 100px; height:100px;border-radius:50px;}
 #user_avatar{margin-top:10px;}
 
+.user_btn{
+	width:65px;height:25px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;margin-top:10px;
+}
+
+.user_hr{
+	width:300px;height:1px; border-top:1px dashed #E1E1E1;margin-top:20px;
+}
+#userinfo_div{width:300px;margin-top:20px; height:280px;font-size:14px;}
+.user_input{border:1px solid #DCDCDC;height:25px;line-height:25px;padding-left:5px;}
+.user_map_point{height:25px;background-color:#00A1D9;color:#FFF;border:0;border-radius:3px;cursor:pointer;}
+.user_readonly{color:#9A9B98;}
+#user_search{z-index:900;top:40px;right:10px;position:absolute;}
+#user_search input[type='button']{width:55px;height:38px;line-height:25px;font-size:14px;background-color:#00A1D9;color:#FFF;text-align:center;border-radius:3px;cursor:pointer;border:0;margin-left:-1px;}
+.user_m5{margin-top:5px;}

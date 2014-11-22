@@ -40,6 +40,7 @@ app.use(log4js.connectLogger(logger, {
 
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'pc')));
+app.use(express.static(path.join(__dirname, 'upload')));
 
 
 if ('development' === app.get('env')) {
@@ -48,48 +49,6 @@ if ('development' === app.get('env')) {
 //路由
 router(app);
 
-
-var fs = require('fs');
-app.post('/upload/', function(req, res){
-    var o_path = req.files.upload.ws.path;
-    var d_path = './upload/' + req.files.upload.originalFilename;
-    fs.rename(o_path, d_path, function(err){
-        if(err){
-            if (err) throw err;
-        }else{
-            fs.unlink(o_path, function() {
-             if (err) throw err;
-             fs.readFile(d_path, "binary", function(error, file) {
-                if(error) {
-                    res.writeHead(500, {"Content-Type": "text/plain"})
-                    res.write(error + "\n")
-                    res.end()
-                } else {
-                    res.writeHead(200, {"Content-Type": "image/png"})
-                    res.write(file, "binary")
-                    res.end()
-                }
-            });
-
-
-          });
-        }
-    });
-    
-});
-
-
-app.get('/upload/img', function(req, res){
-    // show a file upload form
-      res.writeHead(200, {'content-type': 'text/html'});
-      res.end(
-        '<form action="/upload/" enctype="multipart/form-data" method="post">'+
-        '<input type="text" name="title"><br>'+
-        '<input type="file" name="upload" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+
-        '</form>'
-      );
-});
 
 
 http.createServer(app).listen(app.get('port'), function() {
