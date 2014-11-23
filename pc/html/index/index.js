@@ -27,6 +27,7 @@ app.controller('ContentController', function($scope, $http) {
             var loading = document.getElementById('loading');
             loading.style.visibility = 'visible';
             $http.get('http://127.0.0.1:3000/wei/get').success(function(data) {
+                console.log(data);
                 if (data.status) {
                     for (var i = 0, len = data.items.length; i < len; i++) {
                         var item = data.items[i],

@@ -1,5 +1,9 @@
-
 var app = angular.module('app', []);
+var userStr = document.cookie.split(';')[0].split('=')[1];
+var userObj = null;
+if(userStr){
+    userObj = JSON.parse(userStr);
+}
 
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -14,38 +18,31 @@ app.config(['$httpProvider', function($httpProvider) {
 
 }]);
 
-app.controller('LoginController', function($scope, $http) {
-    if (document.cookie) {
-        var userid = document.cookie.split(';')[1].split('=')[1];
-        if (userid && document.cookie.indexOf('userid=') > -1) {
-            $http.get('http://127.0.0.1:3000/user/get?userid=' + userid).success(function(data) {
-                if (data.status) {
-                    $scope.user = {
-                        name: data.nickname || data.email
-                    };
-                }
-            });
-        }
+app.controller('LoginController', function($scope) {
+    if (userObj) {
+         $scope.user = {
+            name: userObj.realname || userObj.nickname || userObj.email
+         }
     }
 });
 
 app.controller('UserController', function($scope, $http){
-    var token = document.cookie.split(';')[0].split('=')[1];
-    if (document.cookie) {
-        var userid = document.cookie.split(';')[1].split('=')[1];
-        if (userid && document.cookie.indexOf('userid=') > -1) {
-            $http.get('http://127.0.0.1:3000/user/get?userid=' + userid + '&token=' + token).success(function(data) {
-                if (data.status) {
-                    $scope.user = data;
-                }
-            });
-        }
+    if (userObj) {
+        $http.get('http://127.0.0.1:3000/user/getSelf?token=' + userObj.token).success(function(data) {
+            if(data.status){
+                $scope.user = data;
+                document.cookie = 'user=' + JSON.stringify(data) + ' ;path=/';
+            }else{
+                alert('获取用户信息失败');
+            }
+        });
+        
     }
 
     $scope.upload = function(){
-        if(token){
+        if(userObj && userObj.token){
             document.getElementById('uploadImg').click();
-            document.getElementById('selfToken').value = token;
+            document.getElementById('selfToken').value = userObj.token;
         }else{
             alert('请登录');
         }  
@@ -60,19 +57,25 @@ app.controller('UserController', function($scope, $http){
             address = document.getElementById('address').value,
             sign = document.getElementById('sign').value;
         var obj = {
-            token: token,
-            nickname: nickname || '',
-            realname: realname || '',
-            tel: tel || '',
-            hometown: hometown || '',
-            job: job || '',
-            address: address || '',
-            sign: sign || ''
+            token: userObj.token,
+            nickname: nickname || userObj.nickname,
+            realname: realname || userObj.realname || '',
+            tel: tel || userObj.tel || '',
+            hometown: hometown || userObj.hometown,
+            job: job || userObj.job || '',
+            address: address || userObj.address,
+            sign: sign || userObj.sign
         };
-        console.log(obj);
-        $http.post('http://127.0.0.1:3000/user/update', obj).success(function(data) {
-            console.log(data);
-        });
+        if(userObj.tag === '游客'){
+            $http.post('http://127.0.0.1:3000/user/updateCommon', obj).success(function(data) {
+                console.log(data);
+            });
+        }
+        if(userObj.tag === '本班'){
+            $http.post('http://127.0.0.1:3000/user/updateBen', obj).success(function(data) {
+                console.log(data);
+            });
+        }
     }
 });
 

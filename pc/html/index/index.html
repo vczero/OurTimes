@@ -65,7 +65,7 @@
 						<span>{{data.content}}</span>
 					</div>
 					<div class="item_ml3 item_link_div">
-						<span class="name">{{data.author || data.email}}</span>
+						<span class="name">{{data.realname || data.nickname || data.email}}</span>
 						<span class="item_date">{{data.time}}</span>
 						<span class="item_tag">
 							<img class="item_tag_icon" src="../../img/lable.png"/>
@@ -102,7 +102,7 @@
 									<img class="item_min_photo" ng-src="{{comment.avatar}}"/>
 								</div>
 								<div class="fr item_all_text">
-									<div class="item_com_username">{{comment.nickname || comment.email}}</div>
+									<div class="item_com_username">{{comment.realname || comment.nickname || comment.email}}</div>
 									<div>
 										<span class="item_com_text">{{comment.comment}}</span>
 									</div>
