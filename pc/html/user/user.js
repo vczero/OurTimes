@@ -77,26 +77,26 @@ app.controller('UserController', function($scope, $http){
 });
 
 
-// var map = new AMap.Map('user_map', {
-//     resizeEnable: true,
-//     zooms: [5, 18]
-// });
-// map.setZoom(5);
-// map.plugin(['AMap.ToolBar'], function(){
-//     map.addControl(new AMap.ToolBar());
-// });
+var map = new AMap.Map('user_map', {
+    resizeEnable: true,
+    zooms: [5, 18]
+});
+map.setZoom(5);
+map.plugin(['AMap.ToolBar'], function(){
+    map.addControl(new AMap.ToolBar());
+});
 
-// var pos = map.getCenter();
-// for(var i = 0; i < 60; i++){
-//     var p = new AMap.LngLat(pos.lng - Math.random() * 10, pos.lat -Math.random() * 10);
-//     var marker = new AMap.Marker({
-//         position: p
-//     });
+var pos = map.getCenter();
+for(var i = 0; i < 60; i++){
+    var p = new AMap.LngLat(pos.lng - Math.random() * 10, pos.lat -Math.random() * 10);
+    var marker = new AMap.Marker({
+        position: p
+    });
 
-//     marker.name = '我梦到过' + i;
-//     marker.setIcon('../../img/pos.png');
-//     marker.setMap(map);
-//     AMap.event.addListener(marker, 'click', function(e){
-//         document.getElementById('name').innerHTML = this.name;
-//     });
-// }
+    marker.name = '我梦到过' + i;
+    marker.setIcon('../../img/pos.png');
+    marker.setMap(map);
+    AMap.event.addListener(marker, 'click', function(e){
+        document.getElementById('name').innerHTML = this.name;
+    });
+}

@@ -127,6 +127,7 @@ app.controller('ContentController', function($scope, $http) {
                         nickname: data.nickname,
                         email: data.email,
                         comment: data.comment,
+                        avatar: data.avatar,
                         time: Time(data.time)
                     });
                     input.value = '';

@@ -59,7 +59,7 @@
            		<!--LIST-->
 				<div class="item_shuoshuo" ng-repeat="data in items">
 					<div class="fl item_pic indisplay item_pic_text_mt3">
-						<img class="item_avat" src="../../img/avat.jpg"/>
+						<img class="item_avat" src="{{data.avatar}}"/>
 					</div>
 					<div class="indisplay item_text item_pic_text_mt3">
 						<span>{{data.content}}</span>
@@ -99,7 +99,7 @@
 						<div class="item_ml3 item_all_com minH45">
 							<div class="item_all_com_cont">
 								<div class="fl minH45">
-									<img class="item_min_photo" src="../../img/pic.png"/>
+									<img class="item_min_photo" src="{{comment.avatar}}"/>
 								</div>
 								<div class="fr item_all_text">
 									<div class="item_com_username">{{comment.nickname || comment.email}}</div>
