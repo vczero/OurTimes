@@ -1,0 +1,1 @@
+mongod --dbpath "d:\pcode\MongoDB\data\db" --logpath "d:\pcode\MongoDB\log\mongo.log" --logappend -auth --port 9976
