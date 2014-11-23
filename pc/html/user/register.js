@@ -17,7 +17,7 @@ app.controller('RegisterController', function($scope, $http){
 		var email = $scope.email,
 			password = $scope.password,
 			repeatpassword = $scope.repeatpassword;
-		/*--这个验证可以放到指令里去--*/
+
 		if(!email || !password || !repeatpassword){
 			return alert('不能为空');
 		}
@@ -33,8 +33,7 @@ app.controller('RegisterController', function($scope, $http){
 		
 		$http.post('http://127.0.0.1:3000/user/register', data).success(function(data){
 			if(data.status){
-				document.cookie = 'token=' + escape(data.token) + ' ;path=/';
-				document.cookie = 'userid=' + escape(data.userid) + ' ;path=/';
+				document.cookie = 'user=' + JSON.stringify(data) + ' ;path=/';
 				location.href = './../index/index.html';
 			}else{
 				alert('注册失败，请重试');

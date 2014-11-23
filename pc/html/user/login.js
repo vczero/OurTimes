@@ -23,8 +23,7 @@ app.controller('LoginController', function($scope, $http){
 			};
 		$http.post('http://127.0.0.1:3000/user/login', data).success(function(data){
 			if(data.status){
-				document.cookie = 'token=' + escape(data.token) + ' ;path=/';
-				document.cookie = 'userid=' + escape(data.userid) + ' ;path=/';
+				document.cookie = 'user=' + JSON.stringify(data) + ' ;path=/';
 				location.href = './../index/index.html';
 			}else{
 				alert('登录失败');

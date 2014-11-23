@@ -1,5 +1,11 @@
 var app = angular.module('app', []);
 
+var userStr = document.cookie.split(';')[0].split('=')[1];
+var userObj = null;
+if(userStr){
+    userObj = JSON.parse(userStr);
+}
+
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -14,8 +20,6 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.controller('ContentController', function($scope, $http) {
-    //获取认证信息
-    var token = document.cookie.split(';')[0].split('=')[1];
     var pageSize = 0;
     //创建UI
     //获取最近10条用户发表的微言
@@ -87,8 +91,8 @@ app.controller('ContentController', function($scope, $http) {
 
     //点赞功能
     $scope.zan = function(index) {
-        if (document.cookie.indexOf('token=') > -1) {
-            var zanToken = 'token=' + token,
+        if (userObj) {
+            var zanToken = 'token=' + userObj.token,
                 id = '&id=' + $scope.items[index]._id,
                 url = 'http://127.0.0.1:3000/wei/zan?' + zanToken + id;
             $http.get(url).success(function(data) {
@@ -111,13 +115,13 @@ app.controller('ContentController', function($scope, $http) {
 
     //评论
     $scope.comment = function(index) {
-        if (document.cookie.indexOf('token=') > -1) {
+        if (userObj) {
             var input = document.getElementsByClassName('item_comment_input')[index],
                 text = input.value;
             if (!text || !text.trim()) {
                 return Alert('不好意思，评论不能为空...');
             };
-            var commentToken = 'token=' + token,
+            var commentToken = 'token=' + userObj.token,
                 comment = '&comment=' + text,
                 id = '&id=' + $scope.items[index]._id,
                 url = 'http://127.0.0.1:3000/wei/comment?' + commentToken + comment + id;
@@ -141,13 +145,16 @@ app.controller('ContentController', function($scope, $http) {
     };
     //创建新的微言
     $scope.createWei = function() {
+        if(!userObj){
+            return Alert('对不起，请先登录......');
+        }
         var content = document.getElementById('postContent').value,
             tags = [];
-
+        var token = userObj.token;
         if (!token) {
             return Alert('对不起，请先登录......');
         }
-        if (!content) {
+        if (!content){
             return Alert('空内容是不能发表哦~~');
         }
         var tagArr = document.getElementsByClassName('posttag');
@@ -223,17 +230,10 @@ app.controller('ArticleController', function($scope, $http) {
 });
 
 app.controller('LoginController', function($scope, $http) {
-    if (document.cookie) {
-        var userid = document.cookie.split(';')[1].split('=')[1];
-        if (userid && document.cookie.indexOf('userid=') > -1) {
-            $http.get('http://127.0.0.1:3000/user/get?userid=' + userid).success(function(data) {
-                if (data.status) {
-                    $scope.user = {
-                        name: data.nickname || data.email
-                    };
-                }
-            });
-        }
+    if (userObj) {
+         $scope.user = {
+            name: userObj.realname || userObj.nickname || userObj.email
+         }
     }
 
 });
