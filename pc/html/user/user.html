@@ -67,8 +67,8 @@
 					</div>
 					<div  class="user_m5">
 						故乡：
-						<input id="hometown" type="text" value="{{user.hometown}}" class="user_input"/>
-						<input type="button" value="地图选点" class="user_map_point"/>
+						<input id="hometown" type="text" value="{{user.hometown}}" class="user_input user_readonly" readonly="true" placeholder="请点击右边按钮拖动标注选点"/>
+						<input ng-click="home_getPoint()" type="button" value="地图选点" class="user_map_point"/>
 					</div>
 					<div  class="user_m5">
 						职业：
@@ -76,8 +76,8 @@
 					</div>
 					<div  class="user_m5">
 						地址：
-						<input id="address" type="text" value="{{user.address}}" class="user_input" />
-						<input type="button" value="地图选点" class="user_map_point"/>
+						<input id="address" type="text" value="{{user.address}}" class="user_input user_readonly" readonly="true" placeholder="请点击右边按钮拖动标注选点"/>
+						<input ng-click="address_getPoint()" type="button" value="地图选点" class="user_map_point"/>
 					</div>
 					<div  class="user_m5">
 						签名：
@@ -86,6 +86,9 @@
 				</div>
 
 				<div class="user_btn mlrA" ng-click="save()">保存修改</div>
+			</div>
+			<div style="margin-left:10px;">
+				为了保护您的敏感信息，如果您是游客用户或者不是标识为"BEN"的用户，您是无法修改自己的电话、真名、职业等信息，请给予理解，谢谢！
 			</div>
 		</div>
 		<div id="user_search">
@@ -97,20 +100,20 @@
 		<div id="contact_user">
 			<div id="contact_header">个人名片</div>
 			<div id="contact_text">
-				<div>昵称：<span id="name" style="color:#98958F;">放羊的娃</span></div>
-				<div>真名：<span id="realName" style="color:#98958F;">娃放羊</span></div>
-				<div>电话：<span id="tel" style="color:#98958F;">189-4979-6787</span></div>
-				<div>地址：<span id="address" style="color:#98958F;">浙江省 杭州市XXXX</span></div>
-				<div>工作：<span id="job" style="color:#98958F;">互联网</span></div>
-				<div>家乡：<span id="home" style="color:#98958F;">安徽省 阜阳</span></div>
+				<div>昵称：<span id="_nickname" style="color:#98958F;over-flow:hidden;">放羊的娃</span></div>
+				<div>真名：<span id="_realName" style="color:#98958F;over-flow:hidden;">娃放羊</span></div>
+				<div>电话：<span id="_tel" style="color:#98958F;">189-4979-6787</span></div>
+				<div>地址：<span id="_address" style="color:#98958F;over-flow:hidden;">浙江省 杭州市XXXX</span></div>
+				<div>工作：<span id="_job" style="color:#98958F;over-flow:hidden;">互联网</span></div>
+				<div>家乡：<span id="_hometown" style="color:#98958F;">安徽省 阜阳</span></div>
 			</div>
 			<div id="contact_img_div">
-				<img src="../../img/pp.png" id="contact_img" />
+				<img id="contact_img" src="../../img/pp.png" />
 			</div>
 			
 			<div id="contact_sign">
 				<div>
-					签名：<span style="color:#98958F;">梦想还是要有的，万一实现了呢！</span>
+					签名：<span id="_sign" style="color:#98958F;">梦想还是要有的，万一实现了呢！</span>
 				</div>
 			</div>
 		</div>
