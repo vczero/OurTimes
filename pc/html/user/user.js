@@ -9,7 +9,7 @@ if(userStr){
 }
 
 
-
+//地图初始化
 map = new AMap.Map('user_map', {
     resizeEnable: true,
     zooms: [5, 18]
@@ -19,6 +19,7 @@ map.plugin(['AMap.ToolBar'], function(){
     map.addControl(new AMap.ToolBar());
 });
 
+//POST数据格式转化，解析第一层JSON
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -32,6 +33,7 @@ app.config(['$httpProvider', function($httpProvider) {
 
 }]);
 
+//获取用户的cookie，显示欢迎信息
 app.controller('LoginController', function($scope) {
     if (userObj) {
          $scope.user = {
@@ -122,6 +124,7 @@ app.controller('UserController', function($scope, $http){
         
     }
 
+    //打开上传窗口
     $scope.upload = function(){
         if(userObj && userObj.token){
             document.getElementById('uploadImg').click();
@@ -131,6 +134,7 @@ app.controller('UserController', function($scope, $http){
         }  
     }
 
+    //保存用户信息
     $scope.save = function(){
         var nickname = document.getElementById('nickname').value,
             realname = document.getElementById('realname').value,
@@ -155,16 +159,25 @@ app.controller('UserController', function($scope, $http){
         
         if(userObj.tag === '游客'){
             $http.post('http://127.0.0.1:3000/user/updateCommon', obj).success(function(data) {
-                console.log(data);
+                if(data.status){
+                    alert('保存成功');
+                }else{
+                    alert('保存失败');
+                }
             });
         }
         if(userObj.tag === '本班'){
             $http.post('http://127.0.0.1:3000/user/updateBen', obj).success(function(data) {
-                console.log(data);
+                if(data.status){
+                    alert('保存成功');
+                }else{
+                    alert('保存失败');
+                }
             });
         }
     }
 
+    //故乡地图选址
     $scope.home_getPoint = function(){
         var marker = new AMap.Marker({
             position: map.getCenter(),
@@ -190,6 +203,7 @@ app.controller('UserController', function($scope, $http){
         });
     };
 
+    //工作地 地图选址
     $scope.address_getPoint = function(){
         var marker = new AMap.Marker({
             position: map.getCenter(),
