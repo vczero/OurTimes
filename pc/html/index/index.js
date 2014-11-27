@@ -6,19 +6,6 @@ if(userStr){
     userObj = JSON.parse(userStr);
 }
 
-app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.transformRequest = [function(data) {
-        var obj = [];
-        for (var key in data) {
-            obj.push(key + '=' + data[key]);
-        }
-        return obj.join('&');
-    }];
-
-}]);
-
 app.controller('ContentController', function($scope, $http) {
     var pageSize = 0;
     //创建UI
@@ -27,14 +14,13 @@ app.controller('ContentController', function($scope, $http) {
             var loading = document.getElementById('loading');
             loading.style.visibility = 'visible';
             $http.get('http://127.0.0.1:3000/wei/get').success(function(data) {
-                console.log(data);
                 if (data.status) {
                     for (var i = 0, len = data.items.length; i < len; i++) {
                         var item = data.items[i],
                             comments = item.comments;
-                        item.time = Time(item.time);
+                        item.time = Util.formatTime(item.time);
                         for (var j = 0, jl = comments.length; j < jl; j++) {
-                            comments[j].time = Time(comments[j].time);
+                            comments[j].time = Util.formatTime(comments[j].time);
                         }
                     }
                     pageSize = data.pageSize;
@@ -54,9 +40,9 @@ app.controller('ContentController', function($scope, $http) {
                     for (var i = 0, len = data.items.length; i < len; i++) {
                         var item = data.items[i],
                             comments = item.comments;
-                        item.time = Time(item.time);
+                        item.time = Util.formatTime(item.time);
                         for (var j = 0, jl = comments.length; j < jl; j++) {
-                            comments[j].time = Time(comments[j].time);
+                            comments[j].time = Util.formatTime(comments[j].time);
                         }
                     }
                     $scope.items = data.items;
@@ -100,17 +86,17 @@ app.controller('ContentController', function($scope, $http) {
                 if (data.status) {
                     if (data.zans) {
                         $scope.items[index].zans = data.zans;
-                        Alert('谢谢您的打赏~~');
+                        Util.alertForm('谢谢您的打赏~~');
                     } else {
-                        Alert('伦家怎么好意思再收呢！');
+                        Util.alertForm('伦家怎么好意思再收呢！');
                     }
 
                 } else {
-                    Alert('不好意思，打赏失败了...');
+                    Util.alertForm('不好意思，打赏失败了...');
                 }
             });
         } else {
-            Alert('对不起，请先登录......');
+            Util.alertForm('对不起，请先登录......');
         }
     };
 
@@ -120,7 +106,7 @@ app.controller('ContentController', function($scope, $http) {
             var input = document.getElementsByClassName('item_comment_input')[index],
                 text = input.value;
             if (!text || !text.trim()) {
-                return Alert('不好意思，评论不能为空...');
+                return Util.alertForm('不好意思，评论不能为空...');
             };
             var commentToken = 'token=' + userObj.token,
                 comment = '&comment=' + text,
@@ -133,30 +119,30 @@ app.controller('ContentController', function($scope, $http) {
                         email: data.email,
                         comment: data.comment,
                         avatar: data.avatar,
-                        time: Time(data.time)
+                        time: Util.formatTime(data.time)
                     });
                     input.value = '';
                 } else {
-                    Alert('不好意思，评论失败...');
+                    Util.alertForm('不好意思，评论失败...');
                 }
             });
         } else {
-            Alert('对不起，请先登录...');
+            Util.alertForm('对不起，请先登录...');
         }
     };
     //创建新的微言
     $scope.createWei = function() {
         if(!userObj){
-            return Alert('对不起，请先登录......');
+            return Util.alertForm('对不起，请先登录......');
         }
         var content = document.getElementById('postContent').value,
             tags = [];
         var token = userObj.token;
         if (!token) {
-            return Alert('对不起，请先登录......');
+            return Util.alertForm('对不起，请先登录......');
         }
         if (!content){
-            return Alert('空内容是不能发表哦~~');
+            return Util.alertForm('空内容是不能发表哦~~');
         }
         var tagArr = document.getElementsByClassName('posttag');
         for (var i = 0; i < tagArr.length; i++) {
@@ -184,7 +170,7 @@ app.controller('ContentController', function($scope, $http) {
                     }
                 });
             } else {
-                Alert('不好意思，发表失败了...');
+                Util.alertForm('不好意思，发表失败了...');
             }
         });
     };
@@ -239,22 +225,5 @@ app.controller('LoginController', function($scope, $http) {
 
 });
 
-var Time = function(date) {
-    var time = new Date(date);
-    return time.getFullYear() + '-' +
-        (parseInt(time.getMonth()) + 1) + '-' +
-        time.getDate() + '  ' +
-        time.getHours() + ':' +
-        time.getMinutes() + ':' +
-        time.getSeconds();
-};
 
-var Alert = function(value) {
-    var al = document.getElementById('alertInfo');
-    var text = document.getElementById('alertMSG');
-    al.style.visibility = 'visible';
-    text.innerHTML = value;
-    setTimeout(function() {
-        al.style.visibility = 'hidden';
-    }, 2300);
-};
+

@@ -19,29 +19,6 @@ map.plugin(['AMap.ToolBar'], function(){
     map.addControl(new AMap.ToolBar());
 });
 
-//POST数据格式转化，解析第一层JSON
-app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.transformRequest = [function(data) {
-        var obj = [];
-        for (var key in data) {
-            obj.push(key + '=' + data[key]);
-        }
-        return obj.join('&');
-    }];
-
-}]);
-
-//获取用户的cookie，显示欢迎信息
-app.controller('LoginController', function($scope) {
-    if (userObj) {
-         $scope.user = {
-            name: userObj.realname || userObj.nickname || userObj.email
-         }
-    }
-});
-
 app.controller('UserController', function($scope, $http){
     //如果没有登录，显示普通用户的marker,去除敏感信息
     if(!userObj || userObj.tag !== 'BEN'){
@@ -71,7 +48,7 @@ app.controller('UserController', function($scope, $http){
                     });
                 }
             }else{
-                alert('服务异常，获取用户信息失败...');
+                Util.alertForm('服务异常，获取用户信息失败...'); 
             }
         });
     }
@@ -105,7 +82,7 @@ app.controller('UserController', function($scope, $http){
                     });
                 }
             }else{
-                alert('服务异常，获取用户信息失败...');
+                Util.alertForm('服务异常，获取用户信息失败...'); 
             }
         });
     }
@@ -118,7 +95,7 @@ app.controller('UserController', function($scope, $http){
                 $scope.user = data;
                 document.cookie = 'user=' + JSON.stringify(data) + ' ;path=/';
             }else{
-                alert('获取用户信息失败');
+                Util.alertForm('不好意思，获取用户信息失败...'); 
             }
         });
         
@@ -130,7 +107,7 @@ app.controller('UserController', function($scope, $http){
             document.getElementById('uploadImg').click();
             document.getElementById('selfToken').value = userObj.token;
         }else{
-            alert('请登录');
+            Util.alertForm('您好！请登录..........'); 
         }  
     }
 
@@ -160,18 +137,18 @@ app.controller('UserController', function($scope, $http){
         if(userObj.tag === '游客'){
             $http.post('http://127.0.0.1:3000/user/updateCommon', obj).success(function(data) {
                 if(data.status){
-                    alert('保存成功');
+                    Util.alertForm('您好！你的资料保存成功');
                 }else{
-                    alert('保存失败');
+                    Util.alertForm('不好意思，你的资料保存失败');
                 }
             });
         }
         if(userObj.tag === '本班'){
             $http.post('http://127.0.0.1:3000/user/updateBen', obj).success(function(data) {
                 if(data.status){
-                    alert('保存成功');
+                    Util.alertForm('您好！你的资料保存成功');
                 }else{
-                    alert('保存失败');
+                    Util.alertForm('不好意思，你的资料保存失败');
                 }
             });
         }
@@ -196,7 +173,7 @@ app.controller('UserController', function($scope, $http){
                         var address = e.regeocode.formattedAddress;
                         document.getElementById('hometown').value = address;
                     }else{
-                        alert('地址解析失败');
+                        Util.alertForm('地址解析失败..........');
                     }
                 });
             });
@@ -222,7 +199,7 @@ app.controller('UserController', function($scope, $http){
                         var address = e.regeocode.formattedAddress;
                         document.getElementById('address').value = address;
                     }else{
-                        alert('地址解析失败');
+                        Util.alertForm('地址解析失败..........');
                     }
                 });
             });
