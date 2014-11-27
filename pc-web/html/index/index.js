@@ -31,7 +31,7 @@ app.controller('ContentController', function($scope, $http) {
                 }
             });
         }
-        //分页
+    //分页
     function paging(callback, page) {
             var loading = document.getElementById('loading');
             loading.style.visibility = 'visible';
@@ -51,7 +51,7 @@ app.controller('ContentController', function($scope, $http) {
                 }
             });
         }
-        //及时显示用户微言 & 隐藏所有的评论DIV
+    //及时显示用户微言 & 隐藏所有的评论DIV
     initItems(function() {
         var commentDiv = document.getElementsByClassName('item_comment');
         for (var i = 0; i < commentDiv.length; i++) {

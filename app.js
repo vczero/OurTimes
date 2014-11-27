@@ -39,7 +39,7 @@ app.use(log4js.connectLogger(logger, {
 
 
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'pc')));
+app.use(express.static(path.join(__dirname, 'pc-web')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 
