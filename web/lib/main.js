@@ -26,6 +26,38 @@ app.constant('ServiceConfig', {
 });
 
 //路由配置
-app.config();
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+	/*URL路由*/
+	$urlRouterProvider.otherwise("/");
+	/*状态配置*/
+	$stateProvider
+	.state('index', {
+		url: '/',
+		views: {
+			header: {
+				templateUrl: 'views/header.html',
+				controller: ''
+			},
+			container: {
+				templateUrl: '',
+				controller: ''
+			}
+		}
+	});
+	
+}]);
 
+//JSON parse
+app.config(['$httpProvider', function($httpProvider){
+	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+	$httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+    $httpProvider.defaults.transformRequest = [function(data) {
+  		var obj = [];
+  		for(var key in data){
+  			obj.push(key + '=' + data[key]);
+  		}
+  		return obj.join('&');
+  	}];
+	 
+}]);
 
