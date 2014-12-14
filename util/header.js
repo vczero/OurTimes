@@ -1,3 +1,7 @@
+/**
+ * header模块提供跨域服务请求。
+ * @module header
+ */
 module.exports = {
 	set: function(req, res) {
 		res.setHeader('Access-Control-Allow-Origin', '*');

@@ -204,7 +204,13 @@ app.controller('UserController', function($scope, $http){
                 });
             });
         });
-    }
+    };
+
+   
+    $scope.searchByName = function(){
+        var name = document.getElementById('contact_search_input').value;
+        
+    };
 });
 
 

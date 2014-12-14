@@ -1,6 +1,8 @@
+/**
+ * mcrupto模块提供加密功能，主要用户密码加密。
+ * @module mcrypto
+ */
 var crypto = require('crypto');
-
-
 module.exports = {
     //创建随机密码
     createPassword: function() {

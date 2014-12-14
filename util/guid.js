@@ -1,3 +1,7 @@
+/**
+ * guid模块提供生成唯一值ID，用于token生成等。
+ * @module guid
+ */
 module.exports = {
 	create: function() {
 		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

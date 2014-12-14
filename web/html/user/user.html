@@ -39,7 +39,7 @@
 		<div id="user_map" ></div>
 		<div id="user_div">
 			<div id="user_avatar" class="user_avatar_img mlrA">
-				<img  class="user_avatar_img" ng-src="{{user.avatar}}" />
+				<img  class="user_avatar_img" ng-src="{{user.avatar}}" src="../../img/avat.jpg" />
 			</div>
 			<div>
 				<form name="imgForm" action="/upload/img/" enctype="multipart/form-data" method="post">
@@ -92,8 +92,8 @@
 			</div>
 		</div>
 		<div id="user_search">
-			<input type="text" id="contact_search_input" placeholder="请输入姓名"/>
-			<input type="button"  value="搜索" />
+			<input type="text" id="contact_search_input" placeholder="请输入姓名/昵称"/>
+			<input type="button"  value="搜索" ng-click="searchByName()"/>
 		</div>
 
 

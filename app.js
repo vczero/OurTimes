@@ -3,10 +3,10 @@ var express = require('express'),
     path = require('path'),
     log4js = require('log4js'),
     router = require('./lib/router'),
-    config = require('./config.json');
-app = express();
+    config = require('./config.json'),
+	app = express();
 
-//设立服务端口
+
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.favicon('./favicon.ico'));
