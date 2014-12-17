@@ -1,76 +1,55 @@
 <!--左边-->
-<div class="fl index_container_left">
-	<div class="index_wei_item">
+<div class="fl index_container_left" ng-controller="WeiboController">
+	<div class="index_wei_item" ng-repeat="item in items">
 		<!--描述：头像和微博-->
 		<div class="index_wei_item_picH">
 			<div class="index_wei_item_picH index_wei_item_picW fl">
-				<img src="img/avat.jpg" class="index_wei_item_picH index_wei_item_picW"/>
+				<img ng-src="{{item.avatar}}" class="index_wei_item_picH index_wei_item_picW ml3"/>
 			</div>
 			<div class="index_wei_item_picH fl">
-				<span>CCXXCCXXCCXX我发表个看XCCXX12e334eCCXXCCCXXCCXXCCXXCCXCCXXCCXXCCXXCCXXCCXXCCXXCCXX12e334eCCXXCCCXXCCXXCCXXCCXXCCXXCCXXCCXX12e334eCCXXCCCXXCCXXCCXXCCXXCCXXCCXXCCXX12e334eCCXXCXCCXXCCXXCCXX12e334eCCXXCCCXXCCXXCCXXCCXXCCXXCCXXCCXX12e334eCCXXCCXXCCXXCCXXCCXXCCXXCCXXCCXXCCXXCCXX</span>
+				<span ng-bind="item.content"></span>
 			</div>
 		</div>
 		<!--描述：作者 时间 标签-->
-		<div class="index_wei_item_time_tag">
-			<span>屋瓦</span>
-			<span>2014-12-16 12:19:23</span>
+		<div class="index_wei_item_time_tag ml3">
+			<span ng-bind="item.realname || item.nickname || item.eamil"></span>
+			<span ng-bind="item.time"></span>
 			<span>
 				<img src="img/lable.png"/>
-				开心，忧伤
+				<span ng-bind="item.tag"></span>
 			</span>
 		</div>
 		<!--描述：评论 点赞按钮-->
-        <div class="index_wei_item_count">
+        <div class="index_wei_item_count ml3">
         	<div class="fl">
-        		<span>评论：30</span>
-        		<span>赞：20</span>
+        		<span>评论：<span ng-bind="item.comments.length"></span></span>
+        		<span>赞：<span ng-bind="item.zans.length"></span></span>
         	</div>
         	<div class="fr">
-        		<span>
+        		<span ng-click="zan(item)">
         			<img src="img/zan.png"/>
         		</span>
-        		<span>
+        		<span ng-click="comment(item)">
         			<img src="img/pinglun2.png"/>
         		</span>
         	</div>
         </div>
         <!--描述：评论输入框-->
-        <div class="index_wei_item_edit">
+        <div class="index_wei_item_edit ml3" ng-if="item.isShowComDiv">
         	<div><textarea></textarea></div>
         	<div>评论</div>
         </div>
+        
         <!--描述：评论内容-->
         <div class="index_wei_item_comment">
-        	<div class="index_wei_item_user_c">
+        	<div class="index_wei_item_user_c" ng-repeat="comment in item.comments">
         		<div class="fl">
         			<img src="img/avat.jpg"/>
         		</div>
         		<div class="fl">
-        			<div>小明</div>
-        			<div>好玩哈哈哈</div>
-        			<div>2014-12-12</div>
-        		</div>
-        	</div>
-        	
-        	<div class="index_wei_item_user_c">
-        		<div class="fl">
-        			<img src="img/avat.jpg"/>
-        		</div>
-        		<div class="fl">
-        			<div>小明</div>
-        			<div>好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈好玩哈哈哈</div>
-        			<div>2014-12-12</div>
-        		</div>
-        	</div>
-        	
-        	<div class="index_wei_item_user_c">
-        		<div class="fl">
-        			<img src="img/avat.jpg"/>
-        		</div>
-        		<div class="fl">
-        			<div>小明</div>
-        			<div>好玩哈哈哈</div>
-        			<div>2014-12-12</div>
+        			<div ng-bind="comment.realname || comment.nickname || comment.email"></div>
+        			<div ng-bind="comment.comment"></div>
+        			<div ng-bind="comment.time"></div>
         		</div>
         	</div>
         </div>

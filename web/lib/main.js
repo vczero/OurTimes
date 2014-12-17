@@ -43,12 +43,12 @@ app.config(['$httpProvider', function($httpProvider){
 //路由配置
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	/*URL路由*/
-	$urlRouterProvider.otherwise("/index");
+	$urlRouterProvider.otherwise("/");
 	/*状态配置*/
 	$stateProvider
 	//首页
     .state('index',{
-    	url: '/index',
+    	url: '/',
     	views:{
     		'': {
     			templateUrl: 'views/index.html',
@@ -59,7 +59,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		},
     		'weibo@index':{
     			templateUrl: 'views/weibo.html',
-    			controller: ''
+    			controller: 'WeiboController'
     		},
     		'article@index':{
     			templateUrl: 'views/article.html',
