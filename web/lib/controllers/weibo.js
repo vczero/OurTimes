@@ -19,11 +19,21 @@ app.controller('WeiboController', function($http, $scope, ServiceConfig, Time){
         
     });
     
+    //点赞
     $scope.zan = function(item){
     	console.log(item);
     };
     
+    //评论框弹出
     $scope.comment = function(item){
-    	item.isShowComDiv = true;
+    	if(!item.isShowComDiv){
+    		item.isShowComDiv = true;
+    	}else{
+    		item.isShowComDiv = false;
+    	}	
+    };
+    //增加评论
+    $scope.addComment = function(item){
+    	item.isShowComDiv = false;
     };
 });
