@@ -1,0 +1,280 @@
+body{
+	margin:0;
+	width:100%;
+	height:100%;
+	font-family:'georgia', "微软雅黑","Overlock", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	font-size:12px;
+	background-color: #F2F2F2;
+}
+
+.text_center{
+	text-align:center;
+}
+
+.boder_radius{
+	border-radius:3px;
+}
+
+.fl{
+	float:left;
+}
+
+.fr{
+	float: right;
+}
+
+.inline_block{
+	display:inline-block;
+}
+
+.text_liter_color{
+	color:#B3B3B3;
+}
+
+.width980{
+	width: 980px;
+}
+
+.FFFcolor{
+	color:#FFF;
+}
+
+.center{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.font18{
+	font-size:18px;
+}
+
+/*--------------------------------------------------------------
+ * 
+ *  header
+ * 
+--------------------------------------------------------------*/
+header{
+	width:100%;
+	height:44px;
+	line-height: 44px;
+	background-color:#000000;
+	position: fixed;
+}
+
+header ul{
+	list-style:none;
+}
+header ul li{
+	float: left;
+	font-size:15px;
+	margin-right:22px;
+	margin-top:-10px;
+}
+
+header ul li:hover{
+	cursor:pointer;
+	color:#3B78D4;
+}
+
+header .login{
+	font-size:13px;
+	margin-right:10px;
+	color:#7A95F5;
+}
+/*--------------------------------------------------------------
+ * 
+ *  index container
+ * 
+--------------------------------------------------------------*/
+.index_container{
+	min-height:450px;
+	border:1px solid red;
+}
+.index_container>div{
+	height:60px;
+	width:100%;
+}
+
+/*left*/
+.index_container_left{
+	border:1px solid red;
+	width:630px;
+}
+
+.index_wei_item{
+	background-color:#FFF;
+	width:100%;
+	min-height:121px;
+	border-radius:3px;
+}
+
+
+.index_wei_item_picH{
+	height:50px;
+	margin-top: 5px;
+}
+
+.index_wei_item_picH span{
+	display:inline-block;
+	max-width:565px;
+	margin-top:10px;
+	margin-left:5px;
+	word-wrap: break-word;
+	max-height:40px;
+	overflow:hidden;
+	line-height:20px;
+}
+
+.index_wei_item_picW{
+	width:50px;
+	border-radius:2px;
+}
+
+.index_wei_item_time_tag{
+	margin-top:15px;
+	height:30px;
+	width: 100%;
+	line-height:30px;
+}
+.index_wei_item_time_tag span{
+	margin-right:5px;
+}
+
+.index_wei_item_time_tag img{
+	width:14px;
+	height:14px;
+}
+
+.index_wei_item_time_tag span:nth-child(1){
+	color:#E66C4B;
+}
+
+.index_wei_item_time_tag span:nth-child(2){
+	color:#C5C5C7;
+}
+
+.index_wei_item_time_tag span:nth-child(3){
+	color:#B3B3B3;
+}
+
+.index_wei_item_count{
+	width: 100%;
+	height:23px;
+	color: #6D8BA7;
+}
+
+.index_wei_item_count img{
+	margin-top:2px;
+	height:18px;
+	margin-right:7px;
+}
+
+.index_wei_item_count img:hover{
+	cursor:pointer;
+}
+
+.index_wei_item_edit{
+	width: 100%;
+	height:80px;
+}
+
+.index_wei_item_edit textarea{
+	width:98%;
+	height:45px;
+	margin-left:2px;
+	border:1px solid #E6E6E6;
+	outline:none;
+	resize:none;
+}
+.index_wei_item_edit div:nth-child(2){
+	height:26px;
+	width:50px;
+	float:right;
+	margin-right:4px;
+	color:#FFF;
+	text-align:center;
+	line-height:26px;
+	border-radius:2px;
+	background-color:#5CAAE6;
+	cursor:pointer;
+}
+
+.index_wei_item_comment{
+	width:100%;	
+}
+
+.index_wei_item_comment>div{
+	margin-top:4px;
+	width:100%;
+	border-top:1px dashed #DDDDDD;
+}
+
+.index_wei_item_user_c{
+	height:60px;
+	width: 100%;
+}
+
+.index_wei_item_user_c>div:nth-child(1){
+	margin-top:5px;
+	width:45px;
+	height:45px;
+	margin-left:3px;
+}
+
+.index_wei_item_user_c>div img{
+	width:45px;
+	height:45px;
+	border-radius:2px;
+}
+
+.index_wei_item_user_c>div:nth-child(2){
+	margin-top:5px;
+	margin-left:5px;
+}
+.index_wei_item_user_c>div:nth-child(2)>div:nth-child(1){
+	color:#E66C4B;	
+}
+
+.index_wei_item_user_c>div:nth-child(2)>div:nth-child(2){
+	width:565px;
+	height：20px;
+	line-height:20px;
+	white-space:nowrap;
+	overflow:hidden;
+}
+
+.index_wei_item_user_c>div:nth-child(2)>div:nth-child(3){
+	color:#C5C5C7;	
+}
+
+/*right*/
+
+.index_container_right{
+	width:340px;
+}
+
+.index_container_right>div{
+	width:100%;
+}
+.index_container_right>div>img{
+	border-radius:3px;
+	width:339px;
+	height:221px;
+}
+.index_container_right div span{
+	display:block;
+	position:relative;
+	bottom:39px;
+	line-height:37px;
+	z-index:2;
+	width:100%;
+	height:37px;
+	background-color: #000000;
+	opacity:0.55;
+	font-size:13px;
+}
+
+
+
+
+

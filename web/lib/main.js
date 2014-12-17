@@ -25,27 +25,6 @@ app.constant('ServiceConfig', {
 	user_ben_update: 'http://127.0.0.1:3000/user/updateBen'
 });
 
-//路由配置
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	/*URL路由*/
-	$urlRouterProvider.otherwise("/");
-	/*状态配置*/
-	$stateProvider
-	.state('index', {
-		url: '/',
-		views: {
-			header: {
-				templateUrl: 'views/header.html',
-				controller: ''
-			},
-			container: {
-				templateUrl: '',
-				controller: ''
-			}
-		}
-	});
-	
-}]);
 
 //JSON parse
 app.config(['$httpProvider', function($httpProvider){
@@ -60,4 +39,35 @@ app.config(['$httpProvider', function($httpProvider){
   	}];
 	 
 }]);
+
+//路由配置
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+	/*URL路由*/
+	$urlRouterProvider.otherwise("/index");
+	/*状态配置*/
+	$stateProvider
+	//首页
+    .state('index',{
+    	url: '/index',
+    	views:{
+    		'': {
+    			templateUrl: 'views/index.html',
+    		},
+    		'header@index':{
+    			templateUrl: 'views/header.html',
+    			controller: ''
+    		},
+    		'weibo@index':{
+    			templateUrl: 'views/weibo.html',
+    			controller: ''
+    		},
+    		'article@index':{
+    			templateUrl: 'views/article.html',
+    			controller: ''
+    		}
+    	}
+    });
+
+}]);
+
 
