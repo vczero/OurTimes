@@ -1,0 +1,28 @@
+
+<section class="login_section" ng-controller="LoginController">
+	<div class="login_div center">
+		<div class="login_div_icon center">
+			<img class="login_div_icon" src="img/logo2.png"/>
+		</div>
+		<div class="login_div_input center">
+			<input type="email"  placeholder="请输入邮箱" ng-model="email"/>
+		</div>
+		<div class="login_div_span center">
+			<span ng-if="isENull">请输入邮箱</span>
+		</div>
+		
+		<div class="login_div_input center">
+			<input type="password" placeholder="请输入密码" ng-model="password" />
+		</div>
+		<div  class="login_div_span center">
+			<span ng-if="isPNull">请输入密码</span>
+		</div>
+		
+		<div class="login_btn center" ng-click="login(email, password)">登录</div>
+		<div class="login_div_link center">
+			<div class="fl">忘记密码？</div>
+			<div class="fr">没有账号，立即注册</div>
+		</div>
+	</div>
+</section>
+

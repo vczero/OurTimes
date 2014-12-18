@@ -1,16 +1,22 @@
 
-<header>
+<header ng-controller="HeaderController">
 	<div class="width980 center">
 		<div class="fl FFFcolor font18">OURTimes</div>
 		<div class="fr FFFcolor">
 			<ul>
-				<li>首页</li>
-				<li>通讯录</li>
+				<li><a href="#/">首页</a></li>
+				<li><a href="#/contacts">通讯录</a></li>
 				<li>个人中心</li>
 				<li>文章欣赏</li>
 				<li>About</li>
-				<li class="login">登录</li>
-				<li class="login">注册</li>
+				<li class="login" ng-if="!isLogined"><a href="#/login">登录</a></li>
+				<li class="login" ng-if="!isLogined"><a href="#/register">注册</a></li>
+				
+				<li class="login" ng-if="isLogined">欢迎你,</li>
+				<li class="login" ng-if="isLogined">
+					<span ng-bind="username"></span>
+				</li>
+				<li class="login" ng-if="isLogined" ng-click="quit()">退出</li>
 			</ul>
 		</div>
 	</div>

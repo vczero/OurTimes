@@ -17,6 +17,11 @@ body{
 	border-radius:3px;
 }
 
+
+a{
+	text-decoration:none;
+}
+
 .fl{
 	float:left;
 }
@@ -79,10 +84,26 @@ header ul li:hover{
 	color:#3B78D4;
 }
 
+header ul li a:link{
+	color:#FFF;
+}
+
+header ul li a:visited{
+	color:#FFF;
+}
+
 header .login{
 	font-size:13px;
 	margin-right:10px;
 	color:#7A95F5;
+}
+
+header .login a:link{
+	color: #7A95F5;
+}
+
+header .login a:visited{
+	color: #7A95F5;
 }
 /*--------------------------------------------------------------
  * 
@@ -277,8 +298,258 @@ header .login{
 	opacity:0.55;
 	font-size:13px;
 }
+/**************login***************/
+.login_section{
+	width:360px;
+	height:560px;
+	width:100%;
+}
+.login_div{
+	width:360px;
+	height:460px;
+	margin-top:100px;
+	border:1px solid #DDDDDD;
+	background-color:#FFF;
+}
 
+.login_div>div:nth-child(1){
+	margin-top:50px;
+}
 
+.login_div_icon{
+	width:80px;
+	height:80px;
+}
 
+.login_div input{
+	width:300px;
+	height:35px;
+	border:1px solid #DDDDDD;
+	border-radius:2px;
+	outline:none;
+	padding-left:25px;
+	box-sizing: border-box;
+}
+
+.login_div input[type='email']{
+	background: url(../img/user.png) no-repeat;
+}
+
+.login_div input[type='password']{
+	background: url(../img/psw.png) no-repeat;
+}
+
+.login_div_input{
+	width:300px;
+	height:35px;
+	margin-top:10px;
+}
+
+.login_div_span{
+	width:300px;
+}
+
+.login_div_span span{
+	color:red;
+	margin-top:5px;
+}
+
+.login_div .login_btn{
+	width:300px;
+	height:50px;
+	background-color:#04C3F0;
+	color:#FFF;
+	font-size:16px;
+	line-height:50px;
+	border-radius:3px;
+	margin-top:20px;
+	cursor:pointer;
+	text-align:center;
+}
+.login_div_link{
+	color:#5C7EF6;
+	width:300px;
+	margin-top:20px;
+	font-size:12px;
+}
+
+.login_div_link div{
+	cursor:pointer;
+}
+
+/*footer*/
+.index_footer{
+	width:110px;
+	font-size:15px;
+	line-height:50px;
+	text-align:center;
+}
+
+/*--------------------------------------------------------------
+ * 
+ *  contacts
+ * 
+--------------------------------------------------------------*/
+.contacts_userinfo{
+	position:absolute;
+	top:44px;
+	left:0;
+	bottom:0;
+	width:350px;
+	background-color:#FFF;
+	border-right:1px solid #C8C8C8;
+}
+
+.mapDiv{
+	position:absolute;
+	top:44px;
+	bottom:0;
+	right:0;
+	left:352px;
+}
+
+.contacts_search{
+	position:absolute;
+	right:10px;
+	top:85px;
+	width:320px;
+	height:250px;
+}
+
+.contacts_search .searchInput{
+	margin-top: 5px;
+}
+
+.searchInput input{
+	height:35px;
+	width:250px;
+	border:1px solid #E1E1E1;
+	border-radius:2px;
+	padding-left:5px;
+	outline:none;
+	font-size:14px;
+}
+
+.searchButton{
+	height:38px;
+	width:57px;
+	background-color:#00A1D9;
+	border-radius:2px;
+	text-align:center;
+	line-height:38px;
+	font-size:14px;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.contacts_search_user{
+	margin-top:50px;
+	border:1px solid #E4E3E3;
+	height:200px;
+	width:320px;
+	background-color:#FFF;
+	opacity:0.9;
+}
+
+.contacts_search_user>div:nth-child(1){
+	width:200px;
+	height:150px;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+.contacts_search_user>div:nth-child(2){
+	width:100px;
+	height:150px;
+}
+
+.contacts_search_user>div:nth-child(2) img{
+	margin-top:20px;
+	margin-left:20px;
+	width:80px;
+	height:80px;
+}
+
+.contacts_search_title{
+	font-size:15px;
+}
+
+.contacts_search_value{
+	color:#98958F;over-flow:hidden;
+}
+
+.contacts_search_sign{
+	margin-left:10px;
+	height:36px;
+}
+
+.contacts_avatar{
+	width:100px;
+	height:100px;
+	border-radius:50px;
+	margin-top:14px;
+	border:1px solid #DDD;
+}
+
+.contacts_upload{
+	height:25px;
+	width:65px;
+	color:#FFF;
+	text-align:center;
+	line-height:25px;
+	background-color:#00A1D9;
+	margin-top:10px;
+	border-radius:2px;
+}
+.contacts_hr{
+	margin-top:15px;
+	height: 2px;
+	width:320px;
+	border-bottom:1px dashed #E1E1E1;
+}
+
+.contacts_form div{
+	margin-top:10px;
+	margin-left:30px;
+}
+
+.contacts_form input[type='text']{
+	height:28px;
+	width:176px;
+	border:1px solid #DCDCDC;
+	outline:none;
+	padding-left:5px;
+	box-sizing: border-box;
+}
+
+.contacts_form input[type='button']{
+	height:26px;
+	width:63px;
+	color:#FFF;
+	box-sizing: border-box;
+	border:0;
+	outline:none;
+	text-align:center;
+	line-height:26px;
+	background-color:#00A1D9;
+	border-radius:2px;
+	cursor:pointer;
+}
+.contacts_save{
+	height:26px;
+	margin-top:8px;
+	width:63px;
+	text-align:center;
+	line-height:26px;
+	background-color:#00A1D9;
+	border-radius:2px;
+	cursor:pointer;
+	color:#FFF;
+}
+
+.contacts_tip{
+	margin-left:10px;margin-top:10px;
+	font-size:12px;
+}
 
 

@@ -1,5 +1,5 @@
 //获取module
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ngCookies']);
 
 //初始化配置
 app.run(['$rootScope', function($rootScope){
@@ -47,7 +47,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	/*状态配置*/
 	$stateProvider
 	//首页
-    .state('index',{
+    .state('index', {
     	url: '/',
     	views:{
     		'': {
@@ -55,6 +55,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		},
     		'header@index':{
     			templateUrl: 'views/header.html',
+    			controller: 'HeaderController'
+    		},
+    		'footer@index':{
+    			templateUrl: 'views/footer.html',
     			controller: ''
     		},
     		'weibo@index':{
@@ -63,6 +67,52 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		},
     		'article@index':{
     			templateUrl: 'views/article.html',
+    			controller: ''
+    		}
+    	}
+    })
+    
+    .state('login', {
+    	url: '/login',
+    	views: {
+    		'': {
+    			templateUrl: 'views/login.html',
+    			controller: 'LoginController'
+    		}
+    	}
+    })
+    
+    .state('register', {
+    	url: '/register',
+    	views: {
+    		'': {
+    			templateUrl: 'views/register.html',
+    			controller: 'RegisterController'
+    		}
+    	}
+    })
+    
+   .state('contacts', {
+    	url: '/contacts',
+    	views: {
+    		'': {
+    			templateUrl: 'views/contacts.html',
+    			controller: ''
+    		},
+    		'header@contacts': {
+    			templateUrl: 'views/header.html',
+    			controller: 'HeaderController'
+    		},
+    		'userinfo@contacts': {
+    			templateUrl: 'views/userinfo.html',
+    			controller: ''
+    		},
+    		'map@contacts': {
+    			templateUrl: 'views/map.html',
+    			controller: 'MapController'
+    		},
+    		'search@contacts': {
+    			templateUrl: 'views/search.html',
     			controller: ''
     		}
     	}

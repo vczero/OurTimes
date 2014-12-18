@@ -1,4 +1,9 @@
-app.controller('LoginController', function($scope, $http){
+
+//这里需要将type=email，起到过滤作用
+app.controller('LoginController', function($scope, $http, $cookieStore, $location, ServiceConfig){
+	$scope.isENull = false;
+	$scope.isPNull = false;
+	
 	$scope.login = function(){
 		var email = $scope.email,
 			password = $scope.password,
@@ -6,12 +11,24 @@ app.controller('LoginController', function($scope, $http){
 				'email': email,
 				'password': password
 			};
-		$http.post('http://127.0.0.1:3000/user/login', data).success(function(data){
+		if(email){
+			$scope.isENull = false;
+		}
+		if(password){
+			$scope.isPNull = false;
+		}
+		if(!email){
+			$scope.isENull = true;
+		}
+		if(!password){
+			$scope.isPNull = true;
+		}
+		$http.post(ServiceConfig.user_login, data).success(function(data){
 			if(data.status){
-				document.cookie = 'user=' + JSON.stringify(data) + ' ;path=/';
-				location.href = './../index/index.html';
+				$cookieStore.put('user', data);
+				$location.path('#/');
 			}else{
-				alert('登录失败');
+				//登录失败
 			}
 		});
 	};
