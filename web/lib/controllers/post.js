@@ -1,4 +1,4 @@
-app.controller('PostWeiboController', function($http, $scope, $cookieStore, ServiceConfig){
+app.controller('PostWeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig){
 	$scope.isShowPanel = false;
 	
 	//控制发表微博的panel显示与隐藏
@@ -17,10 +17,14 @@ app.controller('PostWeiboController', function($http, $scope, $cookieStore, Serv
 		    tags = [];
 		if(!content){
 			//弹出提示，发表的内容不能为空
+			Tip.setTip(200, 350, null, null, 260, 80, '哥哥，无字天书是不能发表的哦~~', 1);
+            $timeout(Tip.hideTip, 2300);
 			return '';
 		}
 		if(!user){
 			//弹出提示，请先登录
+			Tip.setTip(200, 350, null, null, 260, 80, '发表微博，起码登录一下吧~~', 1);
+            $timeout(Tip.hideTip, 2300);
 			return '';
 		}
 		for(var tag in tagArr){
@@ -38,9 +42,15 @@ app.controller('PostWeiboController', function($http, $scope, $cookieStore, Serv
         	if(data.status){
         		$scope.$emit('weiboDataUp', data);
         		$scope.isShowPanel = false;
+        		Tip.setTip(200, 350, null, null, 260, 80, '您发表的内容实在是太精彩了！', 1);
+            	$timeout(Tip.hideTip, 2300);
         	}else{
-        		
+        		Tip.setTip(200, 350, null, null, 260, 80, '服务君，老大喊你回来干活~', 1);
+            	$timeout(Tip.hideTip, 2300);
         	}
+        }).error(function(){
+        	Tip.setTip(200, 350, null, null, 260, 80, '服务君该嗑药了，都出错了~', 1);
+            $timeout(Tip.hideTip, 2300);
         });
 	};
 	

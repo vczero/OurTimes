@@ -18,6 +18,8 @@ app.service('WeiboData', function($http, Time, ServiceConfig){
 		        	items = items;
 		        }
 		        callback(items, data.pageSize);
+		    }).error(function(){
+		    	callback([], 0);
 		    });
     	}
     };

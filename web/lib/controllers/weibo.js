@@ -1,5 +1,5 @@
 
-app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceConfig, Time, WeiboData){
+app.controller('WeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData){
 	//初始化微博列表    
     WeiboData.getItems(0, function(data, pageSize){
     	if(data.length){
@@ -10,7 +10,8 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
     		//微博10条记录
     		$scope.items = data;
     	}else{
-    		//弹出错误信息
+    		Tip.setTip(100, 200, null, null, 260, 80, '服务君感冒了,请刷新页面重试...', 1);
+    		$timeout(Tip.hideTip, 3000);
     	}
     });
     
@@ -35,17 +36,24 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
                 if (data.status) {
                     if (data.zans) {
                         item.zans = data.zans;
-                        //谢谢您的打赏~~
+                        Tip.setTip(200, 350, null, null, 240, 80, '谢谢您的打赏~~~~', 1);
+    					$timeout(Tip.hideTip, 2300);
                     } else {
-                        //伦家怎么好意思再收呢！
+                        Tip.setTip(200, 350, null, null, 240, 80, '伦家怎么好意思再收呢！', 1);
+    					$timeout(Tip.hideTip, 2300);
                     }
 
                 } else {
-                    //不好意思，打赏失败了...
+                	Tip.setTip(200, 350, null, null, 240, 80, '不好意思，打赏失败了...', 1);
+                    $timeout(Tip.hideTip, 2300);
                 }
+            }).error(function(){
+            	Tip.setTip(200, 350, null, null, 260, 80, '服务君感冒了,请刷新页面重试...', 1);
+                $timeout(Tip.hideTip, 2300);
             });
     	}else{
-    		//请先登录
+    		Tip.setTip(200, 350, null, null, 240, 80, '只有登录了，才能点赞哦~~~', 1);
+            $timeout(Tip.hideTip, 2300);
     	}
     };
     
@@ -75,16 +83,23 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
                         time: Time.formatTime(data.time)
                     });
                     document.getElementById('postweibo').value = '';
+                    Tip.setTip(200, 350, null, null, 240, 80, '您的评论实在是精彩了~~', 1);
+                    $timeout(Tip.hideTip, 2300);
             	}else{
-            		//评论失败：服务出现故障
+            		Tip.setTip(200, 350, null, null, 240, 80, '不好意思，评论失败了...', 1);
+                    $timeout(Tip.hideTip, 2300);
             	}
+            }).error(function(){
+            	Tip.setTip(200, 350, null, null, 240, 80, '服务君感冒了，评论失败了...', 1);
+                $timeout(Tip.hideTip, 2300);
             });
     	}else{
-    		//评论失败：原因未登录 或者内容为空
+    		Tip.setTip(200, 350, null, null, 280, 80, '请登录，评论的内容不能为空~~', 1);
+            $timeout(Tip.hideTip, 2300);
     	}
     };
     
-    
+    //前一页
     $scope.prePage = function(){
     	$scope.currentPage = $scope.currentPage - 1;
     	if($scope.currentPage >= 0){
@@ -92,33 +107,34 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
 		    	if(data.length){
 		    		$scope.items = data;
 		    	}else{
-		    		//弹出错误信息
+		    		Tip.setTip(200, 350, null, null, 260, 80, '君别着急，现在都查不出数据了...', 1);
+                    $timeout(Tip.hideTip, 2300);
 		    	}
 		    });
     	}else{
     		//还原点击减量
     		$scope.currentPage = $scope.currentPage + 1;
-    		//已经是第一页提醒
-    		
+    		Tip.setTip(200, 350, null, null, 260, 80, '君别翻旧账了，这是第一页啦~~~', 1);
+            $timeout(Tip.hideTip, 2300);
     	}
     };
-    
-     $scope.nextPage = function(){
+    //下一页
+    $scope.nextPage = function(){
     	$scope.currentPage = $scope.currentPage + 1;
-    	console.log($scope.currentPage);
     	if($scope.currentPage < $scope.pageSize){
     		WeiboData.getItems($scope.currentPage * 10, function(data){
 		    	if(data.length){
 		    		$scope.items = data;
 		    	}else{
-		    		//弹出错误信息
+		    		Tip.setTip(200, 350, null, null, 260, 80, '君别着急，现在都查不出数据了...', 1);
+                    $timeout(Tip.hideTip, 2300);
 		    	}
 		    });
     	}else{
     		//还原点击增量
     		$scope.currentPage = $scope.currentPage -1;
-    		//已是最后一页提醒
+    		Tip.setTip(200, 350, null, null, 290, 80, '底都被你掏空了，这是最后一页啦~~~', 1);
+            $timeout(Tip.hideTip, 2300);
     	}
-    	
     };
 });
