@@ -16,8 +16,10 @@
 	    if(typeof bottom === 'number'){
 	    	 div.style.bottom = bottom + '100px';
 	    }
-	   
-	   	div.id = '__vczero_vczero_tip';
+	    
+	    
+	    div.id = '__vczero_vczero_tip';
+	    div.style.zIndex = '100';
 	    div.style.height = height + 'px';
 	    div.style.width = width + 'px';
 	    div.style.backgroundColor ='#000';

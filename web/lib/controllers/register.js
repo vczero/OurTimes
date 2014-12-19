@@ -1,15 +1,20 @@
-app.controller('RegisterController', function($scope, $http, $cookieStore, $location, ServiceConfig){
+app.controller('RegisterController', function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig){
 	
 	$scope.register = function(){
 		var email = $scope.email,
 			password = $scope.password,
-			repeatpassword = $scope.re_password;
+			repeatpassword = $scope.re_password,
+			width = window.innerWidth;
 
 		if(!email || !password || !repeatpassword){
-			return alert('不能为空');
+			Tip.setTip(250, (parseInt(width) - 240)/2, null, null, 260, 80, '邮箱、密码不能为空....', 1);
+			$timeout(Tip.hideTip, 3000);
+			return;
 		}
 		if(password !== repeatpassword){
-			return alert('输入的密码不一致');
+			Tip.setTip(250, (parseInt(width) - 240)/2, null, null, 260, 80, '两次输入密码不一致呀~~', 1);
+			$timeout(Tip.hideTip, 3000);
+			return;
 		}
 		
 		var data = {
@@ -24,8 +29,12 @@ app.controller('RegisterController', function($scope, $http, $cookieStore, $loca
 				console.log(data);
 				$location.path('#/');
 			}else{
-				alert('注册失败，请重试');
+				Tip.setTip(250, (parseInt(width) - 240)/2, null, null, 260, 80, '注册失败，请重试~~', 1);
+				$timeout(Tip.hideTip, 3000);
 			}
+		}).error(function(){
+			Tip.setTip(250, (parseInt(width) - 240)/2, null, null, 260, 80, '服务君感冒了，紧急修复中...', 1);
+			$timeout(Tip.hideTip, 3000);
 		});
 	};
 	

@@ -19,13 +19,13 @@ app.controller('PostWeiboController', function($http, $scope, $cookieStore, $tim
 			//弹出提示，发表的内容不能为空
 			Tip.setTip(200, 350, null, null, 260, 80, '哥哥，无字天书是不能发表的哦~~', 1);
             $timeout(Tip.hideTip, 2300);
-			return '';
+			return;
 		}
 		if(!user){
 			//弹出提示，请先登录
 			Tip.setTip(200, 350, null, null, 260, 80, '发表微博，起码登录一下吧~~', 1);
             $timeout(Tip.hideTip, 2300);
-			return '';
+			return;
 		}
 		for(var tag in tagArr){
 			if(tagArr[tag])
