@@ -1,30 +1,35 @@
 
 <section class="login_section" ng-controller="RegisterController">
+	<form name="loginForm">
 	<div class="login_div center">
 		<div class="login_div_icon center">
 			<img class="login_div_icon" src="img/logo2.png"/>
 		</div>
 		<div class="login_div_input center">
-			<input type="email"  placeholder="请输入邮箱" ng-model="email"/>
+			<input type="email" name="email"  placeholder="请输入邮箱" ng-model="email" required/>
 		</div>
 		<div class="login_div_span center">
-			<!--<span>请输入邮箱</span>-->
+			<span class="error" ng-show="loginForm.email.$error.required">邮箱不能为空!</span>
 		</div>
-		<div class="login_div_input center">
-			<input type="password" placeholder="请输入密码" ng-model="password" />
-		</div>
-		<div  class="login_div_span center">
-			<!--<span>请输入密码</span>-->
+		<div class="login_div_span center">
+			<span class="error" ng-show="loginForm.email.$error.email">不是合法的邮箱!</span>
 		</div>
 		
 		<div class="login_div_input center">
-			<input type="password" placeholder="请确认密码" ng-model="re_password" />
+			<input type="password" name="password" placeholder="请输入密码" ng-model="password" maxlength="20"/>
 		</div>
-		
+		<div class="login_div_span center">
+			<span class="error" ng-show="loginForm.password.$error.maxlength">密码不能超过20个字符!</span>
+		</div>
+		<div class="login_div_input center">
+			<input type="password" name="re_password" placeholder="请确认密码" ng-model="re_password" maxlength="20"/>
+		</div>
+
 		<div class="login_btn center" ng-click="register()">登录</div>
 		<div class="login_div_link center">
-			<div class="fr">已有账号，请登录</div>
+			<div class="fr" ng-click="goLogin()">已有账号，请登录</div>
 		</div>
 	</div>
+	</form>
 </section>
 

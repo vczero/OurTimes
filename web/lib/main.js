@@ -68,6 +68,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		'article@index':{
     			templateUrl: 'views/article.html',
     			controller: ''
+    		},
+    		'post@index': {
+    			templateUrl: 'views/post.html',
+    			controller: 'PostWeiboController'
     		}
     	}
     })

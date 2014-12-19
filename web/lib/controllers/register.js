@@ -28,5 +28,9 @@ app.controller('RegisterController', function($scope, $http, $cookieStore, $loca
 			}
 		});
 	};
+	
+	$scope.goLogin = function(){
+		$location.path('/login');
+	};
 
 });

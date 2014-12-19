@@ -5,7 +5,7 @@
 		<title>OURTimes</title>
 		<link href="css/index.css" type="text/css" rel="stylesheet"/>
 	</head>
-	<body>
+	<body ng-controller="RootController">
 		<div ui-view></div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
 		<script type="text/javascript" src="js/angular-ui-router.js"></script>
@@ -15,12 +15,14 @@
 		<script type="text/javascript" src="lib/main.js"></script>
 		
 		<script type="text/javascript" src="lib/services/time.js"></script>
-		<script type="text/javascript" src="lib/services/map.js"></script>
+		<script type="text/javascript" src="lib/services/weibo.js"></script>
 		
+		<script type="text/javascript" src="lib/controllers/root.js"></script>
 		<script type="text/javascript" src="lib/controllers/weibo.js"></script>
 		<script type="text/javascript" src="lib/controllers/login.js"></script>
 		<script type="text/javascript" src="lib/controllers/header.js"></script>
 		<script type="text/javascript" src="lib/controllers/register.js"></script>
 		<script type="text/javascript" src="lib/controllers/map.js"></script>
+		<script type="text/javascript" src="lib/controllers/post.js"></script>
 	</body>
 </html>

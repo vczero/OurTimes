@@ -18,6 +18,11 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
         }
     });
     
+    $scope.$on('weiboDataDown', function(e, data) {
+        $scope.items[0] = data;      
+    });
+      
+    
     //点赞
     $scope.zan = function(item){
     	var user = $cookieStore.get('user');
