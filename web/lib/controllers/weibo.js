@@ -18,8 +18,13 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
         }
     });
     
+    //对发表微博数据进行管理，置顶新发微博，减去尾部微博
     $scope.$on('weiboDataDown', function(e, data) {
-        $scope.items[0] = data;      
+    	$scope.items.unshift(data);   
+    	var n = $scope.items.length;
+    	if(n > 10){
+    		$scope.items = $scope.items.slice(0, 10);
+    	}
     });
       
     
@@ -73,7 +78,7 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
                         avatar: data.avatar,
                         time: Time.formatTime(data.time)
                     });
-                    //这一块需要清除文本框内容
+                    document.getElementById('postweibo').value = '';
             	}else{
             		//评论失败：服务出现故障
             	}

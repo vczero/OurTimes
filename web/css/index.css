@@ -191,7 +191,7 @@ header .login a:visited{
 .index_wei_item_count img{
 	margin-top:2px;
 	height:18px;
-	margin-right:7px;
+	margin-right:10px;
 }
 
 .index_wei_item_count img:hover{
@@ -204,7 +204,7 @@ header .login a:visited{
 }
 
 .index_wei_item_edit textarea{
-	width:98%;
+	width:97%;
 	height:45px;
 	margin-left:2px;
 	border:1px solid #E6E6E6;
@@ -215,7 +215,7 @@ header .login a:visited{
 	height:26px;
 	width:50px;
 	float:right;
-	margin-right:6px;
+	margin-right:10px;
 	color:#FFF;
 	text-align:center;
 	line-height:26px;
