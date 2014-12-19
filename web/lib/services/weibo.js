@@ -1,9 +1,9 @@
 
-
+//获取微博数据
 app.service('WeiboData', function($http, Time, ServiceConfig){
     return {
-    	getItems: function(callback){
-    		$http.get(ServiceConfig.wei_content).success(function(data) {
+    	getItems: function(page, callback){
+    		$http.get(ServiceConfig.wei_content + '?page=' + page).success(function(data) {
     			var items = [];
 		        if(data.status){
 		        	items = data.items;
@@ -17,16 +17,8 @@ app.service('WeiboData', function($http, Time, ServiceConfig){
 		        	}
 		        	items = items;
 		        }
-		        this._items = items;
-		        callback(_items);
+		        callback(items, data.pageSize);
 		    });
-    	},
-    	
-    	_items: '',
-    	setItem: function(item){
-    		console.log(this._items);
-    		this._items[0] = item;
     	}
-    	
     };
 });

@@ -1,21 +1,17 @@
 
-app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceConfig, Time){
-	//初始化微博列表
-	$http.get(ServiceConfig.wei_content).success(function(data) {
-        if(data.status){
-        	var items = data.items;
-        	for(var i = 0; i < items.length; i++){
-        		items[i].time = Time.formatTime(items[i].time);
-        		items[i].isShowComDiv = false;
-        		var comments = items[i].comments;
-        		for(var j = 0; j < comments.length; j++){
-        			items[i].comments[j].time = Time.formatTime(items[i].comments[j].time);
-        		}
-        	}
-        	$scope.items = items;
-        }else{
-        	//弹出框 服务不可用
-        }
+app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceConfig, Time, WeiboData){
+	//初始化微博列表    
+    WeiboData.getItems(0, function(data, pageSize){
+    	if(data.length){
+    		//第一条记录的索引
+    		$scope.currentPage = 0;
+    		//总页码
+    		$scope.pageSize = pageSize;
+    		//微博10条记录
+    		$scope.items = data;
+    	}else{
+    		//弹出错误信息
+    	}
     });
     
     //对发表微博数据进行管理，置顶新发微博，减去尾部微博
@@ -86,5 +82,43 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, ServiceC
     	}else{
     		//评论失败：原因未登录 或者内容为空
     	}
+    };
+    
+    
+    $scope.prePage = function(){
+    	$scope.currentPage = $scope.currentPage - 1;
+    	if($scope.currentPage >= 0){
+    		WeiboData.getItems($scope.currentPage * 10, function(data){
+		    	if(data.length){
+		    		$scope.items = data;
+		    	}else{
+		    		//弹出错误信息
+		    	}
+		    });
+    	}else{
+    		//还原点击减量
+    		$scope.currentPage = $scope.currentPage + 1;
+    		//已经是第一页提醒
+    		
+    	}
+    };
+    
+     $scope.nextPage = function(){
+    	$scope.currentPage = $scope.currentPage + 1;
+    	console.log($scope.currentPage);
+    	if($scope.currentPage < $scope.pageSize){
+    		WeiboData.getItems($scope.currentPage * 10, function(data){
+		    	if(data.length){
+		    		$scope.items = data;
+		    	}else{
+		    		//弹出错误信息
+		    	}
+		    });
+    	}else{
+    		//还原点击增量
+    		$scope.currentPage = $scope.currentPage -1;
+    		//已是最后一页提醒
+    	}
+    	
     };
 });

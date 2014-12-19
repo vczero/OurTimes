@@ -273,6 +273,28 @@ header .login a:visited{
 	color:#C5C5C7;	
 }
 
+.weibo_paging{
+	float:right;
+}
+.weibo_paging span{
+	display:inline-block;
+	width:60px;
+	height:25px;
+	background-color:#006FC4;
+	margin-top:10px;
+	color:#FFF;
+	border-radius:3px;
+	text-align:center;
+	line-height:25px;
+	cursor:pointer;
+}
+
+.weibo_paging span:nth-child(2){
+	width:40px;
+	background-color:#000000;
+	opacity:0.6;
+}
+
 /*right*/
 
 .index_container_right{
