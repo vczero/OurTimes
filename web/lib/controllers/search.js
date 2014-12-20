@@ -19,10 +19,10 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 	                $scope.job = '';
 	                if(users.length){
 	                	$scope.avatar = users[0].avatar;
-	                	$scope.nickname = (users[0].nickname || '').substr(0, 11);
-	                	$scope.jobAddress = (users[0].address || '').substr(0, 11);
-	                	$scope.hometown = (users[0].hometown || '').substr(0, 11);
-	                	$scope.sign = (users[0].sign || '').substr(0, 11);
+	                	$scope.nickname = getSubStr(users[0].nickname, 11);
+	                	$scope.jobAddress = getSubStr(users[0].address, 11);
+	                	$scope.hometown = getSubStr(users[0].hometown, 11);
+	                	$scope.sign = getSubStr(users[0].sign, 11);
 	                }else{
 	                	$scope.avatar = 'img/pp.png';
 	                	$scope.nickname = '放羊的娃';
@@ -43,11 +43,11 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 	                    AMap.event.addListener(marker, 'click', function(e){
 	                        var info = users[this.index];
 	                        $scope.$apply(function(){
-	                        	$scope.nickname =  (info.nickname || '').substr(0, 11);
+	                        	$scope.nickname =  getSubStr(info.nickname, 11);
 	                        	$scope.avatar = info.avatar;
-	                			$scope.jobAddress = (info.address || '').substr(0, 11);
-	                			$scope.hometown = (info.hometown || '').substr(0, 11);
-	                			$scope.sign = (info.sign || '').substr(0, 30) || '这家伙很懒，什么都没留下';
+	                			$scope.jobAddress = getSubStr(info.address, 11);
+	                			$scope.hometown = getSubStr(info.hometown, 11);
+	                			$scope.sign = getSubStr(info.sign, 30) || '这家伙很懒，什么都没留下';
 	                        });
 	                    });
 	                }
@@ -68,14 +68,14 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 				 if(data.status && data.user.length){
 	                var users = data.user;
 	                if(users.length){
-	                	$scope.realname = (users[0].realname || '').substr(0, 11);
-		                $scope.tel = (users[0].tel || '').substr(0, 11);
-		                $scope.job = (users[0].job || '').substr(0, 11);		                
-		                $scope.avatar = (users[0].avatar || '').substr(0, 11);
-		                $scope.nickname = (users[0].nickname || '').substr(0, 11);
-		                $scope.jobAddress = (users[0].address || '').substr(0, 11);
-		                $scope.hometown = (users[0].hometown || '').substr(0, 11);
-		                $scope.sign = (users[0].sign || '').substr(0, 11);	
+	                	$scope.realname = getSubStr(users[0].realname, 11);
+		                $scope.tel = getSubStr(users[0].tel, 11);
+		                $scope.job = getSubStr(users[0].job, 11);		                
+		                $scope.avatar = getSubStr(users[0].avatar, 11);
+		                $scope.nickname = getSubStr(users[0].nickname, 11);
+		                $scope.jobAddress = getSubStr(users[0].address, 11);
+		                $scope.hometown = getSubStr(users[0].hometown, 11);
+		                $scope.sign = getSubStr(users[0].sign, 11);	
 	                }else{
 	                	$scope.realname = '';
 		                $scope.tel = '';
@@ -99,14 +99,14 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 	                    AMap.event.addListener(marker, 'click', function(e){
 	                    	var info = users[this.index];
 	                    	$scope.$apply(function(){
-	                        	$scope.nickname =  (info.nickname || '').substr(0, 11);
-	                        	$scope.realname = (info.realname || '').substr(0, 11);
+	                        	$scope.nickname =  getSubStr(info.nickname, 11);
+	                        	$scope.realname = getSubStr(info.realname, 11);
 	                        	$scope.tel = info.tel || '';
-	                        	$scope.job = (info.job || '').substr(0, 11);
+	                        	$scope.job = getSubStr(info.job, 11);
 	                        	$scope.avatar = info.avatar;
-	                			$scope.jobAddress = (info.address || '').substr(0, 11);
-	                			$scope.hometown = (info.hometown || '').substr(0, 11);
-	                			$scope.sign = (info.sign || '').substr(0, 30) || '这家伙很懒，什么都没留下';
+	                			$scope.jobAddress = getSubStr(info.address, 11);
+	                			$scope.hometown = getSubStr(info.hometown, 11);
+	                			$scope.sign = getSubStr(info.sign, 30) || '这家伙很懒，什么都没留下';
 	                        });
 	                    });
 	                }
@@ -127,6 +127,44 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 	//搜索
 	$scope.goSearch = function(name){
 		//判断当前用户类型，然后根据name 或者真名搜索
+		//昵称搜索
+		if(!user || user.tag !== 'BEN'){
+			$http.get(ServiceConfig.user_common_get_nickname + '?nickname=' + name).success(function(data){
+				if(data.status){
+					$scope.avatar = data.avatar;
+	                $scope.nickname = getSubStr(data.nickname, 11);
+	                $scope.jobAddress = getSubStr(data.address, 11);
+	                $scope.hometown = getSubStr(data.hometown, 11);
+	                $scope.sign = getSubStr(data.sign, 30) || '这个家伙很懒，什么都没留下...';
+				}else{
+					Tip.setTip(220, null, 50, null, 260, 80, '没有查询到数据.....', 1);
+	    			$timeout(Tip.hideTip, 3000);
+				}
+			});
+		}
+		//真名搜索
+		if(user && user.tag === 'BEN'){
+			var url = ServiceConfig.user_common_get_nickname + '?realname=' + name + '&token=' + user.token;
+			$http.get(url).success(function(data){
+				if(data.status){
+					$scope.nickname =  getSubStr(data.nickname, 11);
+                	$scope.realname = getSubStr(data.realname, 11);
+                	$scope.tel = data.tel || '';
+                	$scope.job = getSubStr(data.job, 11);
+                	$scope.avatar = data.avatar;
+        			$scope.jobAddress = getSubStr(data.address, 11);
+        			$scope.hometown = getSubStr(data.hometown, 11);
+        			$scope.sign = getSubStr(data.sign, 30) || '这家伙很懒，什么都没留下...';
+				}else{
+					Tip.setTip(220, null, 50, null, 260, 80, '没有查询到数据.....', 1);
+	    			$timeout(Tip.hideTip, 3000);
+				}
+			});
+		}
 	};
+	
+	function getSubStr(str, n){
+		return (str || '').substr(0, n);
+	}
 
 });

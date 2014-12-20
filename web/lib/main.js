@@ -23,6 +23,8 @@ app.constant('ServiceConfig', {
 	user_self: 'http://127.0.0.1:3000/user/getSelf',
 	user_common_update: 'http://127.0.0.1:3000/user/updateCommon',
 	user_ben_update: 'http://127.0.0.1:3000/user/updateBen',
+	user_ben_get_name: 'http://127.0.0.1:3000/user/singleBen/name',
+	user_common_get_nickname: 'http://127.0.0.1:3000/user/getCommon/name',
 	amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 

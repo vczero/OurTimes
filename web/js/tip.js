@@ -11,10 +11,10 @@
 	    	 div.style.left = left + 'px';
 	    }
 	    if(typeof right === 'number'){
-	    	 div.style.right = right + '100px';
+	    	 div.style.right = right + 'px';
 	    }
 	    if(typeof bottom === 'number'){
-	    	 div.style.bottom = bottom + '100px';
+	    	 div.style.bottom = bottom + 'px';
 	    }
 	    
 	    
