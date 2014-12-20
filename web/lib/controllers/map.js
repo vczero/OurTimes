@@ -1,7 +1,9 @@
-
-app.controller('MapController', function(){
+//负责广播地图对象
+app.controller('MapController', function($scope, $http, $cookieStore, ServiceConfig){
 	// load map(Blocking)
-	$LAB.script('http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init').wait(function(){
+	$LAB.script(ServiceConfig.amap_url).wait(function(){
+		//初始化地图对象
+		var random = Math.random(100000000000);
 		if(!AMap){
 			location.reload(false);
 		}
@@ -13,5 +15,19 @@ app.controller('MapController', function(){
 		map.plugin(['AMap.ToolBar'], function(){
 		    map.addControl(new AMap.ToolBar());
 		});
+		//第一次：广播地图对象
+		$scope.$emit('mapObject', {
+			AMap: AMap,
+			map: map
+		});
+		//第二次：每次加载页面，刷新，要不然无法触发marker点加载事件；这就是随机数的妙处
+		$scope.$watch(random, function(){
+			$scope.$emit('mapObject', {
+				AMap: AMap,
+				map: map,
+				random: random
+			});
+		});
 	});
+	
 });

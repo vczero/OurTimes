@@ -9,8 +9,8 @@ app.controller('HeaderController', function($scope, $cookieStore){
 	
 	//清除cookie，退出当前登录
 	$scope.quit = function(){
-		$cookieStore.put('user', null);
-		//刷新页面
-		window.location.reload(false);
+		$cookieStore.remove('user');
+		$scope.isLogined = false;
+		$scope.username = '';
 	};
 });

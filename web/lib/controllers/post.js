@@ -1,4 +1,4 @@
-app.controller('PostWeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig){
+app.controller('PostWeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time){
 	$scope.isShowPanel = false;
 	
 	//控制发表微博的panel显示与隐藏
@@ -40,6 +40,8 @@ app.controller('PostWeiboController', function($http, $scope, $cookieStore, $tim
         
         $http.post(ServiceConfig.wei_create, data).success(function(data){
         	if(data.status){
+        		data.time = Time.formatTime(data.time);
+        		//向上广播数据
         		$scope.$emit('weiboDataUp', data);
         		$scope.isShowPanel = false;
         		Tip.setTip(200, 350, null, null, 260, 80, '您发表的内容实在是太精彩了！', 1);

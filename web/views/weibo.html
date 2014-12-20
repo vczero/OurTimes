@@ -36,7 +36,7 @@
         </div>
         <!--描述：评论输入框-->
         <div class="index_wei_item_edit ml3" ng-if="item.isShowComDiv">
-        	<div><textarea id="postweibo" ng-model="commentContent"></textarea></div>
+        	<div><textarea id="_commentContent" ng-model="commentContent"></textarea></div>
         	<div ng-click="addComment(item, commentContent)">评论</div>
         </div>
         
@@ -44,7 +44,7 @@
         <div class="index_wei_item_comment">
         	<div class="index_wei_item_user_c" ng-repeat="comment in item.comments">
         		<div class="fl">
-        			<img src="img/avat.jpg"/>
+        			<img ng-src="{{comment.avatar}}"/>
         		</div>
         		<div class="fl">
         			<div ng-bind="comment.realname || comment.nickname || comment.email"></div>

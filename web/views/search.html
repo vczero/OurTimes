@@ -1,28 +1,28 @@
-<div class="contacts_search">
+<div class="contacts_search" ng-controller="SearchUserController">
 	<div class="searchInput">
 		<div class="fl">
-			<input type="text" placeholder="请输入姓名/昵称"/>
+			<input type="text" placeholder="请输入姓名/昵称" ng-model="searchName"/>
 		</div>
 		<div class="fr">
-			<div class="searchButton">搜索</div>
+			<div class="searchButton" ng-click="goSearch(searchName)">搜索</div>
 		</div>
 	</div>
 	
 	<div class="contacts_search_user">
 		<div class="fl">
 			<div class="contacts_search_title">个人名片</div>
-			<div>昵称：<span class="contacts_search_value">放羊的娃</span></div>
-			<div>真名：<span class="contacts_search_value">娃放羊</span></div>
-			<div>电话：<span class="contacts_search_value">189-4979-6787</span></div>
-			<div>地址：<span class="contacts_search_value">浙江省 杭州市XXXX</span></div>
-			<div>工作：<span class="contacts_search_value">互联网</span></div>
-			<div>家乡：<span class="contacts_search_value">安徽省 阜阳</span></div>
+			<div>昵称：<span class="contacts_search_value" ng-bind="nickname">放羊的娃</span></div>
+			<div>真名：<span class="contacts_search_value" ng-bind="realname">娃放羊</span></div>
+			<div>电话：<span class="contacts_search_value" ng-bind="tel">189-4979-6787</span></div>
+			<div>地址：<span class="contacts_search_value" ng-bind="jobAddress">浙江省 杭州市XXXX</span></div>
+			<div>工作：<span class="contacts_search_value" ng-bind="job">互联网</span></div>
+			<div>家乡：<span class="contacts_search_value" ng-bind="hometown">安徽省 阜阳</span></div>
 		</div>
 		<div class="fr">
-			<img src="img/pp.png"/>
+			<img ng-src="{{avatar}}"/>
 		</div>
 		<div class="fl contacts_search_sign">
-			签名：<span class="contacts_search_value">梦想还是要有的，万一实现了呢！梦想还是要有的！</span>
+			签名：<span class="contacts_search_value" ng-bind="sign">梦想还是要有的，万一实现了呢！</span>
 		</div>
 	</div>
 </div>

@@ -1,47 +1,56 @@
-<div class="contacts_userinfo">
-	<div class="contacts_avatar center"></div>
-	<div class="contacts_upload center">上传头像</div>
+<div class="contacts_userinfo" ng-controller="UserInfoController">
+	<div class="contacts_avatar center">
+		<img ng-src="{{user.avatar}}" />
+	</div>
+	
+	<form name="imgForm" action="http://127.0.0.1:3000/upload/img/" enctype="multipart/form-data" method="post">
+		<input id="uploadImg" name="upload" type="file" style="width:0;height:0;"multiple="multiple" onchange="document.forms['imgForm'].submit();"/>
+		<input id="selfToken" name="token" style="width:0;height:0;border:0;"/>
+		<div class="contacts_upload center" ng-click="upload()" value="上传头像">上传头像</div>
+	</form>
+	<!--<iframe name="uploadFrame" style="display:none"></iframe>--> 
 	<div class="contacts_hr center"></div>
 	
 	<div class="contacts_form">
 		<div>
 			账号：
-			<input type="text"  readonly="true"/>
+			<input type="text"  readonly="true" ng-model="user.email"/>
 		</div>
 		<div>
 			昵称：
-			<input type="text" />
+			<input type="text" ng-model="user.nickname"/>
 		</div>
 		<div>
 			真名：
-			<input type="text"/>
+			<input type="text" ng-model="user.realname"/>
 		</div>
 		<div>
 			电话：
-			<input type="text"/>
+			<input type="text" ng-model="user.tel"/>
 		</div>
 		<div>
 			故乡：
-			<input type="text" readonly="true" placeholder="请点击右边按钮拖动标注选点"/>
-			<input type="button" value="地图选点"/>
+			<input type="text" readonly="true" placeholder="请点击右边按钮拖动标注选点" ng-model="user.hometown"/>
+			<input type="button" value="地图选点" ng-click="mapHometown()"/>
 		</div>
 		<div>
 			职业：
-			<input type="text"/>
+			<input type="text" ng-model="user.job"/>
 		</div>
 		<div>
 			地址：
-			<input type="text" readonly="true" placeholder="请点击右边按钮拖动标注选点"/>
-			<input type="button" value="地图选点"/>
+			<input type="text" readonly="true" placeholder="请点击右边按钮拖动标注选点" ng-model="user.address"/>
+			<input type="button" value="地图选点" ng-click="mapAddress()"/>
 		</div>
 		<div>
 			签名：
-			<input type="text"/>
+			<input type="text" ng-model="user.sign"/>
 		</div>
 	</div>
 	
-	<div class="contacts_save center">保存修改</div>
+	<div class="contacts_save center" ng-click="save(user)">保存修改</div>
 	<div class="contacts_tip">
 		为了保护您的敏感信息，如果您是游客用户或者不是标识为"BEN"的用户，您是无法增加自己的电话、真名、职业等信息，请给予理解，谢谢！
+		<span style="color: #0000FF;">如需【特殊权限】，请邮件联系【wlhmyit@126.com】</span>
 	</div>
 </div>

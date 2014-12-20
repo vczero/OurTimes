@@ -4,4 +4,9 @@ app.controller('RootController', function($scope){
 	$scope.$on('weiboDataUp', function(e, data) { 
         $scope.$broadcast('weiboDataDown', data);
     });
+    
+    //广播地图对象
+    $scope.$on('mapObject', function(e, data){
+    	$scope.$broadcast('mapObj', data);
+    });
 });

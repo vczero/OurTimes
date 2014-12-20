@@ -22,7 +22,8 @@ app.constant('ServiceConfig', {
 	user_ben: 'http://127.0.0.1:3000/user/getBen',
 	user_self: 'http://127.0.0.1:3000/user/getSelf',
 	user_common_update: 'http://127.0.0.1:3000/user/updateCommon',
-	user_ben_update: 'http://127.0.0.1:3000/user/updateBen'
+	user_ben_update: 'http://127.0.0.1:3000/user/updateBen',
+	amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 
 
@@ -109,7 +110,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		},
     		'userinfo@contacts': {
     			templateUrl: 'views/userinfo.html',
-    			controller: ''
+    			controller: 'UserInfoController'
     		},
     		'map@contacts': {
     			templateUrl: 'views/map.html',
@@ -117,7 +118,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     		},
     		'search@contacts': {
     			templateUrl: 'views/search.html',
-    			controller: ''
+    			controller: 'SearchUserController'
     		}
     	}
     });

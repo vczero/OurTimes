@@ -82,7 +82,9 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, $timeout
                         avatar: data.avatar,
                         time: Time.formatTime(data.time)
                     });
-                    document.getElementById('postweibo').value = '';
+                    //这里手动清除Dom的text更好
+                    //视图更新已经在$degist
+                    document.getElementById('_commentContent').value = '';
                     Tip.setTip(200, 350, null, null, 240, 80, '您的评论实在是精彩了~~', 1);
                     $timeout(Tip.hideTip, 2300);
             	}else{
@@ -135,6 +137,17 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, $timeout
     		$scope.currentPage = $scope.currentPage -1;
     		Tip.setTip(200, 350, null, null, 290, 80, '底都被你掏空了，这是最后一页啦~~~', 1);
             $timeout(Tip.hideTip, 2300);
+    	}
+    };
+    //safe
+    $scope.safeApply = function(fn){
+    	var phase = this.$root.$$phase;
+    	if(phase == '$apply' || phase == '$digest'){
+    		if(fn && (typeof(fn) === 'function')){
+    			fn();
+    		}
+    	}else{
+    		this.$apply(fn);
     	}
     };
 });
