@@ -26,8 +26,7 @@ app.controller('RegisterController', function($scope, $http, $cookieStore, $time
 		$http.post(ServiceConfig.user_register, data).success(function(data){
 			if(data.status){
 				$cookieStore.put('user', data);
-				console.log(data);
-				$location.path('#/');
+				$location.path('/');
 			}else{
 				Tip.setTip(250, (parseInt(width) - 240)/2, null, null, 260, 80, '注册失败，请重试~~', 1);
 				$timeout(Tip.hideTip, 3000);
