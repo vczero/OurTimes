@@ -1,0 +1,30 @@
+
+<section class="login_section" ng-controller="LoginController">
+	<form name="loginForm">	
+	<div class="login_div center">
+		<div class="login_div_icon center">
+			<img class="login_div_icon" src="img/logo2.png"/>
+		</div>
+		<div class="login_div_input center">
+			<input type="email" name="email" placeholder="请输入邮箱" ng-model="email" required/>
+		</div>
+		<div class="login_div_span center">
+			<span class="error" ng-show="loginForm.email.$error.required">邮箱不能为空!</span>
+		</div>
+		<div class="login_div_span center">
+			<span class="error" ng-show="loginForm.email.$error.email">不是合法的邮箱!</span>
+		</div>
+		
+		<div class="login_div_input center">
+			<input type="password" name="password" placeholder="请输入密码" ng-model="password" required/>
+		</div>
+		<div  class="login_div_span center">
+			<span class="error" ng-show="loginForm.password.$error.required">密码不能为空!</span>
+		</div>
+		
+		<div class="login_btn center" ng-click="login(email, password)">登录</div>
+	</div>
+	
+	</form>
+</section>
+

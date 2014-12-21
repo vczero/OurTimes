@@ -218,7 +218,7 @@ module.exports = {
         var query = req.query,
             token = query.token,
             id = query.id;
-        db[user].find({_id: str2ObjId(token)}).toArray(function(err, items) {
+        db[user].find({token: token}).toArray(function(err, items) {
             if (!err && items.length) {
                 //管理员，直接删除该条记录
                 if (items[0].tag === USER_TYPE.ADMIN) {

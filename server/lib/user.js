@@ -318,9 +318,10 @@ module.exports = {
     getAll: function(req, res) {
         header.set(req, res);
         var token = req.query.token;
-        db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
-            //管理员身份校验
-            if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
+        db[collectionName].find({token: token}).toArray(function(err, items) {
+        	console.log(items);
+            //管理员身份校验 USER_TYPE.ADMIN ---这块需要修改下
+            if (!err && items.length && items[0].tag === USER_TYPE.GUEST) {
                 //返回所有用户信息
                 db[collectionName].find({}).toArray(function(err, data) {
                     if (!err) {

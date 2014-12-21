@@ -1,4 +1,4 @@
-//获取module
+
 var app = angular.module('app', ['ui.router', 'ngCookies']);
 
 //初始化配置
@@ -8,6 +8,7 @@ app.run(['$rootScope', function($rootScope) {
     $rootScope.author = '鬼谣';
     $rootScope.email = 'wlhmyit@126.com';
 }]);
+
 
 //调用的服务列表
 app.constant('ServiceConfig', {

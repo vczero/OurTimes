@@ -5,7 +5,8 @@
 var user = require('./user'),
     weibo = require('./weibo'),
     upload = require('./upload'),
-    email = require('./email');
+    email = require('./email'),
+    article = require('./article');
 
 /*
 + 服务路由
@@ -52,7 +53,11 @@ module.exports = function(app) {
     app.post('/upload/img', upload.uploadImg);
 
     //文章模块，暂时只有管理员拥有权限，因为服务器资源有限
-
+	app.post('/article/create', article.create);
+	//获取前五篇文章的简介
+	app.get('/article/get', article.get);
+	//根据ID获取单篇文章
+	app.get('/article/get/id', article.getById);
 
     //邮件模块，只有管理员使用
     app.get('/email/findPassword', email.findPassword);
