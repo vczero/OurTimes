@@ -180,6 +180,16 @@ footer{
     margin-left:10px;
 }
 
+.selectedItems{
+	position:absolute;
+	right:20px;
+	top:135px;
+	width:200px;
+	height:300px;
+	border:1px solid red;
+	word-wrap: break-word;
+}
+
 .title{
 	color:#006FC4;
 	font-size:15px;

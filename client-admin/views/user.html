@@ -2,5 +2,27 @@
 
 <div ng-contorller="UserController">
 	<div class="gridStyle" ng-grid="gridOptions"></div>
+	<div class="selectedItems">
+		<div>
+			<span>UID</span>
+			{{mySelections[0].userid}}
+		</div>
+		<div>
+			<span>邮箱</span>
+			{{mySelections[0].email}}
+		</div>
+		<div>
+			<span>真名</span>
+			{{mySelections[0].realname}}
+		</div>
+		<div>
+			<span>昵称</span>
+			{{mySelections[0].nickname}}
+		</div>
+		<div>
+			<span>电话</span>
+			{{mySelections[0].tel}}
+		</div>
+	</div>
 </div>
 

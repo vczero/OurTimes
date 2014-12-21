@@ -4,6 +4,7 @@ app.controller('UserController', function($scope, $http, $cookieStore, ServiceCo
 	var user = $cookieStore.get('user');
     var t = '54708d04f13af4683711434844F71FB1-A640-44DE-8ED1-0AFD3AB295B4';
 
+	$scope.mySelections = [];
 	$scope.filterOptions = {
         filterText: "",
         useExternalFilter: true
@@ -28,11 +29,11 @@ app.controller('UserController', function($scope, $http, $cookieStore, ServiceCo
             if (searchText) {
                 var ft = searchText.toLowerCase();
                 $http.get(ServiceConfig.user_getAll + '?token=' + t).success(function (data) {
-                    $scope.setPagingData(data.items,page,pageSize);
+                    $scope.setPagingData(data.items, page, pageSize);
                 });            
             } else {
                 $http.get(ServiceConfig.user_getAll + '?token=' + t).success(function (data) {
-                    $scope.setPagingData(data.items,page,pageSize);
+                    $scope.setPagingData(data.items, page, pageSize);
                 });
             }
         }, 100);
@@ -59,6 +60,8 @@ app.controller('UserController', function($scope, $http, $cookieStore, ServiceCo
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
         filterOptions: $scope.filterOptions,
+        multiSelect: false,
+        selectedItems: $scope.mySelections,
         columnDefs: [
     		{field:'userid', displayName:'用户ID'},
     		{field:'email', displayName:'邮箱'}, 
