@@ -3,10 +3,10 @@ var mongoskin = require('mongoskin'),
     db = require('./../util/mongo'),
     header = require('./../util/header');
 
-var weiyan = 'weibo',
+var weibo = 'weibo',
     user = 'user',
     str2ObjId = mongoskin.helper.toObjectID;
-db.bind(weiyan);
+db.bind(weibo);
 db.bind(user);
 
 /*
@@ -40,7 +40,7 @@ module.exports = {
                     comments: []
                 };
 
-                db[weiyan].save(wei, function(err, item) {
+                db[weibo].save(wei, function(err, item) {
                     if (!err) {
                         item.status = 1;
                         res.send(item);
@@ -67,11 +67,11 @@ module.exports = {
         var page = req.query.page || 0;
         var pageSize = 0;
         //这一块需要优化
-        db[weiyan].find({}).toArray(function(err, items){
+        db[weibo].find({}).toArray(function(err, items){
             pageSize = Math.ceil(items.length / 10);
         });
         
-        db[weiyan].find({}).sort({time: -1}).skip(parseInt(page)).limit(10).toArray(function(err, items) {
+        db[weibo].find({}).sort({time: -1}).skip(parseInt(page)).limit(10).toArray(function(err, items) {
             if (!err) {
                 var data = {};
                 data.status = 1;
@@ -98,7 +98,7 @@ module.exports = {
         db[user].find({token: token}).toArray(function(err, items) {
             if (!err && items.length) {
                 var userid = items[0].userid;
-                db[weiyan].find({_id: str2ObjId(id)}).toArray(function(err, items) {
+                db[weibo].find({_id: str2ObjId(id)}).toArray(function(err, items) {
                     if (!err && items.length) {
                         var zans = items[0].zans,
                             query = {
@@ -119,7 +119,7 @@ module.exports = {
                                 zans: zans
                             }
                         };
-                        db[weiyan].update(query, $set, function(err) {
+                        db[weibo].update(query, $set, function(err) {
                             if (!err) {
                                 data.status = 1;
                                 data.zans = zans;
@@ -159,7 +159,7 @@ module.exports = {
                     commentNickname = items[0].nickname,
                     commentEmail = items[0].email,
                     avatar = items[0].avatar;
-                db[weiyan].find({_id: str2ObjId(id)}).toArray(function(err, items) {
+                db[weibo].find({_id: str2ObjId(id)}).toArray(function(err, items) {
                     if (!err && items.length) {
                         var comments = items[0].comments,
                             query = {
@@ -180,7 +180,7 @@ module.exports = {
                                 comments: comments
                             }
                         };
-                        db[weiyan].update(query, $set, function(err) {
+                        db[weibo].update(query, $set, function(err) {
                             if (!err) {
                                 return res.send({
                                     status: 1,

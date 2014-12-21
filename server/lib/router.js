@@ -3,7 +3,7 @@
  * @module router
  */
 var user = require('./user'),
-    weiyan = require('./weiyan'),
+    weibo = require('./weibo'),
     upload = require('./upload'),
     email = require('./email');
 
@@ -43,10 +43,10 @@ module.exports = function(app) {
     app.post('/user/updatePassword', user.updatePassword);
 
     //微言模块
-    app.post('/wei/create', weiyan.create);
-    app.get('/wei/get', weiyan.get);
-    app.get('/wei/zan', weiyan.zan);
-    app.get('/wei/comment', weiyan.comment);
+    app.post('/wei/create', weibo.create);
+    app.get('/wei/get', weibo.get);
+    app.get('/wei/zan', weibo.zan);
+    app.get('/wei/comment', weibo.comment);
 
     //上传图片
     app.post('/upload/img', upload.uploadImg);

@@ -1,3 +1,5 @@
+
+//author vczero
 (function(global){
 	function setTip(top, left, right, bottom, width, height, content, line){
 		if(document.getElementById('__vczero_vczero_tip'))
