@@ -11,7 +11,11 @@ app.run(['$rootScope', function($rootScope) {
 //服务列表
 app.constant('ServiceConfig', {
     user_login: 'http://127.0.0.1:3000/user/login',
-    user_getAll: 'http://127.0.0.1:3000/user/getAll'
+    user_getAll: 'http://127.0.0.1:3000/user/getAll',
+    user_updateTag: 'http://127.0.0.1:3000/user/updateTag',
+    user_getUserByCondition: 'http://127.0.0.1:3000/user/getByCondition',
+    user_delete: 'http://127.0.0.1:3000/user/delete',
+    article_create: 'http://127.0.0.1:3000/article/create'
 });
 
 
@@ -50,7 +54,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         views: {
             '': {
                 templateUrl: 'views/index.html',
-                controller: ''
+                controller: 'MenuController'
             }
         }
     })
@@ -60,11 +64,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         views: {
             '': {
                 templateUrl: 'views/index.html',
-                controller: ''
+                controller: 'MenuController'
             },
             'list@index':{
             	templateUrl: 'views/article.html',
-                controller: ''
+                controller: 'ArticleController'
             }
         }
     })
@@ -74,11 +78,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         views: {
             '': {
                 templateUrl: 'views/index.html',
-                controller: ''
+                controller: 'MenuController'
             },
             'list@index':{
             	templateUrl: 'views/weibo.html',
-                controller: ''
+                controller: 'WeiboController'
             }
         }
     })
@@ -88,7 +92,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         views: {
             '': {
                 templateUrl: 'views/index.html',
-                controller: ''
+                controller: 'MenuController'
             },
             'list@index':{
             	templateUrl: 'views/user.html',
@@ -102,11 +106,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         views: {
             '': {
                 templateUrl: 'views/index.html',
-                controller: ''
+                controller: 'MenuController'
             },
             'list@index':{
             	templateUrl: 'views/qita.html',
-                controller: ''
+                controller: 'QitaController'
             }
         }
     });

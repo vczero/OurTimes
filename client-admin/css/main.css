@@ -7,6 +7,10 @@ body{
 	background-color: #FFF;
 }
 
+textarea,input{
+	font-family:'georgia', "微软雅黑";
+}
+
 .center{
 	margin-left:auto;
 	margin-right:auto;
@@ -153,9 +157,18 @@ footer{
 	cursor:default;
 	background-color:#00CACD;
 }
+/*给选中的添加背景色*/
+.menu_select{
+	background-color:#00CACD;
+}
+
+.menu_unselect{
+	background-color:#000;
+	opacity:0.9;
+}
 /*********************container****************************/
 .container{
-	min-width:600px;
+	min-width:1000px;
 	min-height:600px;
 	margin-left:150px;
 }
@@ -175,7 +188,7 @@ footer{
 /***********************user************************************/
 .gridStyle {
     border: 1px solid #C9C9C9;
-    width: 900px; 
+    width: 800px; 
     height: 388px;
     margin-left:10px;
 }
@@ -185,9 +198,26 @@ footer{
 	right:20px;
 	top:135px;
 	width:200px;
-	height:300px;
-	border:1px solid red;
+	height:400px;
+	border:1px solid #DDDDDD;
+	border-radius:3px;
 	word-wrap: break-word;
+	background-color:#FFF;
+}
+
+.selectedItems span{
+	color:#00B7EE;
+	margin-right:3px;
+}
+
+.selectedItems div{
+	margin-bottom:5px;
+	margin-top:5px;
+	margin-left:5px;
+	color:#A0A0A0;
+	border-bottom:1px dashed #DDDDDD;
+	min-height:25px;
+	line-height:25px;
 }
 
 .title{
@@ -197,4 +227,175 @@ footer{
 	height:50px;
 	line-height:50px;
 }
+
+.user_search{
+	position:absolute;
+	z-index:4;
+	top:100px;
+	right:22px;
+	width:260px;
+	height:25px;
+}
+
+.user_search select{
+	height:31px;
+	outline:none;
+	border:1px solid #DDDDDD;
+}
+
+.user_search input{
+	width:200px;
+	height:25px;
+	border:1px solid #DDDDDD;
+}
+
+.user_btn{
+	margin-left:10px;
+	border-radius:2px;
+	margin-top:2px;
+	outline:none;
+	height:25px;
+	width:55px;
+	color:#FFF;
+	background-color:#1ACFD2;
+	border:0;
+}
+
+.article_div{
+	margin-left:10px;
+}
+
+.article_div div{
+	margin-bottom:10px;
+	width:100%;
+}
+
+.article_div input{
+	height:24px;
+	width:187px;
+	margin-left:2px;
+	outline:none;
+	padding-left:3px;
+	border:1px solid #DDDDDD;
+}
+
+.article_div span{
+	color:#006DC3;
+}
+
+.article_div>div:nth-child(1)>input{
+	width:390px;
+}
+
+.article_div textarea{
+	border:1px solid #DDDDDD;
+	margin-left:28px;
+	width:900px;
+	height:320px;
+	resize:none;
+}
+
+.article_div>div:last-child{
+	margin-left:870px;
+	width:60px;
+	height:26px;
+	background-color:#00CACD;
+	border-radius:3px;
+	text-align:center;
+	line-height:26px;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.article_tip{
+	position:absolute;
+	right:10px;
+	top:140px;
+	width:240px;
+	background-color:#FFF;
+	height:400px;
+	border:1px solid #1ACFD2;
+	border-radius:3px;
+}
+
+.article_tip pre{
+	color:#359A4D;
+	margin-left:4px;
+	font-family:'georgia', "微软雅黑";
+}
+/****************************weibo**************************************/
+.weibo_search{
+	width: 400px;
+	height:400px;
+	float:left;
+}
+
+.weibo_search div{
+	margin-left:10px;
+}
+
+.weibo_search span{
+	color:#006FC4;
+}
+
+.weibo_search input{
+	height:25px;
+	width:200px;
+	margin-top:5px;
+	margin-bottom:5px;
+	border:1px solid #ddd;
+	outline:none;
+	padding-left:4px;
+	margin-left:17px;
+}
+
+.weibo_search>div:nth-child(4)>input{
+	margin-left:4px;
+}
+
+.weibo_search>div:last-child{
+	width:55px;
+	height:26px;
+	border-radius:3px;
+	line-height:26px;
+	text-align: center;
+	color:#FFFFFF;
+	background-color:#00CACD;
+	margin-left:200px;
+	margin-top:10px;
+	cursor:pointer;
+}
+
+.weibo_obj{
+	width:600px;
+	float: left;
+	height:400px;
+	border-radius:2px;
+}
+
+.weibo_obj textarea{
+	width:700px;
+	height:400px;
+	border-radius:2px;
+	background-color:#000000;
+	opacity:0.5;
+	resize:none;
+	outline:none;
+	padding-left:6px;
+	color:#00FF01;
+}
+
+.weibo_btn{
+	width:55px;
+	height:26px;
+	border-radius:3px;
+	line-height:26px;
+	text-align: center;
+	color:#FFFFFF;
+	background-color:#00CACD;
+	margin-left:655px;
+	margin-top:10px;
+	cursor:pointer;
+}
+
 

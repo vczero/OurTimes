@@ -1,1 +1,37 @@
-文章
+<div class="title">发表文章</div>
+<div class="article_div" ng-controller="ArticleController">
+	<div>
+		<span>标题</span>
+		<input type="text" ng-model="title"/>
+	</div>
+	<div>
+		<span>作者</span><input type="text" ng-model="author"/>
+		<span>链接</span><input type="text" ng-model="link"/>
+		<span>出处</span><input type="text" ng-model="ref"/>
+	</div>
+	<div>
+		<textarea ng-model="content"></textarea>
+	</div>
+	<div ng-click="submit(title, author, link, ref, content)">提交</div>
+</div>
+<div class="article_tip">
+	<div>
+		<pre>
+格式：
+[
+	 {
+	 	text: '这是一段的文字',
+	 	pics:[], //这是该段的插图
+	 },
+	 {
+	 	text: '这是一段的文字',
+	 	pics:[], //这是该段的插图
+	 }
+]
+
+* 发表文章的正文内容，必遵循这种形式
+* 尽量完善链接和出处信息
+* 图片统一采用外链形式
+		</pre>
+	</div>
+</div>

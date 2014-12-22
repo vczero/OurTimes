@@ -1,1 +1,31 @@
-微博
+<div class="title">微博管理</div>
+<div ng-controller="WeiboController">
+	<div class="weibo_search">
+		<div>
+			<span>邮箱</span>
+			<input ng-model="email"/>
+		</div>
+		<div>
+			<span>昵称</span>
+			<input ng-model="nickname"/>
+		</div>
+		<div>
+			<span>真名</span>
+			<input ng-model="realname"/>
+		</div>
+		<div>
+			<span>关键字</span>
+			<input ng-model="keywords"/>
+		</div>
+		<div ng-click="search(email, nickname, realname, keyweords)">
+			搜索
+		</div>
+	</div>
+	<div class="weibo_obj">
+		<div>
+			<!--展示整个JSON对象-->
+			<textarea></textarea>
+		</div>
+		<div class="weibo_btn">修改</div>
+	</div>
+</div>

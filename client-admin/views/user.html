@@ -2,6 +2,14 @@
 
 <div ng-contorller="UserController">
 	<div class="gridStyle" ng-grid="gridOptions"></div>
+	<div class="user_search">
+		<select ng-model="choose">
+			<option selected="selected" value="email">邮箱</option>
+			<option value="realname">真名</option>
+			<option value="nickname">昵称</option>
+		</select>
+		<input type="text" ng-keydown="Search($event, choose, keywords)" ng-model="keywords" placeholder="搜索"/>
+	</div>
 	<div class="selectedItems">
 		<div>
 			<span>UID</span>
@@ -22,6 +30,18 @@
 		<div>
 			<span>电话</span>
 			{{mySelections[0].tel}}
+		</div>
+		<div>
+			<span>角色</span>
+			{{mySelections[0].tag}}
+		</div>
+		<div>
+			<span>家乡</span>
+			{{mySelections[0].hometown}}
+		</div>
+		<div>
+			<span>工作地</span>
+			{{mySelections[0].address}}
 		</div>
 	</div>
 </div>

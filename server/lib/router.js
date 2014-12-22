@@ -32,12 +32,14 @@ module.exports = function(app) {
     app.get('/user/singleBen/name', user.getSingleBenByRealname);
     //管理员获取所有用户信息
     app.get('/user/getAll', user.getAll);
+    //根据查询条件查询
+    app.get('/user/getByCondition', user.getUserByEmail_Nick_Real);
     //更新'BEN'用户的信息，包括修改自己的敏感信息
     app.post('/user/updateBen', user.updateBen);
     //更新一般用户信息，去除敏感信息并且不允许更新敏感信息
     app.post('/user/updateCommon', user.updateOtherInfo);
     //管理员删除用户
-    app.get('/user/delete', user.deleteUser);
+    app.post('/user/delete', user.deleteUser);
     //管理员更新用户的标签
     app.post('/user/updateTag', user.updateTag);
     //用户自己更新密码

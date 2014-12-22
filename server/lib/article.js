@@ -17,23 +17,23 @@ module.exports = {
 		header.set(req, res);
         var body = req.body,
             token = body.token,
+            time = new Date(),
             author = body.author || '',
-            time = body.time || new Date(),
             title = body.title || '',
             content = body.content || [], //数组，每一段落一个元素
             link = body.link,
-            pics = body.pics; //对应content数组
+            ref = body.ref;
+
         db[user].find({token: token}).toArray(function(err, items) {
         	if(!err && items.length && items[0].tag === 'admin'){
         		var news = {
         			title: xss(title),
         			author: xss(author),
-        			time: xss(time),
+        			time: time,
         			link: xss(link),
         			content: xss(content),
-        			pics: xss(pics)
+        			ref: xss(ref)
         		};
-        		
         		db[article].save(news, function(err, item){
         			if(!err){
         				item.status = 1;

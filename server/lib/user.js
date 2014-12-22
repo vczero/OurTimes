@@ -14,10 +14,10 @@ var collectionName = 'user',
      + 本班权限的同学，可以查询自己班级的通讯录
      */
     USER_TYPE = {
-        'GUEST': '游客',
-        'BEN': '本班',
-        'TEST': '测试',
-        'MIDDLE': '中间权限者',
+        'GUEST': 'guest',
+        'BEN': 'ben',
+        'TEST': 'test',
+        'MIDDLE': 'middle',
         'ADMIN': 'admin'
     },
     /*
@@ -48,9 +48,9 @@ module.exports = {
         header.set(req, res);
         var params = req.body;
         if (params.password && params.password !== params.repeatPassword)
-            return res.send(status.repeatPassword);
+            return res.send({status: 0});
         if (!params.email)
-            return res.send(status.emailLack);
+            return res.send({status: 0});
         //构建用户模型；加密等关键信息上线后会有不同算法修改
         var user = {
             userid: guid.create() + '-' + mcrypto.md5Password(params.email).toUpperCase(),
@@ -319,9 +319,7 @@ module.exports = {
         header.set(req, res);
         var token = req.query.token;
         db[collectionName].find({token: token}).toArray(function(err, items) {
-        	console.log(items);
-            //管理员身份校验 USER_TYPE.ADMIN ---这块需要修改下
-            if (!err && items.length && items[0].tag === USER_TYPE.GUEST) {
+            if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 //返回所有用户信息
                 db[collectionName].find({}).toArray(function(err, data) {
                     if (!err) {
@@ -479,10 +477,10 @@ module.exports = {
      */
     deleteUser: function(req, res) {
         header.set(req, res);
-        var query = req.query,
-            userId = query.userid,
-            token = query.token;
-        db[collectionName].find({_id: str2ObjId(token)}).toArray(function(err, items) {
+        var body = req.body,
+            userid = body.userid || '',
+            token = body.token || '';
+        db[collectionName].find({token: token}).toArray(function(err, items) {
             if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 db[collectionName].remove({userid: userid}, function(err) {
                     if (!err) {
@@ -514,7 +512,7 @@ module.exports = {
             tag = query.tag,
             token = query.token;
 
-        db[collectionName].find({ _id: str2ObjId(token)}).toArray(function(err, items) {
+        db[collectionName].find({ token: token}).toArray(function(err, items) {
             if (!err && items.length && items[0].tag === USER_TYPE.ADMIN) {
                 var query = {
                         userid: userId
@@ -524,11 +522,6 @@ module.exports = {
                             tag: tag 
                         }
                     };
-                //更新用户的标签，必须判断是否存在此标签
-                //如果没有，修改为GUEST
-                if(!this._checkUserType(tag)){
-                    tag === USER_TYPE.GUEST;
-                }
                 db[collectionName].update(query, $set, function(err) {
                     if (!err) {
                         return res.send({
@@ -593,19 +586,44 @@ module.exports = {
                 info: '请先登录'
             });
         }
-
     },
-    /*
-    + 查询是否是USER_TYPE中的值
-    +
-    +
-    */
-    _checkUserType: function(tag){
-        for(var i in USER_TYPE){
-            if(USER_TYPE[i] === tag){
-                return true;
-            }
+    //根据邮箱，查找用户
+    //根据昵称
+    //根据真实姓名
+    getUserByEmail_Nick_Real: function(req, res){
+    	header.set(req, res);
+        var query = req.query,
+            token = query.token,
+            condition = {test: 'test'}; //default
+
+        if(query.email){
+        	condition = {email: query.email};
         }
-        return false;
+        
+        if(query.nickname){
+        	condition = {nickname: query.nickname};
+        }
+        
+        if(query.realname){
+        	condition = {realname: query.realname};
+        }
+        
+        db[collectionName].find({token: token}).toArray(function(err, items){
+        	if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
+        		console.log(condition);
+        		db[collectionName].find(condition).toArray(function(err, items){
+        			if(!err){
+        				var data = {};
+        				data.status = 1;
+        				data.items = items;
+        				return res.send(data);
+        			}else{
+        				return { status: 0 };
+        			}
+        		});
+        	}else{
+        		return { status: 0 };
+        	}
+        });
     }
 };
