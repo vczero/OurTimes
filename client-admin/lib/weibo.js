@@ -8,6 +8,7 @@ app.controller('WeiboController', function($scope, $rootScope, $http, $cookieSto
 	$rootScope.select_qita = 'menu_unselect';
 	$rootScope.select_login = 'menu_unselect';
 	
+	$scope.email = '';
 	
 	$scope.search = function(){
 		
