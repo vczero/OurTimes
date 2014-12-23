@@ -4,7 +4,6 @@
     "host": "127.0.0.1",
     "username": "test",
     "password": "test",
-    "email": "wlhmyit@126.com",
     "BASE_URL": "http://127.0.0.1:3000/",
-    "email_server": "wlhmyit@126.com"
+    "email_server": ""
 }
