@@ -11,6 +11,10 @@ textarea,input{
 	font-family:'georgia', "微软雅黑";
 }
 
+.fl{
+	float:left;
+}
+
 .center{
 	margin-left:auto;
 	margin-right:auto;
@@ -405,6 +409,38 @@ footer{
 	margin-left:655px;
 	margin-top:10px;
 	cursor:pointer;
+}
+
+.email_div{
+	width:800px;
+	margin-top:100px;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+
+
+
+.email_div input{
+	width:500px;
+	height:30px;
+	border:1px solid #00CACD;
+	border-radius:5px;
+	padding-left:4px;
+	outline:none;
+}
+
+.email_div>div:last-child{
+	margin-left:10px;
+	height:34px;
+	width:80px;
+	cursor:pointer;
+	font-size:17px;
+	color:#FFF;
+	background-color:#00CACD;
+	line-height:34px;
+	text-align: center;
+	border-radius:3px;
 }
 
 

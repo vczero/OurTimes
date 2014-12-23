@@ -15,7 +15,10 @@ app.constant('ServiceConfig', {
     user_updateTag: 'http://127.0.0.1:3000/user/updateTag',
     user_getUserByCondition: 'http://127.0.0.1:3000/user/getByCondition',
     user_delete: 'http://127.0.0.1:3000/user/delete',
-    article_create: 'http://127.0.0.1:3000/article/create'
+    article_create: 'http://127.0.0.1:3000/article/create',
+    weibo_getByCondition: 'http://127.0.0.1:3000/wei/getByCondition',
+    weibo_set2null: 'http://127.0.0.1:3000/wei/set2null',
+    email_findPassword: 'http://127.0.0.1:3000/email/findPassword'
 });
 
 
@@ -101,16 +104,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
     })
     
-    .state('index.qita', {
-        url: '/qita',
+    .state('index.email', {
+        url: '/email',
         views: {
             '': {
                 templateUrl: 'views/index.html',
                 controller: 'MenuController'
             },
             'list@index':{
-            	templateUrl: 'views/qita.html',
-                controller: 'QitaController'
+            	templateUrl: 'views/email.html',
+                controller: 'EmailController'
             }
         }
     });

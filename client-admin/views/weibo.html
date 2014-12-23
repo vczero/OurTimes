@@ -17,15 +17,15 @@
 			<span>关键字</span>
 			<input ng-model="keywords"/>
 		</div>
-		<div ng-click="search(email, nickname, realname, keyweords)">
+		<div ng-click="search(email, nickname, realname, keywords)">
 			搜索
 		</div>
 	</div>
 	<div class="weibo_obj">
 		<div>
 			<!--展示整个JSON对象-->
-			<textarea></textarea>
+			<textarea ng-model="weiboObj"></textarea>
 		</div>
-		<div class="weibo_btn">修改</div>
+		<div class="weibo_btn" ng-click="modify()">修改</div>
 	</div>
 </div>

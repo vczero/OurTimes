@@ -1,7 +1,8 @@
 var mongoskin = require('mongoskin'),
     xss = require('xss'),
     db = require('./../util/mongo'),
-    header = require('./../util/header');
+    header = require('./../util/header'),
+    USER_TYPE = require('./user_type');
     
 var weibo = 'weibo',
     user = 'user',
@@ -25,7 +26,7 @@ module.exports = {
             ref = body.ref;
 
         db[user].find({token: token}).toArray(function(err, items) {
-        	if(!err && items.length && items[0].tag === 'admin'){
+        	if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
         		var news = {
         			title: xss(title),
         			author: xss(author),

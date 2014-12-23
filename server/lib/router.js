@@ -47,9 +47,16 @@ module.exports = function(app) {
 
     //微言模块
     app.post('/wei/create', weibo.create);
+    
     app.get('/wei/get', weibo.get);
+    
     app.get('/wei/zan', weibo.zan);
+    
     app.get('/wei/comment', weibo.comment);
+    //置空敏感微博
+    app.post('/wei/set2null', weibo.updateWeibo2Null);
+    //根据单一条件查询
+    app.get('/wei/getByCondition', weibo.getWeiboByCondition);
 
     //上传图片
     app.post('/upload/img', upload.uploadImg);
@@ -62,6 +69,6 @@ module.exports = function(app) {
 	app.get('/article/get/id', article.getById);
 
     //邮件模块，只有管理员使用
-    app.get('/email/findPassword', email.findPassword);
+    app.post('/email/findPassword', email.findPassword);
 
 };

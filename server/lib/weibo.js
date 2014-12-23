@@ -1,14 +1,15 @@
 var mongoskin = require('mongoskin'),
     xss = require('xss'),
     db = require('./../util/mongo'),
-    header = require('./../util/header');
+    header = require('./../util/header'),
+    USER_TYPE = require('./user_type');
 
 var weibo = 'weibo',
     user = 'user',
     str2ObjId = mongoskin.helper.toObjectID;
+
 db.bind(weibo);
 db.bind(user);
-
 /*
  + 用途：用于用户发表微言管理
  + 作者：vczero
@@ -17,10 +18,7 @@ db.bind(user);
  + 部分接口无需鉴权，其他接口均需鉴权
  */
 module.exports = {
-    /*
-     + 增加一条微言
-     + 前提：鉴权通过
-     */
+   	//增加一条微博
     create: function(req, res) {
         header.set(req, res);
         var content = req.body,
@@ -58,10 +56,7 @@ module.exports = {
             }
         });
     },
-    /*
-     + 获取前10条微言
-     + 前提：无需条件
-     */
+   	//获取前10条微博
     get: function(req, res) {
         header.set(req, res);
         var page = req.query.page || 0;
@@ -85,10 +80,7 @@ module.exports = {
             }
         });
     },
-    /*
-     + 点赞
-     + 前提：鉴权通过
-     */
+    //点赞
     zan: function(req, res) {
         header.set(req, res);
         var query = req.query,
@@ -142,10 +134,7 @@ module.exports = {
             }
         });
     },
-    /*
-    + 评论
-    + 前提：鉴权通过
-    */
+    //评论
     comment: function(req, res) {
         header.set(req, res);
         var query = req.query,
@@ -209,10 +198,7 @@ module.exports = {
             }
         });
     },
-    /*
-    + 删除微言
-    + 前提：用户自我鉴权 或者 管理员鉴权
-    */
+    //删除微博
     delete: function(req, res) {
         header.set(req, res);
         var query = req.query,
@@ -230,5 +216,68 @@ module.exports = {
                 });
             }
         });
+    },
+    //根据 email, realname, nickname, keywords查询只一条件
+    getWeiboByCondition: function(req, res){
+    	header.set(req, res);
+        var query = req.query,
+            email = query.email,
+            realname = query.realname,
+            nickname = query.nickname,
+            content = query.content,
+        	condition = {test: 'test'};
+        if(email){
+        	condition = {email: email};
+        }
+        if(realname){
+        	condition = {realname: realname};
+        }
+        if(nickname){
+        	condition = {nickname: nickname};
+        }
+        if(content){
+        	condition = {
+        		content: new RegExp(content)
+        	};
+        }
+        
+        db[weibo].find(condition).toArray(function(err, items){
+        	if(!err && items.length){
+        		items[0].status = 1;
+        		delete items[0].zans;
+        		delete items[0].time;
+        		delete items[0].userid;
+        		return res.send(items[0]);
+        	}else{
+        		return res.send({status: 0});
+        	}
+        });           
+    },
+    //修改微博，管理员权限
+    //功能是：内容置为： '含有敏感信息，已经除去' 并且所有评论置空
+    updateWeibo2Null: function(req, res){
+    	header.set(req, res);
+    	var token = req.body.token;
+    	var _id = req.body._id;
+    	db[user].find({token: token}).toArray(function(err, items){
+    		if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
+    			var query = {_id: str2ObjId(_id)};
+    			var $set = {
+    				$set: {
+    					content: '您的微博含有敏感信息，已被系统去除。请遵守网络文明公约。',
+    					zans: [],
+    					comments: []
+    				}
+    			};
+    			db[weibo].update(query, $set, function(err){
+    				if(!err)
+    					return res.send({status: 1});
+    				return res.send({status: 0});
+    			});
+    		}else{
+    			res.send({status: 0});
+    		}
+    	});
     }
-};
+    
+ };

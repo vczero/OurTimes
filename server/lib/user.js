@@ -3,23 +3,13 @@ var mongoskin = require('mongoskin'),
     mcrypto = require('./../util/mcrypto'),
     guid = require('./../util/guid'),
     db = require('./../util/mongo'),
-    header = require('./../util/header');
+    header = require('./../util/header'),
+    USER_TYPE = require('./user_type');
 
 
 var SERVER_URL = 'http://127.0.0.1:3000/';
 var collectionName = 'user',
     str2ObjId = mongoskin.helper.toObjectID,
-    /*
-     + 用户类型，需要根据用户类型，开放通讯录权限
-     + 本班权限的同学，可以查询自己班级的通讯录
-     */
-    USER_TYPE = {
-        'GUEST': 'guest',
-        'BEN': 'ben',
-        'TEST': 'test',
-        'MIDDLE': 'middle',
-        'ADMIN': 'admin'
-    },
     /*
     + 基础的URL，例会头像的服务器URL,默认头像的URL等
     + 可能包括静态文件服务器，所以，数据资源必须独立URL

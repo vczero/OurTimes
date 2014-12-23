@@ -1,5 +1,5 @@
 
-app.controller('LoginController', function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig) {
+app.controller('LoginController', function($scope, $http, $rootScope, $cookieStore, $timeout, $location, ServiceConfig) {
 	$scope.login = function() {
 		var email = $scope.email,
 			password = $scope.password,

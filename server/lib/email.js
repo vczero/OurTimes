@@ -5,7 +5,10 @@
 var nodemailer = require('nodemailer'),
     transporter = nodemailer.createTransport(),
     mcrypto = require('./../util/mcrypto'),
-    db = require('./../util/mongo');
+    header = require('./../util/header'),
+    db = require('./../util/mongo'),
+    USER_TYPE = require('./user_type'),
+    config = require('./../config');
 
 db.bind('user');
 module.exports = {
@@ -15,41 +18,34 @@ module.exports = {
     +
     */
     findPassword: function(req, res){
-        var token = req.query.token,
-            userid = req.query.userid;
+    	header.set(req, res);
+        var token = req.body.token,
+            email = req.body.email;
         if(token){
             db.user.find({token: token}).toArray(function(err, items){
-                if(!err && items.length && items[0].tag === 'admin'){
-
-                    db.user.find({userid: userid}).toArray(function(err, items){
-                        if(!err && items.length){
-                            var email = items[0].email || '',
-                                password = mcrypto.createPassword(),
-                                str = '您好，感谢使用图班网！根据您的反馈，系统给您重置密码为：' + password 
-                                      +'。请登录后立即修改密码，系统自动邮件，请勿回复————开发者：vczero',
-                                opts = {
-                                    from: '', //你的邮箱账号
-                                    to: email, //到达的邮箱账号
-                                    subject: '图班网',
-                                    text: str
-                                };
-                            transporter.sendMail(opts, function(err, info){
-                                if(!err){
-                                    res.send({
-                                        status: 1
-                                    });
-                                }else{
-                                    res.send({
-                                        status: 0
-                                    });
-                                }
-                            });                            
-                        }else{
-                            res.send({
-                                status: 0
-                            });
-                        }
-                    });
+                if(!err && items.length && items[0].tag === USER_TYPE.ADMIN){
+                      var password = mcrypto.createPassword(),
+                          	str = '您好，感谢使用OurTimes！根据您的反馈，系统给您重置密码为：' + password 
+                              +'。请登录后立即修改密码，系统自动邮件，请勿回复————开发者：vczero',
+	                        opts = {
+	                            from: config.email_server, //你的邮箱账号
+	                            to: email, //到达的邮箱账号
+	                            subject: 'OurTimes--重置密码',
+	                            text: str
+	                        };
+	                    
+                        transporter.sendMail(opts, function(err, info){
+                            if(!err){
+                            	console.log(res);
+                                res.send({
+                                    status: 1
+                                });
+                            }else{
+                                res.send({
+                                    status: 0
+                                });
+                            }
+                        });
                 }else{
                     res.send({
                         status: 0
