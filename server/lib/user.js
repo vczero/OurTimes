@@ -28,12 +28,7 @@ db.bind(collectionName);
  +
  */
 module.exports = {
-    /*
-     + 用户注册
-     + 需要这里进行参数的校验，包括邮箱、密码的个数
-     + 后期添加验证码模块
-     +
-     */
+    //用户注册
     register: function(req, res) {
         header.set(req, res);
         var params = req.body;
@@ -74,10 +69,7 @@ module.exports = {
             }
         });
     },
-    /*
-     + 用户登录
-     + 获取userid、token等信息
-     */
+    //用户登录
     login: function(req, res) {
         header.set(req, res);
         var user = req.body,
@@ -112,10 +104,7 @@ module.exports = {
             }
         });
     },
-    /*
-     +
-     + 返回用户自己的信息
-     */
+    //获取自己的信息
     getSelfInfo: function(req, res){
         header.set(req, res);
         var token = req.query.token; //用户自己的token
@@ -139,10 +128,7 @@ module.exports = {
             });
         }
     },
-    /*
-     +
-     + 获取其他用户(100个)的信息，删除敏感信息
-     */
+    //获取100个用户地址信息
     getOtherInfo: function(req, res){
         header.set(req, res);
         db[collectionName].find({tag: USER_TYPE.GUEST}).limit(100).toArray(function(err, items) {
@@ -172,10 +158,7 @@ module.exports = {
             }
         });
     },
-    /*
-     +
-     + 获取单个普通用户信息
-     */
+    //根据昵称获取单个用户的基本信息
     getOtherInfoByNickname: function(req, res){
         header.set(req, res);
         var nickname = req.query.nickname || '';
@@ -200,17 +183,14 @@ module.exports = {
         });
     },
 
-    /*
-     + 获取tag === USER_TYPE.BEN用户的信息
-     + BEN类用户的权限严格控制，由管理员管理
-     */
+    //获取'ben'类用户信息
     getBenInfo: function(req, res){
         header.set(req, res);
         var token = req.query.token; //登录用户的token
         if(token){
-            db[collectionName].find({userid: id}).limit(1).toArray(function(err, items) {
+            db[collectionName].find({token: token}).limit(1).toArray(function(err, items) {
                 if(!err && items.length && items[0].tag === USER_TYPE.BEN){
-                    db[collectionName].find({tag: USER_TYPE.BEN}).limit(1).toArray(function(err, items){
+                    db[collectionName].find({tag: USER_TYPE.BEN}).limit(300).toArray(function(err, items){
                         for(var i = 0, n = items.length; i < n; i++){
                             delete items[i]['token'];
                             delete items[i]['password'];
@@ -218,7 +198,7 @@ module.exports = {
                         }
                         var obj = {
                             status: 1,
-                            user: items
+                            users: items
                         };
                         return res.send(obj);
                     });
@@ -234,10 +214,7 @@ module.exports = {
             });
         }
     },
-    /*
-     + 获取单个USER_TYPE === BEN的用户信息
-     + 
-     */
+    //获取单个ben用户信息
     getSingleBen: function(req, res){
         header.set(req, res);
         var token = req.query.token; //登录用户的token(自己必须是BEN用户)
@@ -268,14 +245,11 @@ module.exports = {
         }
     },
 
-    /*
-     + 通过真实姓名获取单个USER_TYPE === BEN的用户信息
-     +  
-     */
+    //根据真实姓名获取'ben'用户信息
     getSingleBenByRealname: function(req, res){
         header.set(req, res);
         var token = req.query.token; //登录用户的token(自己必须是BEN用户)
-        var realname = req.query.realname; //需要查询人的ID
+        var realname = req.query.realname || ''; //需要查询人的ID
         if(token && realname){
             db[collectionName].find({token: token}).limit(1).toArray(function(err, items) {
                 if(!err && items.length && items[0].tag === USER_TYPE.BEN){
@@ -283,9 +257,9 @@ module.exports = {
                         if(!err && items.length){
                             var item = items[0];
                             item.status = 1;
-                            delete item[i]['token'];
-                            delete item[i]['password'];
-                            delete item[i]['_id'];
+                            delete item['token'];
+                            delete item['password'];
+                            delete item['_id'];
                             res.send(item);
                         }
                     });
@@ -301,10 +275,8 @@ module.exports = {
             });
         }
     },
-    /*
-     + 获取所有的用户的信息
-     + 后期采取分页策略
-     */
+
+    // 获取所有的用户的信息,后期采取分页策略
     getAll: function(req, res) {
         header.set(req, res);
         var token = req.query.token;
@@ -335,10 +307,7 @@ module.exports = {
             }
         });
     },
-    /*
-    + 更新BEN用户自己的信息
-    + BEN用户支持修改自己的敏感信息
-    */
+    //ben用户更新自己的信息
     updateBen: function(req, res){
         header.set(req, res);
         var user = req.body,
@@ -400,10 +369,7 @@ module.exports = {
             });
         }
     },
-    /*
-     + 更新一般用户信息
-     + 为保护用户敏感信息，去除tel & job & realname
-     */
+    //更新一般用户信息
     updateOtherInfo: function(req, res){
         header.set(req, res);
         var user = req.body,
@@ -461,10 +427,7 @@ module.exports = {
             });
         }
     },
-    /*
-     + 删除某个用户
-     + 管理员权限
-     */
+    //删除某个用户
     deleteUser: function(req, res) {
         header.set(req, res);
         var body = req.body,
@@ -490,11 +453,7 @@ module.exports = {
             }
         });
     },
-    /*
-     +
-     + 更新用户的类型标签
-     +
-     */
+    //更新用户的标签
     updateTag: function(req, res) {
         header.set(req, res);
         var query = req.body,
@@ -531,11 +490,7 @@ module.exports = {
             }
         });
     },
-    /*
-    +
-    + 修改密码的功能
-    +
-    */
+    //修改密码功能
     updatePassword: function(req, res){
         var token = req.body.token,
             newPassword = req.body.newPassword,

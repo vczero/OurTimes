@@ -278,6 +278,10 @@ module.exports = {
     			res.send({status: 0});
     		}
     	});
+    },
+    //根据用户ID，查询微博，包含分页，每页10条记录
+    getByUserId: function(req, res){
+    	var userid = req.query.userid;
     }
     
  };

@@ -4,7 +4,7 @@
 			<input type="text" placeholder="请输入姓名/昵称" ng-model="searchName"/>
 		</div>
 		<div class="fr">
-			<div class="searchButton" ng-click="goSearch(searchName)">搜索</div>
+			<div class="searchButton" ng-click="goSearch(searchName)" ng-keydown="enterSearch($event, searchName)">搜索</div>
 		</div>
 	</div>
 	

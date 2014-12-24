@@ -1,0 +1,23 @@
+<div class="uc_wei_div">
+	<div class="uc_content">您的微博含有敏感信息，已被系统去除。请遵守网络文明公约。您的微博含有敏感信息，已被系统去除。请遵守网络文明公约，已被系统去除。请遵守网络文明公约，已被系统去除。请遵守网络文明公约，已被系统去除。请遵守网络文明公约。</div>
+	<div class="fl uc_count">
+		<span>2014-12-24 16:50:53</span>
+		<span>评论：1</span>
+		<span>赞：32</span>
+		<span>开心,回家</span>
+	</div>
+	<div class="fr uc_del">删除</div>
+	<!--评论-->
+    <div class="index_wei_item_comment">
+    	<div class="index_wei_item_user_c" ng-repeat="comment in item.comments">
+    		<div class="fl">
+    			<img ng-src="{{comment.avatar}}"/>
+    		</div>
+    		<div class="fl">
+    			<div ng-bind="comment.realname || comment.nickname || comment.email">11</div>
+    			<div ng-bind="comment.comment">22</div>
+    			<div ng-bind="comment.time">33</div>
+    		</div>
+    	</div>
+    </div>
+</div>

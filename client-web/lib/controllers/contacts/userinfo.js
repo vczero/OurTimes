@@ -105,7 +105,7 @@ app.controller('UserInfoController', function($scope, $http, $timeout, $cookieSt
             address_lnglat: user.address_lnglat
         };
 
-        if (user.tag === '游客') {
+        if (user.tag === 'guest') {
             $http.post(ServiceConfig.user_common_update, obj).success(function(data) {
                 if (data.status) {
                     Tip.setTip(250, 50, null, null, 260, 80, '您好！你的资料保存成功', 1);
@@ -116,7 +116,7 @@ app.controller('UserInfoController', function($scope, $http, $timeout, $cookieSt
                 }
             });
         }
-        if (user.tag === '本班') {
+        if (user.tag === 'ben') {
             $http.post(ServiceConfig.user_ben_update, obj).success(function(data) {
                 if (data.status) {
                     Tip.setTip(250, 50, null, null, 260, 80, '您好！你的资料保存成功', 1);

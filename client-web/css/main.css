@@ -601,12 +601,12 @@ header .login a:visited{
 	text-align:center;
 	line-height:25px;
 	background-color:#00A1D9;
-	margin-top:10px;
+	margin-top:-5px;
 	border-radius:2px;
 	cursor:pointer;
 }
 .contacts_hr{
-	margin-top:15px;
+	margin-top:10px;
 	height: 2px;
 	width:320px;
 	border-bottom:1px dashed #E1E1E1;
@@ -655,5 +655,79 @@ header .login a:visited{
 	margin-left:10px;margin-top:10px;
 	font-size:12px;
 }
+
+/******************************ucenter**************************************/
+.ucenter{
+	width:1080px;
+	min-height: 300px;
+	/*background-color:#fff;*/
+	border:1px solid red;
+}
+
+.ucenter>div:first-child{
+	height:60px;
+	width:100%;
+}
+
+.ucenter .userWeibo{
+	width:700px;
+	min-height:140px;
+	border:1px solid #006DC3;
+}
+
+.ucenter .userDetailInfo{
+	width:300px;
+	height:500px;
+	border:1px solid #006DC3;
+}
+
+.uc_wei_div{
+	background-color:#fff;
+	/*min-height:30px;*/
+}
+
+.uc_content{
+	font-size:14px;
+	/*color:#4183C4;*/
+}
+.uc_count>span:first-child{
+	color:#7E7E7E;
+}
+
+.uc_count>span:nth-child(2){
+	margin-left: 10px;
+	color:#E9754B;
+}
+
+.uc_count>span:nth-child(3){
+	color:#E9754B;
+}
+.uc_count>span:last-child{
+	margin-left: 10px;
+	color:#BD0D45;
+}
+.uc_del{
+	display: block;
+	height:25px;
+	width:55px;
+	background-color:#00CACD;
+	text-align:center;
+	line-height:25px;
+	color:#FFF;
+	cursor:pointer;
+	border-radius:2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 

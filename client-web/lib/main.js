@@ -26,6 +26,7 @@ app.constant('ServiceConfig', {
     user_ben_update: 'http://127.0.0.1:3000/user/updateBen',
     user_ben_get_name: 'http://127.0.0.1:3000/user/singleBen/name',
     user_common_get_nickname: 'http://127.0.0.1:3000/user/getCommon/name',
+    user_ben_get_realname: 'http://127.0.0.1:3000/user/singleBen/name',
     amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 
@@ -51,11 +52,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     /*状态配置*/
     $stateProvider
     //首页
-        .state('index', {
+    .state('index', {
         url: '/',
         views: {
             '': {
-                templateUrl: 'views/index.html',
+                templateUrl: 'views/index/index.html',
             },
             'header@index': {
                 templateUrl: 'views/header.html',
@@ -66,15 +67,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 controller: ''
             },
             'weibo@index': {
-                templateUrl: 'views/weibo.html',
+                templateUrl: 'views/index/weibo.html',
                 controller: 'WeiboController'
             },
             'article@index': {
-                templateUrl: 'views/article.html',
+                templateUrl: 'views/index/article.html',
                 controller: ''
             },
             'post@index': {
-                templateUrl: 'views/post.html',
+                templateUrl: 'views/index/post.html',
                 controller: 'PostWeiboController'
             }
         }
@@ -84,7 +85,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/login',
         views: {
             '': {
-                templateUrl: 'views/login.html',
+                templateUrl: 'views/login/login.html',
                 controller: 'LoginController'
             }
         }
@@ -94,7 +95,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/register',
         views: {
             '': {
-                templateUrl: 'views/register.html',
+                templateUrl: 'views/register/register.html',
                 controller: 'RegisterController'
             }
         }
@@ -104,7 +105,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/contacts',
         views: {
             '': {
-                templateUrl: 'views/contacts.html',
+                templateUrl: 'views/contacts/contacts.html',
                 controller: ''
             },
             'header@contacts': {
@@ -112,18 +113,41 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 controller: 'HeaderController'
             },
             'userinfo@contacts': {
-                templateUrl: 'views/userinfo.html',
+                templateUrl: 'views/contacts/userinfo.html',
                 controller: 'UserInfoController'
             },
             'map@contacts': {
-                templateUrl: 'views/map.html',
+                templateUrl: 'views/contacts/map.html',
                 controller: 'MapController'
             },
             'search@contacts': {
-                templateUrl: 'views/search.html',
+                templateUrl: 'views/contacts/search.html',
                 controller: 'SearchUserController'
             }
         }
+    })
+    
+    .state('ucenter', {
+        url: '/ucenter',
+        views: {
+            '': {
+                templateUrl: 'views/ucenter/ucenter.html',
+                controller: ''
+            },
+            'header@ucenter': {
+                templateUrl: 'views/header.html',
+                controller: 'HeaderController'
+            },
+            'userWeibo@ucenter': {
+                templateUrl: 'views/ucenter/weibo.html',
+                controller: ''
+            },
+            'userDetailInfo@ucenter': {
+                templateUrl: '',
+                controller: ''
+            }
+        }
     });
+
 
 }]);

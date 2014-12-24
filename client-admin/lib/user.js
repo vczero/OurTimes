@@ -101,7 +101,7 @@ function($scope, $rootScope, $timeout, $http, $cookieStore, ServiceConfig, MenuS
     
     //搜索
     $scope.Search = function($event, choose, keywords){
-    	if($event.keyCode === 13 || event.which === 32){
+    	if($event.keyCode === 13 || $event.which === 32){
     		var condition = '?token=' + user.token + '&';
     		var choose = choose || 'default';
     		switch(choose){
