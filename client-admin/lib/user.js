@@ -1,14 +1,11 @@
 
-app.controller('UserController', function($scope, $rootScope, $timeout, $http, $cookieStore, ServiceConfig) {
+app.controller('UserController', 
+['$scope', '$rootScope', '$timeout', '$http', '$cookieStore', 'ServiceConfig', 'MenuSelect',
+function($scope, $rootScope, $timeout, $http, $cookieStore, ServiceConfig, MenuSelect) {
 	var user = $cookieStore.get('user');
 	var width = window.innerWidth;
 	
-	//控制按钮选中状态
-	$rootScope.select_user = 'menu_select';
-	$rootScope.select_article = 'menu_unselect';
-	$rootScope.select_weibo = 'menu_unselect';
-	$rootScope.select_qita = 'menu_unselect';
-	$rootScope.select_login = 'menu_unselect';
+	MenuSelect.setSelected('select_user');
 	
 	//分页
 	$scope.mySelections = [];
@@ -134,7 +131,7 @@ app.controller('UserController', function($scope, $rootScope, $timeout, $http, $
     	}
     };
 	
-});
+}]);
 
 
 

@@ -1,5 +1,7 @@
 
-app.controller('LoginController', function($scope, $http, $rootScope, $cookieStore, $timeout, $location, ServiceConfig) {
+app.controller('LoginController',
+['$scope', '$http', '$rootScope', '$cookieStore', '$timeout', '$location', 'ServiceConfig', 
+function($scope, $http, $rootScope, $cookieStore, $timeout, $location, ServiceConfig) {
 	$scope.login = function() {
 		var email = $scope.email,
 			password = $scope.password,
@@ -26,4 +28,4 @@ app.controller('LoginController', function($scope, $http, $rootScope, $cookieSto
 	$scope.goRegister = function() {
 		$location.path('/register');
 	};
-});
+}]);

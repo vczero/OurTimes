@@ -1,13 +1,11 @@
 
-app.controller('EmailController', function($scope, $rootScope, $http, $timeout, $cookieStore, ServiceConfig) {
+app.controller('EmailController',
+['$scope', '$rootScope', '$http', '$timeout', '$cookieStore', 'ServiceConfig', 'MenuSelect',
+function($scope, $rootScope, $http, $timeout, $cookieStore, ServiceConfig, MenuSelect) {
 	var user = $cookieStore.get('user');
 	var width = window.innerWidth;
-	//控制按钮选中状态
-	$rootScope.select_user = 'menu_unselect';
-	$rootScope.select_article = 'menu_unselect';
-	$rootScope.select_weibo = 'menu_unselect';
-	$rootScope.select_qita = 'menu_select';
-	$rootScope.select_login = 'menu_unselect';
+	
+	MenuSelect.setSelected('select_email');
 	
 	$scope.postEmail = function(email){
 		var data = {
@@ -25,4 +23,4 @@ app.controller('EmailController', function($scope, $rootScope, $http, $timeout, 
 			}
 		});
 	};
-});
+}]);

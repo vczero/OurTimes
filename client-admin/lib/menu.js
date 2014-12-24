@@ -1,5 +1,7 @@
 
-app.controller('MenuController', function($rootScope, $location){
+app.controller('MenuController', [
+'$rootScope', '$location',
+function($rootScope, $location){
 	//menu_select
 	//menu_unselect
 	//控制按钮选中状态使用rootscope更好！这样，不必监听多处简单变量
@@ -23,4 +25,4 @@ app.controller('MenuController', function($rootScope, $location){
 		default:
 			break;
 	}
-});
+}]);

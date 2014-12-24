@@ -1,14 +1,11 @@
 
-app.controller('ArticleController', function($scope, $rootScope, $timeout, $http, $cookieStore, ServiceConfig) {
+app.controller('ArticleController', 
+['$scope', '$rootScope', '$timeout', '$http', '$cookieStore', 'ServiceConfig', 'MenuSelect',
+function($scope, $rootScope, $timeout, $http, $cookieStore, ServiceConfig, MenuSelect) {
 	var user = $cookieStore.get('user');
 	var width = window.innerWidth;
 	
-	//控制按钮选中状态
-	$rootScope.select_user = 'menu_unselect';
-	$rootScope.select_article = 'menu_select';
-	$rootScope.select_weibo = 'menu_unselect';
-	$rootScope.select_qita = 'menu_unselect';
-	$rootScope.select_login = 'menu_unselect';
+	MenuSelect.setSelected('select_article');
 	
 	$scope.author = '';
 	
@@ -23,7 +20,6 @@ app.controller('ArticleController', function($scope, $rootScope, $timeout, $http
 		};
 		
 		$http.post(ServiceConfig.article_create, article).success(function(data){
-			console.log(data);
 			if(data.status){
 				$scope.author = '';
 				$scope.title = '';
@@ -40,4 +36,4 @@ app.controller('ArticleController', function($scope, $rootScope, $timeout, $http
 			}
 		});
 	};
-});
+}]);
