@@ -39,14 +39,7 @@ header div:first-child{
 	float: left;
 }
 
-header div:last-child{
-	margin-right:30px;
-	color:#FFFFFF;
-	text-align:center;
-	line-height:50px;
-	font-size:14px;
-	float: right;
-}
+
 
 footer{
 	width:120px;

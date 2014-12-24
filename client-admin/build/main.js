@@ -125,7 +125,7 @@ function($rootScope){
 			$rootScope.select_user = 'menu_unselect';
 			$rootScope.select_article = 'menu_unselect';
 			$rootScope.select_weibo = 'menu_unselect';
-			$rootScope.select_qita = 'menu_unselect';
+			$rootScope.select_email = 'menu_unselect';
 			$rootScope.select_login = 'menu_unselect';
 			
 			if(name){
