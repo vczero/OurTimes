@@ -1,1 +1,55 @@
-
+<div class="uc_user">
+	<div class="uc_user_avatar center">
+		<img src="img/avat.jpg"/>
+	</div>
+	<div class="uc_user_info">
+		<div>
+			<span>邮箱</span>
+			<span ng-bind="user.email"></span>
+		</div>
+		<div>
+			<span>昵称</span>
+			<span ng-bind="user.nickname"></span>
+		</div>
+		<div>
+			<span>真名</span>
+			<span ng-bind="user.realname"></span>
+		</div>
+		<div>
+			<span>电话</span>
+			<span ng-bind="user.tel"></span>
+		</div>
+		<div>
+			<span>职业</span>
+			<span ng-bind="user.job"></span>
+		</div>
+		<div>
+			<span>家乡</span>
+			<span ng-bind="user.hometown"></span>
+		</div>
+		<div>
+			<span>工作地</span>
+			<span ng-bind="user.address"></span>
+		</div>
+		<div>
+			<span>签名</span>
+			<span ng-bind="user.sign"></span>
+		</div>
+	</div>
+	<div class="uc_user_password">
+		<span>修改密码</span>
+		<div>
+			<span>原密码：</span>
+			<input type="password" placeholder="请输入新密码" ng-model="UC.oldPassword"/>
+		</div>
+		<div>
+			<span>新密码：</span>
+			<input type="password" placeholder="请输入新密码" ng-model="UC.newPassword"/>
+		</div>
+		<div>
+			<span>确&nbsp;&nbsp;&nbsp;&nbsp;认：</span>
+			<input type="password" placeholder="请重新确认新密码" ng-model="UC.rePassword"/>
+		</div>
+		<div ng-click="changePassword(UC)">修改</div>
+	</div>
+</div>

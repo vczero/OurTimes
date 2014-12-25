@@ -493,16 +493,21 @@ module.exports = {
     //修改密码功能
     updatePassword: function(req, res){
         var token = req.body.token,
+        	oldPassword = req.body.oldPassword,
             newPassword = req.body.newPassword,
-            repeatPassword = req.body.repeatPassword;
-        if(newPassword !== repeatPassword){
+            rePassword = req.body.rePassword;
+        if(newPassword !== rePassword){
             return res.send({
                 status: 0,
                 info: '两次密码不一致'
             });
         }
         if(token){
-            db[collectionName].find({token: token}).toArray(function(err, items){
+        	var filter = {
+        		token: token,
+        		password: mcrypto.md5Password(oldPassword)
+        	};
+            db[collectionName].find(filter).toArray(function(err, items){
                 if(!err && items.length){
                     var query = {token: token},
                         $set = {$set: {password: mcrypto.md5Password(newPassword)}};

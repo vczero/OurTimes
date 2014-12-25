@@ -199,21 +199,26 @@ module.exports = {
         });
     },
     //删除微博
-    delete: function(req, res) {
+    deleteWeibo: function(req, res) {
         header.set(req, res);
-        var query = req.query,
-            token = query.token,
-            id = query.id;
+        var body = req.body,
+            token = body.token,//用户Token
+            _id = body._id; //微博ID
         db[user].find({token: token}).toArray(function(err, items) {
             if (!err && items.length) {
-                //管理员，直接删除该条记录
-                if (items[0].tag === USER_TYPE.ADMIN) {
-
-                }
-            } else {
-                res.send({
-                    status: 0
+                var query = {
+                	userid: items[0].userid,
+                	_id: str2ObjId(_id)
+                };
+                db[weibo].remove(query, function(err){
+                	if(!err){
+                		return res.send({status: 1});
+                	}else{
+                		return res.send({status: 0});
+                	}
                 });
+            } else {
+                return res.send({status: 0});
             }
         });
     },
@@ -280,8 +285,36 @@ module.exports = {
     	});
     },
     //根据用户ID，查询微博，包含分页，每页10条记录
-    getByUserId: function(req, res){
-    	var userid = req.query.userid;
+    getByToken: function(req, res){
+    	header.set(req, res);
+    	var token = req.query.token || '';
+    	var page = (req.query.page || 0) * 10;
+    	
+    	//查询到用户，获取userid
+    	db[user].find({token: token}).toArray(function(err, items){
+    		if(!err && items.length){
+    			var userid = items[0].userid;
+    			var pageSize = 0;
+    			db[weibo].find({userid: userid}).toArray(function(err, items){
+            		pageSize = Math.ceil(items.length / 10);
+        		});
+    			
+    			//查询该userid的微博
+    			db[weibo].find({userid: userid}).sort({time: -1}).skip(parseInt(page)).limit(10).toArray(function(err, items){
+    				if(!err){
+    					var data = {};
+    					data.status = 1;
+    					data.pageSize = pageSize;
+    					data.items = items;
+    					res.send(data);
+    				}else{
+    					return res.send({status: 0});
+    				}
+    			});
+    		}else{
+    			return res.send({status: 0});
+    		}
+    	});
     }
     
  };

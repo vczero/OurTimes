@@ -27,6 +27,8 @@ app.constant('ServiceConfig', {
     user_ben_get_name: 'http://127.0.0.1:3000/user/singleBen/name',
     user_common_get_nickname: 'http://127.0.0.1:3000/user/getCommon/name',
     user_ben_get_realname: 'http://127.0.0.1:3000/user/singleBen/name',
+    wei_get_token_page: 'http://127.0.0.1:3000/wei/getByToken',
+    wei_delete: 'http://127.0.0.1:3000/wei/delete',
     amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 
@@ -140,11 +142,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             },
             'userWeibo@ucenter': {
                 templateUrl: 'views/ucenter/weibo.html',
-                controller: ''
+                controller: 'UcWeiboController'
             },
             'userDetailInfo@ucenter': {
-                templateUrl: '',
-                controller: ''
+                templateUrl: 'views/ucenter/user.html',
+                controller: 'UcUserController'
             }
         }
     });

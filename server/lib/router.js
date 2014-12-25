@@ -50,6 +50,8 @@ module.exports = function(app) {
     
     app.get('/wei/get', weibo.get);
     
+    app.post('/wei/delete', weibo.deleteWeibo);
+    
     app.get('/wei/zan', weibo.zan);
     
     app.get('/wei/comment', weibo.comment);
@@ -57,6 +59,8 @@ module.exports = function(app) {
     app.post('/wei/set2null', weibo.updateWeibo2Null);
     //根据单一条件查询
     app.get('/wei/getByCondition', weibo.getWeiboByCondition);
+    //获取某个用户的微博
+    app.get('/wei/getByToken', weibo.getByToken);
 
     //上传图片
     app.post('/upload/img', upload.uploadImg);
