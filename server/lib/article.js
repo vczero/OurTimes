@@ -58,13 +58,12 @@ module.exports = {
 	get: function(req, res){
 		header.set(req, res);
 		db[article].find({}).sort({time: -1}).limit(5).toArray(function(err, items) {
-            if (!err) {
+            if (!err && items.length) {
             	var data = {};
             	data.status = 1;
             	//过滤不必要字段
             	for(var i in items){
-            		delete items[i].content;
-            		items[i].pic = items[i].pics.length ? items[i].pics[0]: '';
+            		delete items[i].content;	
             	}
             	data.items = items;
                 return res.send(data);
@@ -79,8 +78,8 @@ module.exports = {
 	//detail
 	getById: function(req, res){
 		header.set(req, res);
-		var id = req.query.id;
-		db[article].find({_id: str2ObjId(id)}).toArray(function(err, items){
+		var _id = req.query._id;
+		db[article].find({_id: str2ObjId(_id)}).toArray(function(err, items){
 			if(!err && items.length){
 				items[0].status = 1;
 				return res.send(items[0]);

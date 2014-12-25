@@ -1,5 +1,5 @@
 
-app.controller('UcUserController', function($http, $cookieStore, $scope, $timeout){
+app.controller('UcUserController', function($http, $cookieStore, $scope, $timeout, ServiceConfig){
 	var user = $cookieStore.get('user');
 	$scope.user = user;
 	
@@ -18,6 +18,15 @@ app.controller('UcUserController', function($http, $cookieStore, $scope, $timeou
 					newPassword: newP,
 					rePassword: reP
 				};
+				$http.post(ServiceConfig.user_update_password, data).success(function(data){
+					if(data.status){
+						Tip.setTip(250, null, 150, null, 260, 80, '更改密码成功...', 1);
+	        			$timeout(Tip.hideTip, 3000);
+					}else{
+						Tip.setTip(250, null, 150, null, 260, 80, '更改密码失败...', 1);
+	        			$timeout(Tip.hideTip, 3000);
+					}
+				});
 			}
 		}else{
 			Tip.setTip(250, null, 150, null, 260, 80, '信息不能为空...', 1);

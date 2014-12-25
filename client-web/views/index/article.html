@@ -1,17 +1,7 @@
 <!--右边-->
 <div class="fr index_container_right FFFcolor text_center">
-	<div>
-		<img src="img/fengjing_1.png"/>
-		<span>我的特一营</span>
-	</div>
-	
-	<div>
-		<img src="img/fengjing_1.png"/>
-		<span>我的特一营</span>
-	</div>
-	
-	<div>
-		<img src="img/fengjing_1.png"/>
-		<span>我的特一营</span>
+	<div ng-repeat="item in items">
+		<img ng-src="{{item.link}}" ng-src="{{item.img}} || img/fengjing_1.png"/>
+		<a ng-href="#/article/{{item._id}}"><span ng-bind="item.title"></span></a>
 	</div>
 </div>

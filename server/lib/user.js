@@ -492,6 +492,7 @@ module.exports = {
     },
     //修改密码功能
     updatePassword: function(req, res){
+    	header.set(req, res);
         var token = req.body.token,
         	oldPassword = req.body.oldPassword,
             newPassword = req.body.newPassword,
@@ -507,6 +508,7 @@ module.exports = {
         		token: token,
         		password: mcrypto.md5Password(oldPassword)
         	};
+        	console.log(filter);
             db[collectionName].find(filter).toArray(function(err, items){
                 if(!err && items.length){
                     var query = {token: token},
@@ -519,14 +521,14 @@ module.exports = {
                         }else{
                             return res.send({
                                 status: 0,
-                                info: '更新失败'
+                                info: '更新密码失败...'
                             });
                         }
                     });
                 }else{
                     return res.send({
                         status: 0,
-                        info: '对不起，您没有注册'
+                        info: '你原始密码错误...'
                     });
                 }
             });

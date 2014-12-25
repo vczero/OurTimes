@@ -302,6 +302,10 @@ header .login a:visited{
 	margin-top:4px;
 }
 
+.index_container_right a{
+	color:#FFF;
+}
+
 .index_container_right>div{
 	width:100%;
 }
@@ -839,6 +843,60 @@ header .login a:visited{
 	margin-left:120px;
 	border-radius:2px;
 	cursor:pointer;
+}
+
+/******************************article_content*******************************/
+.article_content{
+	width:980px;
+	min-height:600px;
+	background-color:#FFF;
+	box-shadow:2px 2px 2px #CCCCCC;
+}
+
+.article_content>div:first-child{
+	height:60px;
+	width:100%;
+}
+
+.article_content_title{
+	width: 100%;
+	text-align: center;
+	font-size:18px;
+	color:#00A2D4;
+}
+
+.article_content_author{
+	margin-top:5px;
+	width: 100%;
+	text-align: center;
+	color:#A3A3A3;
+}
+
+.article_content_duan{
+	margin-top:20px;
+	width:960px;
+	margin-left:10px;
+	font-size:15px;
+	line-height:20px;
+}
+
+.article_content_duan>div:nth-child(1)>img{
+	max-width:500px;
+	max-height:320px;
+}
+
+.article_content_duan>div:nth-child(1){
+	margin-top:10px;
+	width:500px;
+	height:320px;
+	text-align: center;
+	vertical-align:middle;
+	line-height:320px;
+}
+
+.article_content_ref{
+	margin-left:10px;
+	color:#00B7EE;
 }
 
 

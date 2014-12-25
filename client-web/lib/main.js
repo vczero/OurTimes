@@ -29,6 +29,9 @@ app.constant('ServiceConfig', {
     user_ben_get_realname: 'http://127.0.0.1:3000/user/singleBen/name',
     wei_get_token_page: 'http://127.0.0.1:3000/wei/getByToken',
     wei_delete: 'http://127.0.0.1:3000/wei/delete',
+    user_update_password: 'http://127.0.0.1:3000/user/updatePassword',
+    article_get: 'http://127.0.0.1:3000/article/get',
+    article_detail: 'http://127.0.0.1:3000/article/get/id',
     amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 
@@ -74,7 +77,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             },
             'article@index': {
                 templateUrl: 'views/index/article.html',
-                controller: ''
+                controller: 'ArticleController'
             },
             'post@index': {
                 templateUrl: 'views/index/post.html',
@@ -147,6 +150,54 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             'userDetailInfo@ucenter': {
                 templateUrl: 'views/ucenter/user.html',
                 controller: 'UcUserController'
+            },
+            'footer@ucenter': {
+                templateUrl: 'views/footer.html',
+                controller: ''
+            }
+        }
+    })
+    
+    .state('article', {
+        url: '/article/:id',
+        views: {
+            '': {
+                templateUrl: 'views/article/article.html',
+                controller: ''
+            },
+            'header@article': {
+                templateUrl: 'views/header.html',
+                controller: 'HeaderController'
+            },
+            'article_content@article': {
+                templateUrl: 'views/article/article_content.html',
+                controller: 'ArticleDetailController'
+            },
+            'footer@article': {
+                templateUrl: 'views/footer.html',
+                controller: ''
+            }
+        }
+    })
+    
+    .state('article_index', {
+        url: '/article',
+        views: {
+            '': {
+                templateUrl: 'views/article/article.html',
+                controller: ''
+            },
+            'header@article_index': {
+                templateUrl: 'views/header.html',
+                controller: 'HeaderController'
+            },
+            'article_content@article_index': {
+                templateUrl: 'views/article/article_content.html',
+                controller: 'ArticleDetailController'
+            },
+            'footer@article_index': {
+                templateUrl: 'views/footer.html',
+                controller: ''
             }
         }
     });
