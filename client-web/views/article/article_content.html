@@ -1,0 +1,23 @@
+<div class="article_content center">
+	<div></div>
+	<div class="article_content_title">
+		<span ng-bind="article.title"></span>
+	</div>
+	<div class="article_content_author">
+		<span>作者：</span>
+		<span ng-bind="article.author"></span>
+		<span>时间：</span>
+		<span ng-bind="article.time"></span>
+	</div>	
+	<div class="article_content_duan">
+		<div class="center">
+			<img ng-src="{{article.link}}"/>
+		</div>
+		<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span ng-bind="article.content"></span>
+		</div>
+	</div>
+	<div class="article_content_ref">
+		<div>来自于：<span ng-bind="article.ref"></span></div>
+	</div>
+</div>
