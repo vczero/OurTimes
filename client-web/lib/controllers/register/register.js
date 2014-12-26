@@ -1,4 +1,6 @@
-app.controller('RegisterController', function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig) {
+app.controller('RegisterController', 
+['$scope', '$http', '$cookieStore', '$timeout', '$location', 'ServiceConfig',
+function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig) {
 
 	$scope.register = function() {
 		var email = $scope.email,
@@ -41,4 +43,4 @@ app.controller('RegisterController', function($scope, $http, $cookieStore, $time
 		$location.path('/login');
 	};
 
-});
+}]);

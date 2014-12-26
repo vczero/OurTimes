@@ -1,6 +1,11 @@
 
-app.controller('UcUserController', function($http, $cookieStore, $scope, $timeout, ServiceConfig){
+app.controller('UcUserController', 
+['$http', '$cookieStore', '$scope', '$timeout', 'ServiceConfig',
+function($http, $cookieStore, $scope, $timeout, ServiceConfig){
 	var user = $cookieStore.get('user');
+	if(!user){
+		return;
+	}
 	$scope.user = user;
 	
 	$scope.changePassword = function(uc){
@@ -34,4 +39,4 @@ app.controller('UcUserController', function($http, $cookieStore, $scope, $timeou
 		}
 		
 	};
-});
+}]);

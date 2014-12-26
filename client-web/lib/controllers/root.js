@@ -1,5 +1,5 @@
 //控制所有控制器间的数据传输和模型更新
-app.controller('RootController', function($scope) {
+app.controller('RootController', ['$scope', function($scope) {
 	//广播微博数据
 	$scope.$on('weiboDataUp', function(e, data) {
 		$scope.$broadcast('weiboDataDown', data);
@@ -9,4 +9,4 @@ app.controller('RootController', function($scope) {
 	$scope.$on('mapObject', function(e, data) {
 		$scope.$broadcast('mapObj', data);
 	});
-});
+}]);

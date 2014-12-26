@@ -1,4 +1,6 @@
-app.controller('UserInfoController', function($scope, $http, $timeout, $cookieStore, ServiceConfig) {
+app.controller('UserInfoController', 
+['$scope', '$http', '$timeout', '$cookieStore', 'ServiceConfig',
+function($scope, $http, $timeout, $cookieStore, ServiceConfig) {
     var AMap = null;
     var map = null;
     var width = window.innerWidth;
@@ -140,4 +142,4 @@ app.controller('UserInfoController', function($scope, $http, $timeout, $cookieSt
         }
     }
 
-});
+}]);

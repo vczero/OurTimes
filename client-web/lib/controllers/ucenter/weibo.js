@@ -1,9 +1,17 @@
 
-app.controller('UcWeiboController', function($scope, $http, $cookieStore, $timeout, ServiceConfig, Time, SelfWeibo){
+app.controller('UcWeiboController', 
+['$scope', '$http', '$cookieStore', '$timeout', 'ServiceConfig', 'Time', 'SelfWeibo',
+function($scope, $http, $cookieStore, $timeout, ServiceConfig, Time, SelfWeibo){
 	//显示用户以前发表的微博
 	var user = $cookieStore.get('user');
-	var path = '?token=' + user.token + '&page=0';
 	var width = window.innerWidth;
+	if(!user){
+		Tip.setTip(250, (parseInt(width) - 240) / 2, null, null, 260, 80, '请先登录您的账号~~~~', 1);
+        $timeout(Tip.hideTip, 3000);
+        return;
+	}
+	
+	var path = '?token=' + user.token + '&page=0';
 	var page = 0;
 	
 	SelfWeibo.getData(user.token, 0, function(data){
@@ -61,4 +69,4 @@ app.controller('UcWeiboController', function($scope, $http, $cookieStore, $timeo
         	$timeout(Tip.hideTip, 3000);
 		}
 	};
-});
+}]);

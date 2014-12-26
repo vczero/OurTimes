@@ -1,4 +1,6 @@
-app.controller('WeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) {
+app.controller('WeiboController', 
+['$http', '$scope', '$cookieStore', '$timeout', 'ServiceConfig', 'Time', 'WeiboData',
+function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) {
     //初始化微博列表    
     WeiboData.getItems(0, function(data, pageSize) {
         if (data.length) {
@@ -149,4 +151,4 @@ app.controller('WeiboController', function($http, $scope, $cookieStore, $timeout
             this.$apply(fn);
         }
     };
-});
+}]);

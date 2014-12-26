@@ -1,5 +1,7 @@
 //这里需要将type=email，起到过滤作用
-app.controller('LoginController', function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig) {
+app.controller('LoginController', 
+['$scope', '$http', '$cookieStore', '$timeout', '$location', 'ServiceConfig',
+function($scope, $http, $cookieStore, $timeout, $location, ServiceConfig) {
 	$scope.login = function() {
 		var email = $scope.email,
 			password = $scope.password,
@@ -26,4 +28,4 @@ app.controller('LoginController', function($scope, $http, $cookieStore, $timeout
 	$scope.goRegister = function() {
 		$location.path('/register');
 	};
-});
+}]);

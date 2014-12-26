@@ -1,5 +1,7 @@
 //获取微博数据
-app.service('SelfWeibo', function($http, ServiceConfig, Time) {
+app.service('SelfWeibo', 
+['$http', 'ServiceConfig', 'Time',
+function($http, ServiceConfig, Time) {
 	return {
 		getData: function(token, page, callback) {
 			var path = '?token=' + token + '&page=' + page;
@@ -19,4 +21,4 @@ app.service('SelfWeibo', function($http, ServiceConfig, Time) {
 			});
 		}
 	};
-});
+}]);

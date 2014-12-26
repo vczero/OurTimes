@@ -8,13 +8,12 @@ module.exports = function(grunt){
         	},
         	dist:{
         		src:[
-        			'./web/lib/main.js',
-        			'./web/lib/directive/**/*.js',
-        			'./web/lib/service/**/*.js',
-        			'./web/lib/list/**/*.js',
-        			'./web/lib/search/**/*.js'
+        			'./js/tip.js',
+        			'./lib/main.js',
+        			'./lib/services/**/*.js',
+        			'./lib/controllers/**/*.js'
         		],
-        		dest:'./web/build/main.js'
+        		dest:'./build/main.js'
         	}
         },
         uglify: {
@@ -23,8 +22,8 @@ module.exports = function(grunt){
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             dist: {
-                src: './web/build/main.js',
-                dest: './web/build/main.min.js'
+                src: './build/main.js',
+                dest: './build/main.min.js'
             }
         }
     });

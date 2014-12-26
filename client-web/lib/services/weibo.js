@@ -1,5 +1,7 @@
 //获取微博数据
-app.service('WeiboData', function($http, Time, ServiceConfig) {
+app.service('WeiboData', 
+['$http', 'Time', 'ServiceConfig',
+function($http, Time, ServiceConfig) {
 	return {
 		getItems: function(page, callback) {
 			$http.get(ServiceConfig.wei_content + '?page=' + page).success(function(data) {
@@ -22,4 +24,4 @@ app.service('WeiboData', function($http, Time, ServiceConfig) {
 			});
 		}
 	};
-});
+}]);

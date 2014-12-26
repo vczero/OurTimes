@@ -1,4 +1,6 @@
-app.controller('HeaderController', function($scope, $cookieStore) {
+app.controller('HeaderController', 
+['$scope', '$cookieStore',
+function($scope, $cookieStore) {
 	var user = $cookieStore.get('user');
 	$scope.isLogined = false;
 	if (user) {
@@ -12,4 +14,4 @@ app.controller('HeaderController', function($scope, $cookieStore) {
 		$scope.isLogined = false;
 		$scope.username = '';
 	};
-});
+}]);

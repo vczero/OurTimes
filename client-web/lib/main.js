@@ -51,7 +51,8 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 //路由配置
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', 
+function($stateProvider, $urlRouterProvider) {
     /*URL路由*/
     $urlRouterProvider.otherwise("/");
     /*状态配置*/

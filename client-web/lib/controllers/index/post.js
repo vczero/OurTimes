@@ -1,4 +1,6 @@
-app.controller('PostWeiboController', function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time) {
+app.controller('PostWeiboController', 
+['$http', '$scope', '$cookieStore', '$timeout', 'ServiceConfig', 'Time',
+function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time) {
 	$scope.isShowPanel = false;
 
 	//控制发表微博的panel显示与隐藏
@@ -57,4 +59,4 @@ app.controller('PostWeiboController', function($http, $scope, $cookieStore, $tim
 	};
 
 
-});
+}]);

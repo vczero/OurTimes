@@ -1,4 +1,6 @@
-app.controller('SearchUserController', function($scope, $http, $cookieStore, $timeout, ServiceConfig) {
+app.controller('SearchUserController', 
+['$scope', '$http', '$cookieStore', '$timeout', 'ServiceConfig',
+function($scope, $http, $cookieStore, $timeout, ServiceConfig) {
 	var AMap = null;
 	var map = null;
 	var user = $cookieStore.get('user');
@@ -174,4 +176,4 @@ app.controller('SearchUserController', function($scope, $http, $cookieStore, $ti
 		return (str || '').substr(0, n);
 	}
 
-});
+}]);

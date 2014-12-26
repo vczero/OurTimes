@@ -1,5 +1,7 @@
 //负责广播地图对象
-app.controller('MapController', function($scope, $http, $cookieStore, ServiceConfig) {
+app.controller('MapController', 
+['$scope', '$http', '$cookieStore', 'ServiceConfig',
+function($scope, $http, $cookieStore, ServiceConfig) {
 	// load map(Blocking)
 	$LAB.script(ServiceConfig.amap_url).wait(function() {
 		//初始化地图对象
@@ -30,4 +32,4 @@ app.controller('MapController', function($scope, $http, $cookieStore, ServiceCon
 		});
 	});
 
-});
+}]);
