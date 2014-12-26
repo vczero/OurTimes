@@ -4,10 +4,11 @@ var mongoskin = require('mongoskin'),
     guid = require('./../util/guid'),
     db = require('./../util/mongo'),
     header = require('./../util/header'),
+    config = require('./../config'),
     USER_TYPE = require('./user_type');
 
 
-var SERVER_URL = 'http://127.0.0.1:3000/';
+var SERVER_URL = config.BASE_URL;
 var collectionName = 'user',
     str2ObjId = mongoskin.helper.toObjectID,
     /*

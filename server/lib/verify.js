@@ -20,7 +20,7 @@ module.exports = {
         ctx.fillText(code, 10, 20);
         ctx.stroke();
 
-        req.session.verifyCode = code;
+//      req.session.verifyCode = code;
         return res.send(200, canvas.toBuffer());
     },
 
@@ -30,6 +30,6 @@ module.exports = {
      *
      * */
     check: function(req, res, code) {
-        return req.session.verifyCode === code;
+//      return req.session.verifyCode === code;
     }
 };

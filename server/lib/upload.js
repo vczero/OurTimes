@@ -1,7 +1,8 @@
 var fs = require('fs'),
     mongoskin = require('mongoskin'),
     header = require('./../util/header'),
-    db = require('./../util/mongo'),
+    db = require('./../util/mongo')
+    config = require('./../config'),
     BASE_URL = require('./../config').BASE_URL;
 
 db.bind('user');
@@ -11,7 +12,7 @@ module.exports = {
         var srcPath = req.files.upload.ws.path,
             token = req.body.token;
         db.user.find({token: mongoskin.helper.toObjectID(token)}).toArray(function(err, items) {
-            var str = '<script type="text/javascript">location.href="' + 'http://127.0.0.1:8020/tuban/client-web/main.html#/contacts' + '";' + '</script>';
+            var str = '<script type="text/javascript">location.href="' + config.uploadRedirectUrl + '";' + '</script>';
             if (!err && items.length) {
                 var desPath = './upload/' + items[0]['userid'] + '.png';
                 //重命名文件
