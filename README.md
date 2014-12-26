@@ -1,5 +1,7 @@
 OurTimes：基于位置的通讯录
 ---------------------------------------
+[体验地址http://vczero.github.io/tuban/main.html#/](http://vczero.github.io/tuban/main.html#/)
+
 + 通讯录功能
 + 微博功能    
 + 分享功能  

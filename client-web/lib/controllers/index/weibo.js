@@ -30,9 +30,9 @@ function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) 
     $scope.zan = function(item) {
         var user = $cookieStore.get('user');
         if (user) {
-            var zanToken = 'token=' + user.token,
+            var zanToken = '?token=' + user.token,
                 id = '&id=' + item._id,
-                url = 'http://127.0.0.1:3000/wei/zan?' + zanToken + id;
+                url = ServiceConfig.wei_zan + zanToken + id;
             $http.get(url).success(function(data) {
                 if (data.status) {
                     if (data.zans) {
@@ -70,10 +70,10 @@ function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) 
     $scope.addComment = function(item, content) {
         var user = $cookieStore.get('user');
         if (user && content) {
-            var commentToken = 'token=' + user.token,
+            var commentToken = '?token=' + user.token,
                 comment = '&comment=' + content,
                 id = '&id=' + item._id,
-                url = 'http://127.0.0.1:3000/wei/comment?' + commentToken + comment + id;
+                url = ServiceConfig.wei_comment + commentToken + comment + id;
             $http.get(url).success(function(data) {
                 if (data.status) {
                     item.comments.push({

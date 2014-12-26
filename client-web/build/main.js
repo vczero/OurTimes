@@ -50,6 +50,7 @@
 	
 })(window);;
 var app = angular.module('app', ['ui.router', 'ngCookies']);
+var SERVER_BASE_URL = 'http://127.0.0.1:3000/';
 
 //初始化配置
 app.run(['$rootScope', function($rootScope) {
@@ -60,28 +61,29 @@ app.run(['$rootScope', function($rootScope) {
 }]);
 
 
+
 //调用的服务列表
 app.constant('ServiceConfig', {
-    wei_content: 'http://127.0.0.1:3000/wei/get',
-    wei_zan: 'http://127.0.0.1:3000/wei/zan',
-    wei_comment: 'http://127.0.0.1:3000/wei/comment',
-    wei_create: 'http://127.0.0.1:3000/wei/create',
-    user_get: 'http://127.0.0.1:3000/user/get',
-    user_login: 'http://127.0.0.1:3000/user/login',
-    user_register: 'http://127.0.0.1:3000/user/register',
-    user_common: 'http://127.0.0.1:3000/user/getCommon',
-    user_ben: 'http://127.0.0.1:3000/user/getBen',
-    user_self: 'http://127.0.0.1:3000/user/getSelf',
-    user_common_update: 'http://127.0.0.1:3000/user/updateCommon',
-    user_ben_update: 'http://127.0.0.1:3000/user/updateBen',
-    user_ben_get_name: 'http://127.0.0.1:3000/user/singleBen/name',
-    user_common_get_nickname: 'http://127.0.0.1:3000/user/getCommon/name',
-    user_ben_get_realname: 'http://127.0.0.1:3000/user/singleBen/name',
-    wei_get_token_page: 'http://127.0.0.1:3000/wei/getByToken',
-    wei_delete: 'http://127.0.0.1:3000/wei/delete',
-    user_update_password: 'http://127.0.0.1:3000/user/updatePassword',
-    article_get: 'http://127.0.0.1:3000/article/get',
-    article_detail: 'http://127.0.0.1:3000/article/get/id',
+    wei_content: SERVER_BASE_URL + 'wei/get',
+    wei_zan: SERVER_BASE_URL + 'wei/zan',
+    wei_comment: SERVER_BASE_URL + 'wei/comment',
+    wei_create: SERVER_BASE_URL + 'wei/create',
+    user_get: SERVER_BASE_URL + 'user/get',
+    user_login: SERVER_BASE_URL + 'user/login',
+    user_register: SERVER_BASE_URL + 'user/register',
+    user_common: SERVER_BASE_URL + 'user/getCommon',
+    user_ben: SERVER_BASE_URL + 'user/getBen',
+    user_self: SERVER_BASE_URL + 'user/getSelf',
+    user_common_update: SERVER_BASE_URL + 'user/updateCommon',
+    user_ben_update: SERVER_BASE_URL + 'user/updateBen',
+    user_ben_get_name: SERVER_BASE_URL + 'user/singleBen/name',
+    user_common_get_nickname: SERVER_BASE_URL + 'user/getCommon/name',
+    user_ben_get_realname: SERVER_BASE_URL + 'user/singleBen/name',
+    wei_get_token_page: SERVER_BASE_URL + 'wei/getByToken',
+    wei_delete: SERVER_BASE_URL + 'wei/delete',
+    user_update_password: SERVER_BASE_URL + 'user/updatePassword',
+    article_get: SERVER_BASE_URL + 'article/get',
+    article_detail: SERVER_BASE_URL + 'article/get/id',
     amap_url: 'http://webapi.amap.com/maps?v=1.3&key=ad925c5003760094713775d64748d872&callback=init'
 });
 
@@ -816,9 +818,9 @@ function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) 
     $scope.zan = function(item) {
         var user = $cookieStore.get('user');
         if (user) {
-            var zanToken = 'token=' + user.token,
+            var zanToken = '?token=' + user.token,
                 id = '&id=' + item._id,
-                url = 'http://127.0.0.1:3000/wei/zan?' + zanToken + id;
+                url = ServiceConfig.wei_zan + zanToken + id;
             $http.get(url).success(function(data) {
                 if (data.status) {
                     if (data.zans) {
@@ -856,10 +858,10 @@ function($http, $scope, $cookieStore, $timeout, ServiceConfig, Time, WeiboData) 
     $scope.addComment = function(item, content) {
         var user = $cookieStore.get('user');
         if (user && content) {
-            var commentToken = 'token=' + user.token,
+            var commentToken = '?token=' + user.token,
                 comment = '&comment=' + content,
                 id = '&id=' + item._id,
-                url = 'http://127.0.0.1:3000/wei/comment?' + commentToken + comment + id;
+                url = ServiceConfig.wei_comment + commentToken + comment + id;
             $http.get(url).success(function(data) {
                 if (data.status) {
                     item.comments.push({
