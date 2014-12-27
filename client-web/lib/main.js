@@ -7,7 +7,7 @@ app.run(['$rootScope', function($rootScope) {
     $rootScope.appName = '图班网';
     $rootScope.desc = '基于位置的通讯录';
     $rootScope.author = '鬼谣';
-    $rootScope.email = 'wlhmyit@126.com';
+    $rootScope._email = 'wlhmyit@126.com';
 }]);
 
 
