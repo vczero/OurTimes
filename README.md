@@ -4,7 +4,7 @@ OurTimes：基于位置的通讯录
 [服务端代码](https://github.com/vczero/OurTimes/tree/master/server)      
 [客户端代码](https://github.com/vczero/OurTimes/tree/master/client-web)      
 [后台代码](https://github.com/vczero/OurTimes/tree/master/client-admin)   
-[项目配置]()  
+[项目配置](https://github.com/vczero/OurTimes/tree/master/%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3)  
 
 + 通讯录功能
 + 微博功能    
