@@ -1,6 +1,6 @@
 ###一、MongoDB安装及配置
-####MongoDB安装
-**linux EV: centOS**
+####1. MongoDB安装
+**linux EV: CentOS**
 
 	1. 下载linux-64压缩包
 	2. 解压tar -zxvf mongodb-linux-i686-2.6.6.tgz
@@ -24,18 +24,24 @@
 	   --logappend -auth --port 端口
     4. 双击start.bat文件即可启动
 
-####创建数据库用户
+####2.创建数据库用户
 1. 创建数据库，按照server/config.json文件即可；里面有对应的数据库名称、用户、密码
 2. 启动mongodb 命令行客户端，必要情况下，加入到环境变量中
    mongo --port 端口号
    > show dbs;
    > use 数据库名称(例如，myDB)
    > myDB.addUser('数据库管理员名称', '管理员密码');
-   > 1 =>OK
-
-####创建项目的管理员用户
-	由于注册用户服务默认是guest用户，但是在后台需要admin用户才能管理。为了各整个网站(系统)一个管理员账户。因此，有两种方式：
-	1.修改server/lib/user的用户模型
+   > 1 =>OK	
+     
+###二、Node.js服务配置
+	1. 修改自己的Node服务端口：server/app.js文件中的port，可以不改
+	2. 修改server/config中对应的port与app.js一致，可以不改
+	3. 修改server/util/mcrypto.js中的加密算法，可以不改
+	4. 修改server/util/guid生成方式等，可以不改
+	5. 等确认了静态文件服务后，修改config中email_server和uploadRedirectUrl。
+	6. 其中uploadRedirectUrl对应是上传完成中重定向的页面，这个后面静态服务器部署好后再修改
+	7. 由于注册用户服务默认是guest用户，但是在后台需要admin用户才能管理。为了各整个网站(系统)一个管理员账户。因此，有两种方式：
+	（1）修改server/lib/user的用户模型
 	var user = {
             userid: guid.create() + '-' + mcrypto.md5Password(params.email).toUpperCase(),
             token: guid.create(),
@@ -54,15 +60,7 @@
             hometown_lnglat: '',
             address_lnglat: ''
         };
-     2. 手动在mongodb中insert改模型的一条记录
-     
-###二、Node.js服务配置
-	1. 修改自己的Node服务端口：server/app.js文件中的port，可以不改
-	2. 修改server/config中对应的port与app.js一致，可以不改
-	3. 修改server/util/mcrypto.js中的加密算法，可以不改
-	4. 修改server/util/guid生成方式等，可以不改
-	5. 等确认了静态文件服务后，修改config中email_server和uploadRedirectUrl。
-	6. 其中uploadRedirectUrl对应是上传完成中重定向的页面，这个后面静态服务器部署好后再修改
+     （2）手动在mongodb中insert改模型的一条记录
 
 
 ###三、静态服务器配置
