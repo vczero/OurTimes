@@ -3,7 +3,8 @@ OurTimes：基于位置的通讯录
 [体验地址http://vczero.github.io/tuban/main.html#/](http://vczero.github.io/tuban/main.html#/)   
 [服务端代码](https://github.com/vczero/OurTimes/tree/master/server)      
 [客户端代码](https://github.com/vczero/OurTimes/tree/master/client-web)      
-[后台代码](https://github.com/vczero/OurTimes/tree/master/client-admin)     
+[后台代码](https://github.com/vczero/OurTimes/tree/master/client-admin)   
+[项目配置]()  
 
 + 通讯录功能
 + 微博功能    
@@ -28,7 +29,7 @@ OurTimes：基于位置的通讯录
 ####三、说明
 时间匆忙，主要是为了练习angular.js,所以有很多地方比较粗糙，同时也没有使用jquery类库。秉着“小步快跑，不断迭代”的策略，后续针对特定功能使用最佳实现方式，比如后台的文章管理，采用richEdit等等。至于Node.js实现服务，我个人觉得服务功能单一化更好，这样，node.js服务的维护较为便利。后期，会根据业务的复杂程度，采用async等库进行优化。 开源的代码和线上部署的代码所有配置不一样，所以大家可以根据自己的需要配置。我这里，数据库服务部署在阿里云，静态文件服务器就交给Github page啦！    
     
-####四、部署
+####四、部署 && 配置
 1. pc端：client-web文件夹，修改相关配置，部署静态文件服务器即可
 2. 后台：client-admin:简易的后台管理系统。 
      
@@ -47,7 +48,3 @@ OurTimes：基于位置的通讯录
 
 **4**. 文章欣赏：根据首页导过来的链接欣赏美文
 ![文章欣赏](pics/article.png)
-
-
-
-
