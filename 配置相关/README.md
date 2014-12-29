@@ -40,7 +40,8 @@
 	4. 修改server/util/guid生成方式等，可以不改
 	5. 等确认了静态文件服务后，修改config中email_server和uploadRedirectUrl。
 	6. 其中uploadRedirectUrl对应是上传完成中重定向的页面，这个后面静态服务器部署好后再修改
-	7. 由于注册用户服务默认是guest用户，但是在后台需要admin用户才能管理。为了各整个网站(系统)一个管理员账户。因此，有两种方式：
+	7. 由于注册用户服务默认是guest用户，但是在后台需要admin用户才能管理。为了各整个网站(系统)一个管理员账户。
+	因此，有两种方式：
 	（1）修改server/lib/user的用户模型
 	var user = {
             userid: guid.create() + '-' + mcrypto.md5Password(params.email).toUpperCase(),
